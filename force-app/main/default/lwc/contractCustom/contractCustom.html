@@ -1,0 +1,94 @@
+<template>
+    <div class="slds-table_col-bordered slds-scrollable_y"
+    style="border-top-left-radius: 10px;border-top-right-radius: 15px;background-color: rgba(255, 255, 255, 0.568); max-height: 400px; ">
+    <div class="slds-text-longform">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped" style="overflow: auto">
+            <thead class="thead1" style="text-align: center;">
+                <tr class="slds-line-height_reset " style="height: 40px;">
+                    <th class="slds-cell-buffer_right" scope="col" style="text-align: center;">
+                        #
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="slds-truncate"><label>Contract Custom Name<abbr style="color: red;"> *</abbr></label></div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="slds-truncate">Date</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="slds-truncate">Status</div>
+                    </th>
+                    <th style="text-align: center;">
+                        <div class="slds-truncate">Description</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate"></div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={data} for:item="rec">
+                    <tr key={rec.Id} class="slds-hint-parent">
+                        <template lwc:if={rec.isToday}>
+                            <td class="slds-cell-edit slds-cell-error" role="gridcell"
+                                style="text-align: center; background: rgb(244, 244, 199);">
+                                <div class="slds-row-number slds-text-body_small slds-text-color_weak"></div>
+                            </td>
+                            <td onchange={getValue} style="background: rgb(244, 244, 199);;">
+                                <lightning-input type='text' data-name="Name" data-id={rec.Id} disabled="true"
+                                    value={rec.Name}></lightning-input>
+                            </td>
+                            <td onchange={getValue} class="DateTime" style="background: rgb(244, 244, 199);">
+                                <lightning-input type='datetime' data-name="Date" data-id={rec.Id}
+                                    disabled={disableD} value={rec.Date__c}></lightning-input>
+                            </td>
+                            <td onchange={getValue} style="background: rgb(244, 244, 199);">
+                                <lightning-combobox dropdown-alignment="auto" data-id={rec.Id} data-name="Status" name="progress"
+                                    placeholder="Select Progress" options={statusPickList} value={rec.Status__c}
+                                    disabled={disableD}></lightning-combobox>
+                            </td>
+                            <td onchange={getValue} style="background: rgb(244, 244, 199);">
+                                <lightning-textarea data-name="Description" data-id={rec.Id} name="Description" disabled={disableD} value={rec.Description__c} placeholder="Description"></lightning-textarea>
+                            </td>
+                            <td style="text-align: center; background: rgb(244, 244, 199);">
+                                <lightning-button icon-name="utility:delete" variant="base" disabled={disableD}
+                                    onclick={delete_record} data-id={rec.Id}></lightning-button>
+                            </td>
+                        </template>
+                        <template lwc:else>
+                            <td class="slds-cell-edit slds-cell-error" role="gridcell" style="text-align: center;">
+                                <div class="slds-row-number slds-text-body_small slds-text-color_weak"></div>
+                            </td>
+                            <td onchange={getValue}>
+                                <lightning-input type='text' data-name="Name" data-id={rec.Id} disabled="true"
+                                    value={rec.Name}></lightning-input>
+                            </td>
+                            <td onchange={getValue} class="DateTime">
+                                <lightning-input type='datetime' data-name="Date" data-id={rec.Id}
+                                    disabled={disableD} value={rec.Date__c}></lightning-input>
+                            </td>
+                            <td onchange={getValue}>
+                                <lightning-combobox dropdown-alignment="auto" data-id={rec.Id} data-name="Status" name="progress"
+                                    placeholder="Select Progress" options={statusPickList} value={rec.Status__c}
+                                    disabled={disableD}></lightning-combobox>
+                            </td>
+                            <td onchange={getValue}>
+                                <lightning-textarea data-name="Description" data-id={rec.Id} name="Description" disabled={disableD} value={rec.Description__c} placeholder="Description"></lightning-textarea>
+                            </td>
+                            <td style="text-align: center;">
+                                <lightning-button icon-name="utility:delete" variant="base" disabled={disableD}
+                                    onclick={delete_record} data-id={rec.Id}></lightning-button>
+                            </td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <template if:true={enableEdit}>
+            <div style="padding-top: 20px;">
+                <lightning-button variant="brand" label="Add Row" title="Add Row" onclick={addRowMethod}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </template>
+    </div>
+</div>
+</template>

@@ -1,0 +1,18 @@
+<apex:page controller="que5a">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:pageBlockTable value="{!pos}" var="p">
+                    <apex:column value="{!p.name}"/>
+                    <apex:column value="{!p.Max_Pay__c}"/>
+                    <apex:column headerValue="Min Pay">
+                        <apex:inputField value="{!p.Min_Pay__c}"/>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+            	<apex:commandButton action="{!save}" value="update"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

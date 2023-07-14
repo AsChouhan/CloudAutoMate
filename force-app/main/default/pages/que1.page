@@ -1,0 +1,22 @@
+<apex:page Controller="Merchandisec1">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockSection title="New record section">
+            	<Script>
+                
+                	alert('called');
+                </Script>
+                   
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection >
+            	
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons >
+            	<apex:commandButton value="refersh page"/>
+            </apex:pageBlockButtons>
+            
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

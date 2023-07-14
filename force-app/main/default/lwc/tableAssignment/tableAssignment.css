@@ -1,0 +1,12 @@
+
+.headers{
+    height: 30px;
+}
+.headers th{
+    background-color: rgb(89 27 27 / 95%);
+    color: white;
+}
+.slds-box{
+    border-top-left-radius: 13px;
+    border-top-right-radius: 15px;
+}

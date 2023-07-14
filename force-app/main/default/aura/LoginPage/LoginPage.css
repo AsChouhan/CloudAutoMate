@@ -1,0 +1,24 @@
+.a.THIS {
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /*background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+*/
+}
+
+.THIS.a{
+
+}
+
+
+
+.THIS.a input{
+  border: 1px solid black;
+}
+
+.THIS.a input[type = text]{
+  color: black;
+}
+
+.THIS.a input[type = password]{
+  color: black
+}

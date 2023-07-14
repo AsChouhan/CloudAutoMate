@@ -1,0 +1,25 @@
+<aura:component controller="CommunityLoginApexController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"
+    access="global">
+    <aura:attribute name="startUrl" type="String" default="https://briskmind9-dev-ed.my.site.com/DemoCompInt/s/" />
+ 
+    <div class="a">
+        <lightning:card>
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem size="12" padding="around-small">
+                    <lightning:input type="text" aura:id="username" required="true" placeholder="UserName" />
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" padding="around-small">
+                    <lightning:input type="password" aura:id="password" required="true" placeholder="Password" />
+                </lightning:layoutItem>
+                <lightning:layoutItem size="12" padding="around-small">
+                    <div class="slds-align_absolute-center">
+                        <lightning:button label="Log in" variant="brand" onclick="{!c.checkUser}" />
+                        &nbsp;&nbsp;&nbsp;
+                        <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                    </div>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </lightning:card>
+    </div>
+</aura:component>

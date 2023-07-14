@@ -1,0 +1,114 @@
+<aura:component controller = "newKanbanController" implements = "force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access = "global">
+    <aura:handler name = "init" value = "{!this }" action = "{! c.init }"/>
+    <aura:attribute name = "selectedObject" type = "String" default = "--None--"/>
+    <aura:attribute name = "objNames" type = "List" default = "[]"/>
+    <aura:attribute name = "fieldName" type = "List" default = "[]"/>
+    <aura:attribute name = "selectedField" type = "String" default = "--None--"/>
+    <aura:attribute name = "picklistVal" type = "List" default = "[]"/>
+    <aura:attribute name = "relRecs" type = "List" default = "[]"/>
+    <aura:attribute name = "visible" type = "Boolean" default = "true"/>
+    <aura:attribute name = "dis" type = "Boolean" default = "true"/>
+    <aura:attribute name = "spinner" type = "Boolean" default = "false"/>
+    <aura:attribute name = "startId" type="String"/>
+    <aura:attribute name = "parentId" type="String"/>
+    <aura:attribute name = "done" type="Boolean" default = "false"/>
+    <aura:attribute name="addBool" type="Boolean" default="false" />
+    <aura:attribute name="simpleFields" type="List" />
+    <aura:attribute name="selectedFields" type="List" />
+
+    <div>
+        <aura:if isTrue="{!v.visible}">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col" >
+                    <span>
+                        <lightning:combobox class="options" name = "objectPicklist" label = "Select Object : " spinnerActive="false" placeholder= "--None--" value = "{! v.selectedObject }" options = "{! v.objNames }" title = "Select Object" onchange = "{! c.selectedObj }" />
+                    </span><br></br> 
+                </div>
+                <div class="slds-col"/>             
+                <div class="slds-col" >
+                    <span>
+                        <lightning:combobox class="fields" name = "fieldPicklist" disabled = "{!v.dis}" label = "Select Field : " spinnerActive="false" placeholder= "--None--" value = "{! v.selectedField }" options = "{! v.fieldName }" title = "Select Fields" onchange = "{! c.showDualList }" />
+                    </span>
+                 </div>
+            </div><br/><br/><br/>
+            
+
+            <aura:renderIf isTrue = "{!v.addBool}">
+        <lightning:dualListbox class="dualBoxC"
+                               aura:id="dualBox"
+                              
+                               name="dualBoxx"
+                               label="select fields"
+                               min="1"
+                               max="3"	
+                               sourceLabel="Available Fields"
+                               selectedLabel="Selected Fields" 
+                               options="{!v.simpleFields}"                         
+                               value="{!v.selectedFields}"                           
+                               />
+
+        <lightning:button class="ProcessRec" label="Process Records" iconName="utility:send" variant="destructive" onclick="{!c.selectedFld}"/>        
+
+               
+    </aura:renderIf>  
+
+
+            <br/>
+            <aura:set attribute="else"> 
+                  <div style = "margin-left : 10px;">
+                    <lightning:button label="Select Again" title="Neutral action" onclick="{! c.handleClick }"/><br/><br/>
+                </div>   
+                
+                <div class="slds-path">
+                    <div class="slds-grid slds-path__track">
+                        <div class="slds-grid slds-path__scroller-container">
+                            <div class="slds-path__scroller">
+                                <div class="slds-path__scroller_inner">
+                                    <ul class="slds-path__nav" role="listbox" aria-orientation = "horizontal">
+                                        <aura:iteration items="{!v.relRecs}" var="recList" indexVar="key">
+                                            <li class="slds-path__item slds-is-current slds-is-active" role="presentation">
+                                                <a aria-selected="true" class="slds-path__link" href="#" id="path-1" role="option" tabindex="0">
+                                                    <span class="slds-path__title">
+                                                        <aura:if isTrue = "{!recList.key == 'null'}">
+                                                            None({!recList.count})
+                                                            <aura:set attribute="else">
+                                                                {!recList.key}({!recList.count})
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </aura:iteration> 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid">
+                        <aura:iteration items="{!v.relRecs}" var="recList">
+                            <div class="slds-box slds-col slds-float_left slds-scrollable_y slds-theme_default slds-theme_alert-texture slds-m-around_xx-small" style="{!'width:calc(100vw/'+(v.relRecs.length+0.5)+'); height:40rem;'}" ondrop="{!c.drop}" ondragover="{!c.allowDrop}" data-Pick-Val ="{!recList.key}" id = "{!recList.key}">  
+                                <aura:iteration items = "{! recList.value}" var = "rec">
+                                    <ul class="slds-box slds-size_medium  slds-m-around_xx-small slds-truncate slds-theme_default" id="{!rec.Id}" draggable="true" ondragstart="{!c.drag}">
+                                        <li class="slds-item"><b><a href="{!'/'+rec.Id}" target="_blank">{!rec.Name}</a></b></li>
+                                        <br/>
+                                        <li class="slds-item">{!rec.Id}</li>
+                                        <br/>
+
+                                        <aura:iteration items="{!v.selectedFields}" var="fld" >
+                                          <c:KanBanChildComponent record="{!rec}" field="{!fld}" />
+                                        </aura:iteration>
+
+
+                                    </ul>
+                                </aura:iteration>
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </div>
+            </aura:set>
+        </aura:if>    
+    </div>
+    <aura:if isTrue = "{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" size="large" class = "spins"/>
+    </aura:if>    
+</aura:component>

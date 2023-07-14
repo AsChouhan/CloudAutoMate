@@ -1,0 +1,15 @@
+<apex:page controller="NewTryVfApexClass" >
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockSection title="Accounts">
+
+                <apex:inputText value="{!b1}" label="Account Name b"/>
+            	<apex:inputText value="{!accName}" label="Account Name"/>
+            </apex:pageBlockSection>
+         
+            <apex:pageBlockButtons location="BOTToM">
+            	<apex:commandButton action="{!SaveRec}" value="SaveRecord" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

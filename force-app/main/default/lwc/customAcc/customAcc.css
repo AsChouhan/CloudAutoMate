@@ -1,0 +1,12 @@
+.thead1 th {
+    background-color: rgb(89 27 27 / 95%);
+    color: white;
+}
+.DateTime{
+    max-width: 120px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+

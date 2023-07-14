@@ -1,0 +1,107 @@
+<template>
+    <div if:true={showSpinner}>
+        <lightning-spinner
+            alternative-text="Loading..." variant="brand" class="slds-is-fixed">
+        </lightning-spinner>
+    </div>
+
+    <lightning-combobox class="objectClass" name="Object List" label="Select Object" placeholder="None"
+       value={objectNam} onchange={whenObjectSelect} options={objectList}></lightning-combobox>
+    <lightning-button class="Reset" onclick={reset} label="Reset" icon-name="utility:sync" variant="destructive"></lightning-button>
+    <template lwc:if={showDualBox}>
+        <lightning-dual-listbox class="dualBoxC" up-button-label="Up" min={min} max={max} name="dualBoxx"
+            label="select fields" source-label="Available Fields" selected-label="Selected Fields" options={fieldsList}
+            value={selectedFields} onchange={getSelectedFields}></lightning-dual-listbox>
+        <lightning-button class="ProcessRec" disabled={processBool} label="Process Records" icon-name="utility:send" variant="destructive"
+            onclick={showRecords}></lightning-button>
+    </template>
+
+    <template lwc:if={showDataTable}>
+        <div class="table">
+            <div class="slds-box slds-theme–default">
+                <div class="slds-scrollable_y" style="height: 200px;">
+                    <div class="slds-text-longform">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th>
+                                        <lightning-input data-id="myCheck" type="checkbox" name="input1"
+                                            onchange={parentCheckBox}></lightning-input>
+                                    </th>
+                                    <template for:each={columns} for:item="column">
+                                        <th key={column.fieldName}><a data-name={column.fieldName} onclick={sorting}>{column.label}</a></th>
+                                    </template>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={recordsForDisplay} for:item="rec">
+                                    <tr key={rec.Id} class="slds-hint-parent">
+                                        <td>
+                                            <template lwc:if={rec.isChecked}>
+                                                <lightning-input id={rec.Id} class="childBox" data-id="childBox"
+                                                    onchange={makeParentChacked} type="checkbox" name="input1" 
+                                                    checked ></lightning-input>
+                                            </template>
+                                            <template lwc:else>
+                                                <lightning-input data-name={rec.Id} class="childBox" type="checkbox" data-id="childBox"
+                                                    onchange={childCheckBox} name="input1" ></lightning-input>
+                                            </template>
+                                        </td>
+                                        <template for:each={columns} for:item="col">
+                                            <!-- <td key={col.fieldName} id={col.fieldName} onloadstart={debugASC}>{rec.Name}</td> -->
+                                            <td key={col.fieldName}>
+                                                <c-clientside-child-cmp record={rec}
+                                                    field={col.fieldName}></c-clientside-child-cmp>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='praa'>
+            <lightning-button-group class="btnGroup">
+                <lightning-button label="First" variant="destructive" disabled={disablePreviousButtons}
+                    onclick={first}></lightning-button>
+                <lightning-button label="Previous" variant="destructive" disabled={disablePreviousButtons}
+                    onclick={previous}></lightning-button>
+                <lightning-button label="Next" variant="destructive" disabled={disableNextButtons}
+                    onclick={next}></lightning-button>
+                <lightning-button label="Last" variant="destructive" disabled={disableNextButtons}
+                    onclick={last}></lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <div class="totalRec">
+            <p>Total Records : {totalRecords}</p>
+        </div>
+        <div class="pages">
+            <p>Current Page : {currentPage} | Total Page : {totalPages}</p>
+
+        </div>
+        <div class="pSize">
+            <lightning-combobox name="page size" value={pageSize} label="pageSize" placeholder={pageSize}
+                dropdown-alignment="auto" onchange={handlePageSize} options={pageSizeList}></lightning-combobox>
+        </div>
+        <div class="pagiList">
+            <table>
+                <tr>
+                    <template lwc:if={rightDashes}>
+                        {dashesString}
+                    </template>
+                    <template for:each={paginationList} for:item="num">
+                        <td key={num}><a class="numbersOf" id={num} data-id={num} onclick={handlePageJump}
+                                tabindex={currentPage} onload={makeNumRed}>{num}&nbsp;</a></td>
+                    </template>
+                    <template lwc:if={leftDashes}>
+                        {dashesString}
+                    </template>
+                </tr>
+            </table>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,95 @@
+.objectClass{
+    position: absolute;
+    width: 700px;
+    left: 50px; 
+    color: gray;    
+}
+
+.options label{
+    font-size: 12px;     
+   font-weight: bold;
+   color: white;
+}
+
+.Reset{    
+    position: relative;
+    left: 800px;
+    width: 100px;
+	height: 32px;
+    top: 23px;
+}
+
+.dualBoxC{
+    position: absolute;
+    width: 900px;
+    left: 50px;
+    top: 70px;
+}
+.dualBoxC button{
+    color: black;
+    border-radius: 50%;
+    background-color: none;  
+    top: 70px;
+}
+.dualBoxC button:hover{
+    color: balck;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: none;  
+    top: 70px;
+}
+
+.ProcessRec{
+    position: relative;
+    left: 950px;  
+	height: 32px;
+    top: 200px;
+}
+
+.table {
+    position: absolute;   
+    top: 380px;
+    width: 1400px;
+    left: 50px;
+    height: 300px;
+}
+
+.btnGroup{
+    position:relative;
+    top: 600px;
+    left: 600px;
+}
+
+.totalRec{
+    position:relative;
+    top: 570px;
+    left: 1300px;
+}
+.pages{
+    position:relative;
+    top: 550px;
+    left: 50px;
+}
+
+.pSize{
+    position:relative;
+    top: 520px;
+    left: 260px;
+    width: 60px;
+    height: 10px;
+}
+
+.pagiList{
+    position:relative;
+    top: 525px;
+    left: 1100px;
+    width: 150px;
+}
+
+.pagiList a{
+    color: rgb(0, 0, 0);
+}
+.pagiList a[tabindex]:focus{
+    color:red;
+    outline: none;
+}

@@ -1,0 +1,19 @@
+<template>
+    <template lwc:if={bool}>
+        <div style="height: 300px;">
+            <lightning-datatable key-field="id" data={jsonList} columns={gridColumn} onrowselection={handleSelect}>
+            </lightning-datatable>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tree-grid
+                columns={gridColumn}
+                data={ashish}
+                key-field="name"
+            ></lightning-tree-grid>
+        </div>
+    </template>
+    <lightning-button variant="base" label="PROCEED" title="Looks like a link" onclick={handleProceed}
+        class="slds-m-left_x-large"></lightning-button>
+</template>

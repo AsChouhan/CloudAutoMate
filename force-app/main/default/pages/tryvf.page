@@ -1,0 +1,12 @@
+<apex:page controller="globalDesc">
+    <apex:form > 
+    	<apex:pageBlock >    
+            <apex:pageBlockSection >
+            	<apex:selectList value="{!objectName}" label="Country" multiselect="true" size="10">
+                    
+                        <apex:selectOptions value="{!op}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>            	
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

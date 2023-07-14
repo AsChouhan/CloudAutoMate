@@ -1,0 +1,35 @@
+<template>
+
+    <br /><br />
+    <div class="table">
+        <div class="slds-box slds-theme–default">
+            <div class="slds-scrollable_y" style="height: 500px;">
+                <div class="slds-text-longform">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th>
+                                    <h2>File Name</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <template for:each={files} for:item="file">
+                            <tbody key={file.ContentDocumentId} style="padding-top: 50px;">
+                                <tr class="slds-hint-parent">
+                                    <td>
+                                        {file.Title}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </template>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <lightning-file-upload label="Upload File" name="fileUploader"
+            accept=".xlsx, .jpeg, .csv, .png, .doc, .docx, .pdf" multiple="false" onuploadfinished={handleUploadFinished}>
+        </lightning-file-upload>
+    </div>
+</template>

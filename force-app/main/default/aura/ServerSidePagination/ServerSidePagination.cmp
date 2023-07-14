@@ -1,0 +1,73 @@
+<aura:component controller="ServerSidePaginationClass" implements="force:appHostable,flexipage:availableForAllPageTypes"
+    access="global">
+
+    <aura:attribute name="mapForMaintain" type="Map" />
+
+    <aura:attribute name="objectList" type="ServerSidePaginationClass.ObjectWrapperClass[]" />
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="data" type="List" />
+    <aura:attribute name="column" type="List" />
+    <aura:attribute name="pageSize" type="Integer" default="5" />
+
+    <aura:attribute name="objectName" type="String" />
+    <aura:attribute name="min" type="integer" default="1" />
+    <aura:attribute name="max" type="integer" default="10" />
+
+    <aura:attribute name="addBool" type="Boolean" />
+    <aura:attribute name="showRecordsBool" type="Boolean" />
+
+    <aura:attribute name="Fields" type="List" />
+    <aura:attribute name="selectedFields" type="List" />
+    <aura:attribute name="selectedRow" type="List" />
+    <aura:attribute name="soretedDirection" type="String" />
+    <aura:attribute name="sortBool" type="Boolean" default="true" />
+
+    <aura:attribute name="hasNext" type="Boolean" />
+    <aura:attribute name="hasPrevious" type="Boolean" />
+    <aura:attribute name="totalPages" type="Decimal" />
+    <aura:attribute name="pageNumber" type="Integer" default="1" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.getObjects}" />
+    <lightning:combobox class="options" aura:id="item" name="general" label="Select Object" options="{!v.options }"
+        onchange="{!c.getFields}" />
+    <aura:attribute name="result" type="list" default="Res" />
+    <lightning:button class="Reset" label="Reset" iconName="utility:sync" variant="destructive"
+        onclick="{!c.resetAll}" />
+    <aura:renderIf isTrue="{!v.addBool}">
+        <lightning:dualListbox class="dualBoxC" aura:id="dualBox" min="{!v.min}" max="{!v.max}" name="dualBoxx"
+            label="select fields" sourceLabel="Available Fields" selectedLabel="Selected Fields" options="{!v.Fields}"
+            value="{!v.selectedFields}" />
+        <lightning:button class="ProcessRec" label="Process Records" iconName="utility:send" variant="destructive" onclick="{!c.showRecords}" />
+    </aura:renderIf>
+
+    <!--c:serverSidePag_ChildComponent aura:id="childCom" selectedRow="{!v.selectedRecords}" lastAction="{!c.last}" prevAction="{!c.previous}" firstAction="{!c.first}" nextAction="{!c.next}" hasPrevious="{!v.hasPrevious}" hasNext="{!v.hasNext}"  data="{!v.data}" pageNumber="{!v.pageNumber}" column="{!v.column}" totalPages="{!v.totalPages}" showRecordsBool="{!v.showRecordsBool}" pageSize="{!v.size}"  selectedFields="{!v.selectedFields}" parentAction="{!c.getNewRecords}" objectName="{!v.objectname}"/-->
+
+
+    <aura:renderIf isTrue="{!v.showRecordsBool}">
+        <div style="position: absolute; top: 400px; height:200px;">
+            <lightning:datatable class="table" keyField="Id" columns="{!v.column}" aura:id="dTable" data="{!v.data}"
+                onsort="{!c.sort}" selectedRows="{!v.selectedRow}" onrowselection="{!c.selectThat}" />
+        </div>
+        <lightning:buttonGroup class="btnGroup">
+            <lightning:button label="First" variant="destructive" disabled="{!v.hasPrevious}" onclick="{!c.first}" />
+            <lightning:button label="Previous" variant="destructive" disabled="{!v.hasPrevious}"
+                onclick="{!c.previous}" />
+            <lightning:button label="Next" variant="destructive" disabled="{!v.hasNext}" onclick="{!c.next}" />
+            <lightning:button label="Last" variant="destructive" disabled="{!v.hasNext}" onclick="{!c.last}" />
+        </lightning:buttonGroup>
+        <div class="listSizeCls">
+            <h1>Records Per Page :</h1>
+            <h2>Page :{!v.pageNumber} / {!v.totalPages}</h2>
+            <div class="selectCl">
+                <lightning:select aura:id="listSize" onchange="{!c.getNewRecords}" value="{!v.pageSize}">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </lightning:select>
+            </div>
+        </div>
+    </aura:renderIf>
+
+
+</aura:component>

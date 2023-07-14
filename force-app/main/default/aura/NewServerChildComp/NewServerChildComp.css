@@ -1,0 +1,24 @@
+.THIS {
+    
+}
+
+.THIS.listSizeCls{
+    position: relative;
+    top: 580px;
+    width: 50px
+}
+.THIS.listSizeCls h1{
+    width: 150px
+}
+
+.THIS.listSizeCls h2{
+    position: relative;
+    left: 1300px;
+    top: -13px;
+}
+
+.THIS.listSizeCls div{
+   position: relative;
+    left: 30px;
+    top: -14px;
+}

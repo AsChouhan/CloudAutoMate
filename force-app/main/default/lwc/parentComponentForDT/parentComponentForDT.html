@@ -1,0 +1,54 @@
+<template>
+    <div style="background-color: white; max-height: fit-content;">
+        <template lwc:if={recordId}>
+            <div class="child1">
+                <h1 style="font-size:25px;">Custom Account</h1><hr/>
+                <c-custom-acc accountid={recordId}></c-custom-acc><hr/>
+
+                <h1 style="font-size:25px;">Custom Contact</h1><hr/>
+                <c-custom-contact accountid={recordId}></c-custom-contact><hr/>
+
+                <h1 style="font-size:25px;">Custom Case</h1><hr/>
+                <c-case-custom accountid={recordId}></c-case-custom><hr/>
+
+                <h1 style="font-size:25px;">Custom Contract</h1><hr/>
+                <c-contract-custom accountid={recordId}></c-contract-custom>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="child1">
+                <h1 style="font-size:25px;">Custom Account</h1><hr/>
+                <c-custom-acc accountid='0015g000019NGt4AAG'></c-custom-acc><hr/>
+                <h1 style="font-size:25px;">Custom Contact</h1><hr/>
+
+                <c-custom-contact accountid='0015g000019NGt4AAG'></c-custom-contact><hr/>
+                <h1 style="font-size:25px;">Custom Case</h1><hr/>
+
+                <c-case-custom accountid='0015g000019NGt4AAG'></c-case-custom><hr/>
+                <h1 style="font-size:25px;">Custom Contract</h1><hr/>
+
+                <c-contract-custom accountid='0015g000019NGt4AAG'></c-contract-custom>
+            </div>
+        </template>
+
+        <footer class="slds-card__footer">
+        <template lwc:if={enableEdit}>
+                <lightning-button 
+                    variant="brand" 
+                    label="Save" 
+                    title="Save" 
+                    onclick={pressSave}
+                    >
+                </lightning-button>
+        </template>
+        <template lwc:else>
+                <lightning-button 
+                    variant="destructive-text" 
+                    label="Edit"
+                    title="Edit" 
+                    onclick={pressEdit}
+                    >
+                </lightning-button>
+        </template></footer>
+    </div>
+</template>

@@ -1,0 +1,50 @@
+<apex:page sidebar="false" showHeader="false" >
+    <script>
+    function Master(event) {
+        var childchek = document.getElementsByClassName('child_1');
+        for(var x of childchek ){
+            if(event.checked == true){
+            	x.checked = true;
+        	}
+            else {
+                x.checked = false;
+            }
+        }
+    }
+    function Child_function(){
+        var child_2 = document.getElementsByClassName('child_1');
+        var master_r = document.getElementsByClassName('master_1');
+        for(var y of child_2){
+            if(y.checked == true){
+                master_r[0].checked = true;
+            }
+            else {
+            	master_r[0].checked = false;
+                break;
+            }
+        }
+    }
+    </script>
+    <apex:form >
+        <apex:pageBlock id="table" title="Master CheckBox">
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange="Master(this)" label="Master CheckBox" styleClass="master_1"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange=" Child_function()" label="Child-1" styleClass="child_1"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange=" Child_function()" label="Child-2" styleClass="child_1"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange=" Child_function()" label="Child-3" styleClass="child_1"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange=" Child_function()" label="Child-4" styleClass="child_1"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:inputCheckbox onchange=" Child_function()" label="Child-5" styleClass="child_1"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

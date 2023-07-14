@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable" >
+    <aura:attribute name="name" type="string" default="chouhan"/>
+    <c:tryChildCmp childName="{!v.name}" parentAction="{!c.tryAction}"/>
+</aura:component>

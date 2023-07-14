@@ -1,0 +1,7 @@
+<apex:page controller="CanCustomController">
+    <apex:form >
+    	<apex:pageBlockSection >
+        	<apex:inputText value="{!accName}" label="Account Name" />
+        </apex:pageBlockSection>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,47 @@
+<template>
+
+    <br/><lightning-breadcrumbs>
+        <template for:each={breadCrumbList} for:item="item"> 
+            <lightning-breadcrumb style="font-size: 15px" onclick={gotoPage} key={item.value} label={item.label} name={item.value}></lightning-breadcrumb>
+        </template>        
+    </lightning-breadcrumbs><br/>
+
+    <div class="slds-scrollable_y" style="height:28rem;width:90rem">
+    <table>
+        <template for:each={boxFilesList} for:item="fil">            
+            <tr key={fil.id}>                             
+                <td>       
+                    <template lwc:if={fil.isFolder}>
+                        <a id={fil.id} name={fil.name} onclick={openFolder} ><lightning-icon icon-name="doctype:folder" size = "small" ></lightning-icon>&nbsp;&nbsp;{fil.name}</a>
+                    </template> 
+                    <template lwc:else>
+                        <a id={fil.id} onclick={downloadFile} ><lightning-icon icon-name="utility:file" size = "small" ></lightning-icon>&nbsp;&nbsp;{fil.name}</a>
+                    </template>            
+                </td>               
+                <td>
+                    <template lwc:if={fil.isFolder}>
+                        <a id={fil.id} data-id={fil.type} onclick={deleteFile}><lightning-icon icon-name="utility:delete" size = "small"></lightning-icon></a>
+                    </template>
+                    <template lwc:else>
+                        <a id={fil.id} data-id={fil.type} name={fil.type} onclick={deleteFile}><lightning-icon icon-name="utility:delete" size = "small"></lightning-icon></a>
+                    </template>
+                </td>
+                <td>
+                    <a id={fil.id} onclick={downloadFile}><lightning-icon icon-name="utility:download" size = "small"></lightning-icon></a>
+                </td><br key={fil.name}/>
+            </tr>
+        </template>
+    </table>    
+    </div>
+    <br/>
+    <!--template if:true={showBool}>-->
+        <lightning-file-upload
+        label="upload files" name="fileUploader"
+        multiple="false" accept=".jpg, .png" onuploadfinished= {handleUpload} >
+        </lightning-file-upload>
+    <!--/template>-->
+        <lightning-button onclick={handlePromptClick} label="Create Folder"></lightning-button>
+        <template if:true={showSpinnerBool}>
+            <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+        </template>
+</template>

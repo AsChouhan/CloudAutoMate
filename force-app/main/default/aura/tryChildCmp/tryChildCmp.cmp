@@ -1,0 +1,7 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:attribute name="childName" type="String" />
+    <aura:attribute name="parentAction" type="Aura.Action" />
+    {!v.childName}
+    <lightning:button label="call" onclick="{!v.parentAction}" />
+     {!v.childName}
+</aura:component>

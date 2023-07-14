@@ -1,0 +1,12 @@
+.THIS.options{
+    position: absolute;
+    width: 600px;
+    
+    color: gray;    
+}
+.THIS.fields{
+    position: absolute;
+    width: 600px;
+    left: 650px; 
+    color: gray;
+}

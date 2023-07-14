@@ -1,0 +1,32 @@
+<apex:page standardController="Contact" recordSetVar="ct">
+    <apex:form >
+        <apex:pageBlock title="PageBlock" id="ctList"> 
+            <apex:selectList value="{! filterId }" size="1">
+                <apex:selectOptions value="{! listViewOptions }"/>
+                <apex:actionSupport event="onchange" reRender="ctList"/>
+            </apex:selectList>
+                <apex:pageBlockTable value="{!Ct}" var="c">
+                    <apex:column >                           
+						<apex:outputLink value="{! URLFOR($Action.contact.Edit,c.id)}">
+                        	edit
+                        </apex:outputLink>
+                        &nbsp;
+                        <apex:outputLink value="{! URLFOR($Action.contact.Delete,c.id)}">
+                        	Delete
+                        </apex:outputLink>
+                           &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;
+                    </apex:column>
+                    <apex:column headerValue="Birthday">
+                    <apex:outputField value="{!c.Birthdate}" >
+                        	<apex:inlineEditSupport />
+                        </apex:outputField>
+                    </apex:column>
+                    <apex:column value="{!c.Name}"/>
+                    <apex:column value="{!c.phone}"/>
+                    <apex:column value="{!c.Email}"/>
+                    <apex:column value="{!c.title}"/>
+                    <apex:column value="{!c.Owner.Name}"/>
+                </apex:pageBlockTable>      
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

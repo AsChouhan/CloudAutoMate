@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-p-around_medium lgc-bg">
+        <template lwc:if={isDateField}>
+            <lightning-input type='datetime' data-id="ids" disabled={editable} value={displayInfo} onchange={printDate}></lightning-input>
+        </template>
+        <template lwc:elseif={isPickListField}>
+            <lightning-combobox name="progress" data-id="ids" placeholder="Select Progress" options={pickListValues}
+                value={displayInfo} disabled={editable} onchange={printRate}></lightning-combobox>
+        </template>
+        <template lwc:else>
+            <lightning-input disabled={editable} data-id="ids" type='text' value={displayInfo} onchange={printVal}></lightning-input>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<apex:page controller="PageQue1">
+    <apex:form >
+    <apex:pageBlock >
+        
+            <apex:pageBlockSection columns="1">
+            	<apex:inputField value="{!a.Name}"/>
+                <apex:inputField value="{!a.Industry}"/>
+                <apex:inputField value="{!a.Rating}"/>
+                <apex:inputField value="{!a.id}"/>
+            </apex:pageBlockSection>           
+            
+         
+          <apex:pageBlockButtons >
+            	<apex:commandButton action="{!save1}" value="Save"/>&nbsp;&nbsp;
+                <apex:commandButton action="{!QuickSave1}" value="Quick Save"/>&nbsp;&nbsp;
+                <apex:commandButton action="{!Cancel1}" value="cancel"/>&nbsp;&nbsp;
+                <apex:commandButton action="{!Edit1}" value="Edit"/> &nbsp;&nbsp;     
+            	<apex:commandButton action="{!Delete1}" value="Delete"/> 
+			</apex:pageBlockButtons>
+        
+    </apex:pageBlock>
+        </apex:form>
+</apex:page>

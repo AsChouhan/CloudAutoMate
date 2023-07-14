@@ -1,0 +1,77 @@
+<template>
+    <div class="slds-table_col-bordered slds-scrollable_y"
+        style="border-top-left-radius: 10px;border-top-right-radius: 15px;background-color: white;">
+        <div class="slds-text-longform">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                <thead class="thead1" style="text-align: center;">
+                    <tr class="slds-line-height_reset ">
+                        <th class="slds-cell-buffer_right" scope="col" style="text-align: center;">
+                            #
+                        </th>
+                        <th key={column.apiName} style="text-align: center;">
+                            <div class="slds-truncate">Account Custom Name</div>
+                        </th>
+                        <th key={column.apiName} style="text-align: center;">
+                            <div class="slds-truncate">Date</div>
+                        </th>
+                        <th key={column.apiName} style="text-align: center;">
+                            <div class="slds-truncate">Industry</div>
+                        </th>
+                        <th key={column.apiName} style="text-align: center;">
+                            <div class="slds-truncate">Rating</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate"></div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={enableEdit}>
+                        <template for:each={data} for:item="rec">
+                            <tr key={rec.Id} class="slds-hint-parent">
+                                <td class="slds-cell-edit slds-cell-error" role="gridcell" style="text-align: center;">
+                                    <div class="slds-row-number slds-text-body_small slds-text-color_weak"></div>
+                                </td>
+                                <template for:each={objectFields} for:item="field">
+                                    <td key={field.apiName}>
+                                        <c-fields-component-for-dt record={rec} field={field} objectname={obName}
+                                            editable={enableEdit}></c-fields-component-for-dt>
+                                    </td>
+                                </template>
+                                <td onclick={delete_record} data-id={rec.Id} style="text-align: center;">
+                                    <lightning-icon icon-name="utility:delete" alternative-text="Delete" title="Delete"
+                                        size="xx-small"></lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                    <template if:false={enableEdit}>
+                        <template for:each={data} for:item="rec">
+                            <tr key={rec.Id} class="slds-hint-parent">
+                                <td class="slds-cell-edit slds-cell-error" role="gridcell" style="text-align: center;">
+                                    <div class="slds-row-number slds-text-body_small slds-text-color_weak"></div>
+                                </td>
+                                <template for:each={objectFields} for:item="field">
+                                    <td key={field.apiName}>
+                                        <c-fields-component-for-dt record={rec} field={field} objectname={obName}
+                                            editable={enableEdit}></c-fields-component-for-dt>
+                                    </td>
+                                </template>
+                                <td onclick={delete_record} data-id={rec.Id} style="text-align: center;">
+                                    <lightning-icon icon-name="utility:delete" alternative-text="Delete" title="Delete"
+                                        size="xx-small"></lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
+            <template if:true={enableEdit}>
+                <div style="padding-top: 20px;">
+                    <lightning-button variant="destructive-text" label="Add Row" title="Add Row" onclick={addRowMethod}
+                        class="slds-m-left_x-small"></lightning-button>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

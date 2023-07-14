@@ -1,0 +1,48 @@
+<apex:page >
+
+  <script>
+
+    function parentCall() {
+      var child_1 = document.getElementsByClassName('a1');
+      var child_2 = document.getElementsByClassName('a2');
+      let lenOfList = child_2.length;
+      for(var x of child_2){
+        if(child_1[0].checked == true){
+          x.checked = true;
+        }else{
+          x.checked = false;
+        }
+        
+      }
+    }
+
+
+    function childCall(){
+      var child_1 = document.getElementsByClassName('a1');
+      var child_2 = document.getElementsByClassName('a2');
+      let lenOfList = child_2.length;
+      let i=0;
+      for(var y of child_2){
+          if(y.checked == true){
+             child_1[0].checked = true;
+          }else{
+            child_1[0].checked = false;
+          }
+      }
+    }
+
+  </script>
+
+  <apex:form >
+
+    <apex:inputCheckbox onchange="parentCall()" styleClass="a1" />
+
+    <br/>
+
+    <apex:inputCheckbox onchange="childCall()" styleClass="a2" />
+    <apex:inputCheckbox onchange="childCall()" styleClass="a2" />
+    <apex:inputCheckbox onchange="childCall()" styleClass="a2" />
+    <apex:inputCheckbox onchange="childCall()" styleClass="a2" />
+
+  </apex:form>
+</apex:page>

@@ -1,0 +1,90 @@
+<apex:page controller="tempGlobalDesc">
+   
+    
+    <apex:pageMessages id="errr" ></apex:pageMessages>   
+    <apex:form > 
+        
+         <apex:actionStatus id="myAjaxStatus" >
+        <apex:facet name="start" >
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                &nbsp;
+            </div>
+            <div style="position: absolute; left: 0px; top: 10px; bottom: 100px; right: 0px; z-index: 1001; margin: 15% 50%">
+                <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                    <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                    <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                </div>
+            </div>
+        </apex:facet>
+    </apex:actionStatus>
+        
+        <apex:pageBlock id="pb">
+            <apex:pageBlockSection >                
+                <!--Objects Drop Down List.....................-->
+                <apex:selectList value="{!objectName}" size="1" label="Select Object" id="sl" > 
+                    <apex:actionSupport event="onchange" action="{!ShowFields}" reRender="pb" id="change" status="myAjaxStatus"/>
+                    <apex:selectOption itemValue="--None--" itemLabel="--None--" itemDisabled="{!disableNone}" id="t1"/>
+                    <apex:selectOptions value="{!ObjectList}" id="t2"/>
+                </apex:selectList>   
+                
+                <apex:commandButton reRender="pb,sl,t1,t2" immediate="false" action="{!Reset}" value="Reset" status="myAjaxStatus"/>
+            </apex:pageBlockSection>
+            
+            <apex:panelGrid columns="6" rendered="{!Bool}" id="pGrid">
+                <apex:pageBlockSection id="pb1">          
+                    <apex:panelGroup id="pg1">  
+                        
+                        <!--Object Fields Drop Down List............-->
+                        <p style="font-size: 20px">
+                            {!objectName} Fields
+                        </p><br/>                   
+                        
+                        <apex:actionFunction name="addit"/>
+                        <apex:selectList value="{!selectedFieldsList}" size="15" multiselect="true"  style="width : 250px" id="FDDL" >
+                            <apex:selectOptions value="{!dropDownFieldList}"/>
+                        </apex:selectList> 
+                        
+                    </apex:panelGroup>
+                </apex:pageBlockSection>  
+                
+                <apex:panelGroup >
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    
+                    <!-- Button For Add and Remove From List.......... -->                
+                    <apex:commandButton action="{!addInSelectedList}" reRender="errr,pGrid" value="Add" style="width : 100px" disabled="{!addBool}" id="addId" status="myAjaxStatus" /><br/><br/>
+                    <apex:commandButton action="{!removeFromSelectedFields}" reRender="errr,pGrid" value="Remove" style="width : 100px" disabled="{!removeBool}" id="Rid" status="myAjaxStatus" />
+                </apex:panelGroup>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:panelGroup >
+                    
+                    <!--Selected Fields Drop Down List............-->                 
+                    <p style="font-size: 20px">
+                        Selected Fields
+                    </p>     
+                    <br/> 
+                    <apex:selectList value="{!deSelectedFieldsList}" size="15" multiselect="true" style="width : 250px" label="{!objectName}" id="SFDDL">
+                        <apex:selectOptions value="{!dropDownSelectedFieldList}" />
+                    </apex:selectList> 
+                    <p style="color : red">
+                        * Maximum 10 fields allow
+                    </p>  
+                   
+
+                </apex:panelGroup>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:panelGroup id="pG4">
+                    
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <apex:commandButton action="{!Processrecord}" value="Process Records" status="myAjaxStatus" reRender="pG4">
+                       <c:PaginationComponent ObjectName="{!objectName}" field="{!dropDownSelectedFieldList}" id="processRec" rendered="{!processBool}"></c:PaginationComponent>
+                    </apex:commandButton>
+                    
+                </apex:panelGroup>
+                
+            </apex:panelGrid>
+            
+        </apex:pageBlock>
+             
+    </apex:form>
+    
+</apex:page>

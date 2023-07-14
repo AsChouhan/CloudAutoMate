@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable" >
+    <aura:attribute name="value" type="String" default = "Bhanu"/>
+    
+    Name = {!v.value}
+    <lightning:button label="updatr vlaue" onclick="{!c.myAction}"/>
+    <br/>
+    
+</aura:component>

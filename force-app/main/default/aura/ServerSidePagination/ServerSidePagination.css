@@ -1,0 +1,78 @@
+.THIS.listSizeCls{
+    position: relative;
+    top: 580px;
+    width: 50px
+}
+.THIS.listSizeCls h1{
+    width: 150px
+}
+
+.THIS.listSizeCls h2{
+    position: relative;
+    left: 1300px;
+    top: -13px;
+}
+
+.THIS.listSizeCls div{
+   position: relative;
+    left: 30px;
+    top: -14px;
+}
+
+.THIS.options{
+    position: absolute;
+    width: 700px;
+    left: 50px; 
+    color: gray;    
+}
+
+.THIS.options label{
+ 	font-size: 12px;     
+    font-weight: bold;
+    color: white;
+}
+
+.THIS.Reset{    
+    position: relative;
+    left: 800px;
+    width: 100px;
+	height: 32px;
+    top: 23px;
+}
+
+.THIS.dualBoxC{
+    position: absolute;
+    width: 900px;
+    left: 50px;
+    top: 70px;
+}
+.THIS.dualBoxC button{
+    color: black;
+    border-radius: 50%;
+    background-color: none;  
+    top: 70px;
+}
+.THIS.dualBoxC button:hover{
+    color: balck;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: none;  
+    top: 70px;
+}
+
+.THIS.ProcessRec{
+    position: relative;
+    left: 900px;  
+	height: 32px;
+    top: 215px;
+}
+.THIS.table {
+    position: absolute;   
+    top: 500px;
+    
+}
+.THIS.btnGroup{
+    position:relative;
+    top: 610px;
+    left: 400px;
+}

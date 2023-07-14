@@ -1,0 +1,11 @@
+<apex:page controller="que2">
+    
+    <apex:pageBlock >
+    	<apex:pageblocktable value="{!con}" var="c">
+        	<apex:column value="{!c.name}"/>
+            <apex:column value="{!c.Email}"/>
+            <apex:column value="{!c.phone}"/>            
+        </apex:pageblocktable>
+    </apex:pageBlock>
+    
+</apex:page>

@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	   <div
+        style="position: absolute; background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1)); height: 1080px; width: 1920px; ">
+    </div>
+</aura:component>

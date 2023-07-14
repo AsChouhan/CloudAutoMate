@@ -1,0 +1,65 @@
+<aura:component controller="sspHelperClassCus" implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.showRecords1}" />
+    
+    
+    
+   
+    <aura:attribute name="selectedAccts" type="List" />
+    <aura:attribute name="mapForMaintain" type="Map" />
+    <aura:attribute name="Fields" type="List" />
+    
+    
+   
+    <aura:attribute name="column" type="List"/>
+    <aura:attribute name="data" type="List" />
+    
+    <aura:attribute name="selectedRecMap" type="Map" />
+    <aura:attribute name="selectedRow" type="List"/>
+    
+    <aura:attribute name="selectedFields" type="List" />
+    <aura:attribute name="objectName" type="String" />
+    
+    <aura:attribute name="pageSize" type="Integer" />
+    <aura:attribute name="totalPages" type="Integer" />
+    
+    <aura:attribute name="hasNext" type="Boolean" />
+    <aura:attribute name="hasPrevious" type="Boolean" />
+    <aura:attribute name="pageNumber" type="Integer" default="1" />
+    
+    
+            
+        <div style="position: absolute; top: 400px; height:200px;" >                 
+            <lightning:datatable class="table"                                             
+                                 keyField="Id"
+                                 columns="{!v.column}"
+                                 aura:id="dTable"
+                                 data="{!v.data}"
+                                 sortedDirection="asc"
+                                 onsort="{!c.sort}"
+                                 selectedRows="{!v.selectedRow}"
+                                 onrowselection="{!c.selectThat}"
+                                 
+                                 />                       
+        </div>
+        <lightning:buttonGroup class="btnGroup">
+            <lightning:button label="First" variant="destructive" disabled="{!v.hasPrevious}" onclick="{!c.firstAction}" />
+            <lightning:button label="Previous" variant="destructive" disabled="{!v.hasPrevious}" onclick="{!c.prevAction}" />
+            <lightning:button label="Next" variant="destructive" disabled="{!v.hasNext}" onclick="{!c.nextAction}"/>
+            <lightning:button label="Last" variant="destructive" disabled="{!v.hasNext}" onclick="{!c.lastAction}" />
+        </lightning:buttonGroup>
+        <div class="listSizeCls">
+            <h1>Records Per Page :</h1>
+            <h2>Page :{!v.pageNumber} / {!v.totalPages}</h2>
+            <div class="selectCl">
+                <lightning:select aura:id="listSize" onchange="{!v.parentAction}" value="{!v.pageSize}" >
+                    <option value="5" >5</option>
+                    <option value="10" >10</option>
+                    <option value="15" >15</option>
+                    <option value="20" >20</option>
+                </lightning:select>
+            </div>
+        </div>
+    
+    
+    
+</aura:component>

@@ -1,0 +1,12 @@
+<apex:page controller="que2" >
+     <apex:form >   
+    <apex:pageBlock >    	
+        	
+        <apex:commandLink action="{!que21}" value="print" >
+        	<apex:param value="aasheesh" assignTo="{!yu}"/>
+        </apex:commandLink>
+       
+   
+    </apex:pageBlock>
+         </apex:form>
+</apex:page>

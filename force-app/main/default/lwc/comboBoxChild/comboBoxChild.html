@@ -1,0 +1,68 @@
+<template>
+     <!-- Header Label -->
+     <template if:true={label}>
+        <label class="slds-form-element__label">{label}</label>
+    </template>
+    <div class="slds-combobox_container">
+        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+            <!-- Search Input -->
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                <lightning-input disabled={disabled} tabindex="-1" class="inputBox" placeholder="Select an Option" onblur={blurEvent} onclick={showOptions} onkeyup={filterOptions} value={searchString} variant="label-hidden" id="combobox-id-1" ></lightning-input>
+                <lightning-icon class="slds-input__icon" icon-name="utility:down" size="x-small" alternative-text="search"></lightning-icon>
+            </div>
+            <!-- Dropdown List -->
+            <div class="table">
+            <template if:true={showDropdown}>
+                <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-7 slds-dropdown_fluid"><!--style="{! 'max-height:' + (8 + (v.recordCount * 40)) + 'px' }""-->
+                    <ul class="slds-listbox slds-listbox_vertical recordListBox" role="presentation">
+                        <template if:false={message} >
+                            <article class="slds-card">
+                            <template for:each={optionData} for:item="option">
+                                <template if:true={option.isVisible}>
+                                    <li key={option.Id} data-id={option.Id} data-name={option.Name} onmousedown={selectItem} class="slds-listbox__item eachItem">
+                                        <template if:true={option.selected}>
+                                            <lightning-icon icon-name="utility:check" size="x-small" alternative-text="icon" ></lightning-icon>
+                                        </template>
+                                        <!-- <span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{option.Name}</span> -->
+
+                                            <div key ={option.Id} class="slds-card__header slds-grid">
+                                              <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                <div class="slds-media__figure">
+                                                  <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                                    <span class="slds-assistive-text">account</span>
+                                                  </span>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                  <h2 class="slds-card__header-title">
+                                                    <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                                                        <lightning-icon icon-name="standard:account" size = "small" ></lightning-icon>
+                                                        &nbsp;<span style="font-size: 10px">{option.Name}</span><br/>
+                                                        <span style="font-size: 10px">{footerText}</span>
+                                                    </a>
+                                                  </h2>
+                                                </div>
+                                              </header>
+                                            </div>
+                                            <!-- <div key={rec.Id} class="slds-card__body slds-card__body_inner">{footerText}</div> -->
+                                                                                   
+                                    </li>
+                                </template>
+                            </template>
+                        </article>
+                        </template>
+                        <template if:true={message} >
+                            <li class="slds-listbox__item">
+                                <span class="slds-media slds-listbox__option_entity verticalAlign slds-truncate">{message}</span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+        </div>
+    </div>
+    <!-- Multi Select Pills -->
+    <template for:each={pillsList} for:item="option">
+            <lightning-pill key={option.Id} class="slds-m-around_xx-small" data-id={option.Id} label={option.Name} onremove={removePill}></lightning-pill>
+    </template>
+</template>

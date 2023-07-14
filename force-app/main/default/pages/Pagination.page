@@ -1,0 +1,42 @@
+<apex:page controller="PaginationClass">
+   <apex:form >
+       
+	<apex:actionFunction action="{!PageSize}" name="Reload" />
+    <apex:pageBlock id="ids">   
+        <apex:pageMessages />
+        	<apex:pageBlockSection columns="1">
+            	<apex:pageBlockTable value="{!accList}" var="ac">
+                    <apex:column >
+                    	<apex:outputField value="{!ac.name}"/>
+                    </apex:column>
+                    
+                       <apex:column >
+                    	<apex:outputField value="{!ac.rating}"/>
+                    </apex:column>
+                    
+                       <apex:column >
+                    	<apex:outputField value="{!ac.industry}"/>
+                    </apex:column>
+                    
+                       <apex:column >
+                    	<apex:outputField value="{!ac.id}"/>
+                    </apex:column>
+                    
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>  
+       
+        <apex:pageBlockButtons location="bottom" >
+            
+             <apex:selectList value="{!size}" size="1" onchange="Reload()">
+            <apex:selectOptions value="{!l1}" />
+        </apex:selectList>
+            
+        	<apex:commandButton action="{!con.first}" value="first" />
+            <apex:commandButton action="{!con.Next}" value="Next" />
+            <apex:commandButton action="{!con.Previous}" value="Previous" />
+            <apex:commandButton action="{!con.Last}" value="Last" />
+        </apex:pageBlockButtons>
+        
+    </apex:pageBlock> 
+   </apex:form>
+</apex:page>

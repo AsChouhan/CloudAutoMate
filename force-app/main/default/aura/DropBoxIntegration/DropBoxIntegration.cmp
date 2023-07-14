@@ -1,0 +1,73 @@
+<aura:component controller="DropBoxApex" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:handler name='init' value='{!this}' action='{!c.doAuth}' />
+    <aura:attribute name="path" type="String" default=""/>
+    <aura:attribute name="files" type="List" />
+    <aura:attribute name="breadCrumbList" type="List" />
+    <aura:attribute name='isPopUpOpen' type='Boolean' default='false' />
+    <aura:attribute name="folderName" type="String" />
+    <aura:attribute name = "spinner" type = "Boolean" default = "false"/>
+
+
+    <br/><nav role="navigation" aria-label="Breadcrumbs">
+        <ol class="slds-breadcrumb slds-list_horizontal slds-wrap">
+            <aura:iteration items="{!v.breadCrumbList}" var="fil">
+                <li class="slds-breadcrumb__item"><a id="{!fil.value}" onclick="{!c.gotoPage}" >{!fil.label} </a></li>
+            </aura:iteration>            
+        </ol>
+    </nav><br/>
+
+    <aura:if isTrue="{!v.isPopUpOpen}">
+        <!-- Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closePopUp}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
+                    <h2 class="slds-text-heading_medium slds-hyphenate">Enter your folder name here</h2>
+                </header>
+                <!--Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning:input placeholder="Folder Name" aura-id="folderName" value="{!v.folderName}" />
+                </div>
+                <!-- Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="brand" label="Create" title="Create" onclick="{!c.createFolder}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if> 
+   
+    <table>
+        <aura:iteration items="{!v.files}" var="fil">
+            <tr>                
+                
+                <aura:if isTrue="{!fil.tag == 'folder'}">
+                    <td><a id="{!fil.path_lower}" onclick="{!c.openFolder}" data-fileName="{!fil.name}">{!fil.name}</a></td>
+                    <aura:set attribute="else">
+                        <td>{!fil.name}</td>
+                    </aura:set>
+                </aura:if>               
+                <aura:if isTrue="{!fil.is_downloadable == true}">
+                    <td><a id="{!fil.path_lower}" onclick="{!c.downloadFile}">Download</a></td>
+                    <aura:set attribute="else">
+                        <td>Not access</td>
+                    </aura:set>
+                </aura:if>
+                
+                <td><a id="{!fil.path_lower}" onclick="{!c.deleteFile}">Delete</a></td>
+            </tr>
+        </aura:iteration>
+    </table>
+
+
+    <lightning:fileUpload label="upload files" name="fileUploader"
+                          multiple="false" accept=".jpg, .png" onuploadfinished= "{!c.handleUpload}"/>  
+
+    <lightning:button label="Create Folder" onclick="{!c.openCreateFolderPopUp}" />
+
+    <aura:if isTrue = "{!v.spinner}">
+        <lightning:spinner alternativeText="Loading" size="large" class = "spins"/>
+    </aura:if>
+
+</aura:component>

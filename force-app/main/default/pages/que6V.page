@@ -1,0 +1,18 @@
+<apex:page standardController="Position__c">
+  
+    <apex:pageBlock title="Position Record">         
+            
+            <apex:pageBlockSection columns="1" >
+                  <apex:form >
+                     Name  :  <apex:inputField value="{!Position__c.Name}" label="Name"/><br/><br/>
+                     Min Pay  :  <apex:inputField value="{!Position__c.Min_Pay__c}" label="Min Pay"/><br/><br/>
+                     Max Pay  :  <apex:inputField value="{!Position__c.Min_Pay__c}" label="Max Pay"/><br/><br/>
+                     Status  :  <apex:inputField value="{!Position__c.Status__c}" label="Status"/><br/><br/>
+                     Type  :  <apex:inputField value="{!Position__c.Type__c}" label="Type"/><br/><br/>
+                     Close Date  :  <apex:inputField value="{!Position__c.Close_Date__c}" label="Close Date"/>
+                  </apex:form>
+            </apex:pageBlockSection>
+    </apex:pageBlock>
+       
+    
+</apex:page>

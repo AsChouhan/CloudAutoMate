@@ -1,0 +1,8 @@
+<template>    
+    <!-- <lightning-button label="click to call component" onclick={callComponent}></lightning-button>
+    <lightning-input disabled={disabled} class="inputBox" placeholder="Select an Option" value={searchString} variant="label-hidden" onkeyup={filterOptions}  onclick={showOptions}></lightning-input>
+    <lightning-icon class="slds-input__icon" icon-name="utility:down" size="x-small" alternative-text="search"></lightning-icon> -->
+    <template if:true={callComp}>
+        <c-combo-box-child options={data} ></c-combo-box-child>
+    </template>
+</template>

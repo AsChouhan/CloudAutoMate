@@ -1,0 +1,15 @@
+<aura:component controller="CommunityHomePageClass" 
+    implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"
+                access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}" /> 
+    
+    
+    <aura:attribute name="name" type="String" />
+    <aura:attribute name="email" type="String" />
+  
+    <div class="headers">
+        <h1>{!v.name}</h1><br/>
+        <h1>{!v.email}</h1><br/>        
+    </div>
+    
+</aura:component>

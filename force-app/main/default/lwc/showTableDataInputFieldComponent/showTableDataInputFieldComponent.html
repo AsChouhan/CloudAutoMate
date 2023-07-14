@@ -1,0 +1,10 @@
+<template>
+    <div class="slds-p-around_medium lgc-bg">
+        <template lwc:if={isDate}>
+            <lightning-input type='datetime' value={displayData}></lightning-input>
+        </template>
+        <template lwc:else>
+            <lightning-input type='text' value={displayData}></lightning-input>
+        </template>
+    </div>
+</template>

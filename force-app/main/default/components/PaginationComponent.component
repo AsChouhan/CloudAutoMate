@@ -1,0 +1,144 @@
+<apex:component controller="pagComponentController" id="Compo" allowDML="true">
+    <apex:pageMessages id="rrr"></apex:pageMessages>
+    <script>
+        function parentCall() {
+            var parent = document.getElementsByClassName('a1');
+            var childList = document.getElementsByClassName('a2');
+            for (var x of childList) {
+                if (parent[0].checked == true) {
+                    x.checked = true;
+                } else {
+                    x.checked = false;
+                }
+            }
+        }
+
+        function downloadCsv(csv) {
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += encodeURI(csv);
+
+            var link = document.createElement("a");
+            link.setAttribute("href", csvContent);
+            link.setAttribute("download", "mydata.csv");
+            link.setAttribute("target", "_self");
+            link.click();
+        }
+
+        function childCall() {
+            var parent1 = document.getElementsByClassName('a1');
+            var childList1 = document.getElementsByClassName('a2');
+            for (var y of childList1) {
+                if (y.checked == true) {
+                    parent1[0].checked = true;
+                } else {
+                    parent1[0].checked = false;
+                    break;
+                }
+            }
+            if (childList1.length == 0) {
+                parent1[0].checked = false;
+            }
+        }
+
+
+    </script>
+
+    <apex:actionFunction name="Rty" action="{!showe}" reRender="MainBlock" />
+
+    <!-- <Script> Rty(); </Script> -->
+
+
+    <apex:attribute name="objectN" description="Object Name" type="String" assignTo="{!ObjectNameForQuery}" />
+    <apex:attribute name="Selected_Fields" description="Fields list" type="SelectOption[]" assignTo="{!objectFields}" />
+    <apex:attribute name="key_Prefix" description="Object Key Prefix" type="String" assignTo="{!keyPrefixOfObject}" />
+
+    <apex:pageBlock id="MainBlock">
+
+
+        <apex:pageBlockButtons location="Top" style="slds-float_right">
+            <apex:commandButton value="New Record" action="{!newrecord}" />
+            <apex:commandButton value="Delete Selected" action="{!del}" reRender="MainBlock,rrr"
+                oncomplete="childCall()" />
+            <apex:commandButton value="Download Csv" action="{!createDownloadCsvstring}" oncomplete="downloadCsv('{!queryStrForCsv}')"
+            />
+
+            <b style="slds-float_right">
+                <apex:repeat value="{!character}" var="ch">
+                    <apex:commandLink action="{!charFilter}" value="{!ch}" reRender="MainBlock,rrr" status="myAjaxStatus" oncomplete="childCall()">
+                        <apex:param name="sendAlpha" value="{!ch}" assignTo="{!alphabate}" /> </apex:commandLink>&nbsp;|&nbsp;
+                </apex:repeat>
+            </b>
+        </apex:pageBlockButtons>
+
+        <apex:pageBlockSection columns="1">
+
+            <!--   PageBlock Table.....             -->
+            <apex:pageblocktable value="{!wrapperList}" var="Rec" id="pt">
+                <apex:column>
+                    <apex:facet name="header">
+                        <apex:inputCheckbox styleClass="a1" onchange="parentCall()" /></apex:facet>
+                    <apex:inputCheckbox styleClass="a2" onchange="childCall()" value="{!Rec.Wrapperbool}" />
+                </apex:column>
+
+                <apex:column headerValue="Action">
+                    <apex:commandLink value="Edit" action="{!editRec}" target="_blank">
+                        <apex:param name="send id" value="{!Rec.sObj.id}" assignTo="{!idForEditDelete}" />
+                    </apex:commandLink>&nbsp;|&nbsp;
+                    <apex:commandLink value="Del" action="{!deleteRec}" target="_blank" reRender="MainBlock,rrr">
+                        <apex:param name="send id" value="{!Rec.sObj.id}" assignTo="{!idForEditDelete}" />
+                    </apex:commandLink>
+                </apex:column>
+                <!-- Repeat Started........          -->
+                <apex:repeat value="{!tempFieldsSelectoptionLisst}" var="Fn">
+                    <apex:column value="{!Rec.sObj[Fn.value]}">
+                        <apex:facet name="header">
+                            <apex:commandLink value="{!Fn.label}" action="{!sortByTag}" reRender="MainBlock,rrr" status="myAjaxStatus">
+                                <apex:param name="SendFieldName" value="{!Fn.value}" assignTo="{!fieldForSort}" />
+                            </apex:commandLink>
+                        </apex:facet>
+                    </apex:column>
+                </apex:repeat>
+
+            </apex:pageblocktable>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockButtons location="Bottom" id="blockbutton">
+            <apex:commandButton value="New" action="{!URLFOR($Action.Contact.NewContact)}"/>
+            <apex:commandButton value="New" action="{!URLFOR($Action.Contact.NewContact, null,["retURL"="\apex\MyAccountPage?id="+"0015g000019Nnsf"]}"/>
+            <apex:commandButton oncomplete="childCall()" value="First" action="{!first}" reRender="MainBlock,rrr" status="myAjaxStatus"
+                disabled="{!!sCon.hasPrevious}" style="width:70px" />
+            <apex:commandButton oncomplete="childCall()" value="Previous" action="{!previous}" reRender="MainBlock,rrr" status="myAjaxStatus"
+                disabled="{!!sCon.hasPrevious}" style="width:70px" />
+            <apex:commandButton oncomplete="childCall()" value="Next" action="{!Next}" reRender="MainBlock,rrr" status="myAjaxStatus"
+                disabled="{!!sCon.hasNext}" style="width:70px" />
+            <apex:commandButton oncomplete="childCall()" value="Last" action="{!last}" reRender="MainBlock,rrr" status="myAjaxStatus"
+                disabled="{!!sCon.hasNext}" style="width:70px" />
+        </apex:pageBlockButtons>
+        <apex:outputPanel id="out" rendered="{!pageBool}">
+            <apex:outputText style="position:relative" id="outTxt1">
+                <p style="position:absolute;left:300px;bottom:55px" id="outTxt">
+                    {!(sCon.PageNumber*size)+1-size}-{!if((sCon.pageNumber*size)>sCon.ResultSize,sCon.ResultSize,(sCon.pageNumber*size))} out
+                    Of {!sCon.ResultSize}
+                </p>
+            </apex:outputText>
+            <p style="slds-float_left">
+                PageSize &nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:selectList value="{!size}" size="1">
+                    <apex:actionSupport event="onchange" action="{!setPageSiz}" reRender="MainBlock" oncomplete="childCall()" />
+                    <apex:selectOption itemvalue="5" itemLabel="5" />
+                    <apex:selectOption itemvalue="10" itemLabel="10" />
+                    <apex:selectOption itemvalue="25" itemLabel="25" />
+                    <apex:selectOption itemvalue="50" itemLabel="50" />
+                </apex:selectList>
+            </p>
+            <p style="position:absolute;right:200px;bottom:55px;">
+                page &nbsp;&nbsp;&nbsp;
+                <apex:inputText value="{!sCon.pageNumber}" style="Width:20px" styleClass="ip">
+                    <apex:actionSupport event="onchange" action="{!goToPage}" reRender="MainBlock">
+                        <apex:param value="{!sCon.pageNumber}" assignTo="{!NewPageNumber}" />
+                    </apex:actionSupport>
+                </apex:inputText> of {!if(mod(sCon.resultSize,sCon.Pagesize)==0,sCon.resultSize/sCon.Pagesize,floor(sCon.resultSize/sCon.Pagesize)+1)}
+            </p>
+        </apex:outputPanel>
+    </apex:pageBlock>
+</apex:component>

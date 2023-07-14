@@ -1,0 +1,12 @@
+<apex:page >
+    <apex:form >
+    <script>
+    	function called(){
+            return true;
+            }
+    
+    </script>
+    
+    <apex:commandButton value="aasheesh" disabled="called()"/>
+        </apex:form>
+</apex:page>
