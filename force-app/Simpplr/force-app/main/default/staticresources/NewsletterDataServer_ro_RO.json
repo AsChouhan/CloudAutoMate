@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "Nu este posibilă includerea unui conținut care a fost nepublicat sau șters",
+    "newsletter_manage.date_time_future_error_flash": "Nu este posibilă selectarea unei date/ore de trimitere din trecut"
+}

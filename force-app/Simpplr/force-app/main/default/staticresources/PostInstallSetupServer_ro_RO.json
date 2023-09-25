@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "Migrarea a fost deja finalizată și nu poate fi reluată",
+    "post_install.analytics_already_exists_error_flash": "Date statistice există deja pentru data specificată"
+}

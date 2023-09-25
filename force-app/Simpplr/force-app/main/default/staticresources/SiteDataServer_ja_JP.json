@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "この名前のアクティブなグループまたはアーカイブされたグループは、すでに存在するか、削除されています。 別の名前を選択するか、数分後にもう一度お試しください。",
+    "common.storage_full_error_flash": "アクションを実行できません - ストレージがいっぱいです",
+    "manage_sites.site_limit_reached_error_flash": "サイトの制限に達したため、これ以上のサイトを管理またはフォローすることはできません",
+    "manage_sites.duplicate_error_flash": "この名前のサイトはすでに存在します - 名前を変更してもう一度お試しください",
+    "manage_sites.unable_to_lock_row_error_message": "アクションを実行できません。しばらくしてからもう一度お試しください"
+}

@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Aucun code n’est disponible pour votre emplacement. Veuillez réessayer plus tard.",
+    "notification.branded_apps.user_not_found": "Utilisateur introuvable",
+    "notification.branded_apps.no_codes_error": "Aucun code n’est proposé pour le téléchargement. Veuillez réessayer plus tard.",
+    "notification.branded_apps.failed_to_send_to_all": "Échec de l'envoi des courriels/SMS à tous les utilisateurs. Téléversez plus de codes pour les utilisateurs de ces pays : {{countryList}}",
+    "notification.branded_apps.invalid_input": "Entrée non valide",
+    "notification.branded_apps.all_codes_used_error": "Tous les codes sont utilisés. Veuillez réessayer plus tard.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Échec de l'envoi des courriels. Téléversez {{codesNeeded}} autres codes et réessayez"
+}

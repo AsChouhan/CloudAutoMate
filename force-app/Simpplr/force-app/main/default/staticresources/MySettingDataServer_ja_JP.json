@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" はどのセグメントにも割り当てられていません - このユーザーはセグメントに割り当てられるまでロックアウトされます",
+    "my_settings.profile.birthday_partial_error_flash": "誕生月と日の両方を選択する必要があります",
+    "my_settings.profile.inactive_manager_error_flash": "非アクティブなユーザーを管理者として設定することはできません",
+    "my_settings.profile.manager_recursion_error_flash": "直属の部下を管理者に設定することはできません",
+    "my_settings.profile.language_disabled_error_flash": "Salesforce で無効になっているため、言語を設定できませんでした - 管理者に連絡してください"
+}

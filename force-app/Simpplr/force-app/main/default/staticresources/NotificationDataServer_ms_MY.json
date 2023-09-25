@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Tiada kod yang tersedia untuk lokasi anda. Sila cuba lagi nanti.",
+    "notification.branded_apps.user_not_found": "Pengguna tidak ditemukan",
+    "notification.branded_apps.no_codes_error": "Tiada kod yang tersedia untuk muat turun. Sila cuba lagi nanti.",
+    "notification.branded_apps.failed_to_send_to_all": "Gagal menghantar e-mel/SMS kepada semua pengguna. Muat naik lagi kod untuk pengguna di {{countryList}}",
+    "notification.branded_apps.invalid_input": "Input tidak sah",
+    "notification.branded_apps.all_codes_used_error": "Semua kod itu sudah digunakan. Sila cuba lagi nanti.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Gagal menghantar e-mel. Muat naik {{codesNeeded}} lagi kod dan cuba lagi"
+}

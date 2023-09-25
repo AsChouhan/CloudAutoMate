@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "制限に達したため、これ以上トピックをフォローすることはできません",
+    "feed.create.tracking_disabled_error_flash": "このアクションを実行することはできません - フィード追跡は無効です",
+    "manage_sites.site_limit_reached_error_flash": "サイトの制限に達したため、これ以上のサイトを管理またはフォローすることはできません"
+}

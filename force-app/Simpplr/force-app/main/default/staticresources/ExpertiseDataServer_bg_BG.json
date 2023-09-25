@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Неуспешно добавяне на познание. Това познание вече съществува „{{expertiseName}}“",
+    "expertise.create.permission.access_error": "Нямате разрешение за създаване на ново експертно познание",
+    "expertise.delete.permission.access_error": "Нямате разрешение за изтриване на експертно познание"
+}

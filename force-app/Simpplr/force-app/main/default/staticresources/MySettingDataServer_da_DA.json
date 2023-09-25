@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" er ikke tildelt til noget segment – denne bruger vil være udelukket, indtil den er tildelt et segment",
+    "my_settings.profile.birthday_partial_error_flash": "Du skal vælge både fødselsdagsmåned og -dag",
+    "my_settings.profile.inactive_manager_error_flash": "Det er ikke muligt at konfigurere en inaktiv bruger som administrator",
+    "my_settings.profile.manager_recursion_error_flash": "Det er ikke muligt at indstille din direkte underordnede som din chef",
+    "my_settings.profile.language_disabled_error_flash": "Sproget kunne ikke konfigureres, da det er deaktiveret i Salesforce – kontakt en administrator"
+}

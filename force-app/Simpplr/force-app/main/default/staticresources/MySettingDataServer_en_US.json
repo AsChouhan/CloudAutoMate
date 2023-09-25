@@ -1,0 +1,7 @@
+{
+"my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" is not assigned to any segment - this user will locked out until it is assigned to a segment",
+"my_settings.profile.birthday_partial_error_flash": "You must select both birthday month and day",
+"my_settings.profile.inactive_manager_error_flash": "It's not possible to set an inactive user as a manager",
+"my_settings.profile.manager_recursion_error_flash": "It's not possible to set your direct report as your manager",
+"my_settings.profile.language_disabled_error_flash": "Could not set language as it's disabled in Salesforce - please contact an administrator"
+}

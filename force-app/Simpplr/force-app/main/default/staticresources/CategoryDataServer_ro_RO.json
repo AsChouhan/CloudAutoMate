@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Nu este posibilă ștergerea categoriilor de pagini care conțin pagini",
+    "manage_page_categories.add.duplicate_error_flash": "Nu este posibilă adăugarea categoriilor de pagini duplicat",
+    "manage_page_categories.delete.uncategorized_error_flash": "Nu este posibilă editarea/ștergerea categoriilor de pagini „Necategorizate”",
+    "manage_page_categories.edit.uncategorized_error_flash": "Nu este posibilă editarea/ștergerea categoriilor de pagini „Necategorizate”"
+}

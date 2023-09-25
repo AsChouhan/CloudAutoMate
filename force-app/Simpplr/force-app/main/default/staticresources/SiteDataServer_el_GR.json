@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "An active or archived group with this name already exists or is being deleted. Choose a different name or try again in a few minutes.",
+    "common.storage_full_error_flash": "Unable to perform action - storage full",
+    "manage_sites.site_limit_reached_error_flash": "It's not possible to manage or follow more sites as you've reached your site limit",
+    "manage_sites.duplicate_error_flash": "A site already exists with this name - please change the name and try again",
+    "manage_sites.unable_to_lock_row_error_message": "Δεν είναι δυνατή η εκτέλεση της ενέργειας, προσπαθήστε ξανά μετά από λίγη ώρα"
+}

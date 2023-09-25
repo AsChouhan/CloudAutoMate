@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Er kunnen geen paginacategorieën worden verwijderd die pagina's bevatten",
+    "manage_page_categories.add.duplicate_error_flash": "Er kunnen geen dubbele paginacategorieën worden toegevoegd",
+    "manage_page_categories.delete.uncategorized_error_flash": "De paginacategorie ‘Geen categorie’ kan niet worden bewerkt/verwijderd",
+    "manage_page_categories.edit.uncategorized_error_flash": "De paginacategorie ‘Geen categorie’ kan niet worden bewerkt/verwijderd"
+}

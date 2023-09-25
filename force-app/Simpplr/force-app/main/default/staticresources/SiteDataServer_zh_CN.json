@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "具有此名称的一个活跃的或已存档的群已存在或正被删除。请选择其他名称，或在几分钟后重试。",
+    "common.storage_full_error_flash": "无法执行操作，存储器已满",
+    "manage_sites.site_limit_reached_error_flash": "由于您的站点已达到限制，无法管理或关注更多站点",
+    "manage_sites.duplicate_error_flash": "已存在使用此名称的站点，请更改名称并重试",
+    "manage_sites.unable_to_lock_row_error_message": "无法执行操作，请稍后重试"
+}

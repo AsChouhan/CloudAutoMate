@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "Eine aktive oder archivierte Gruppe mit diesem Namen ist bereits vorhanden oder wird gelöscht. Wählen Sie einen anderen Namen oder versuchen Sie es in ein paar Minuten erneut.",
+    "common.storage_full_error_flash": "Aktion kann nicht ausgeführt werden – Speicher voll",
+    "manage_sites.site_limit_reached_error_flash": "Es ist nicht möglich, weiteren Sites zu folgen, da Sie bereits Ihr Sitelimit erreicht haben",
+    "manage_sites.duplicate_error_flash": "Eine Site mit diesem Name ist bereits vorhanden. Bitte ändern Sie den Namen und versuchen Sie es erneut",
+    "manage_sites.unable_to_lock_row_error_message": "Aktion kann nicht ausgeführt werden, bitte versuchen Sie es nach einiger Zeit erneut"
+}

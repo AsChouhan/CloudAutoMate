@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Det er ikke muligt at tilføje webhook-URL – URL'en skal starte med \"https://outlook.office.com/…\"",
+    "manage_app.setup.privileges.site_owner": "Kun brugere med privilegier til at tilføje websted kan være webstedsejere",
+    "manage_site.mandatory_subscription_remove": "{{name}} kunne ikke fjernes fra webstedet. Denne person er inkluderet i et obligatorisk abonnement",
+    "manage_sites.duplicate_site_name_error_message": "En aktiv eller arkiveret gruppe med dette navn findes allerede eller er ved at blive slettet. Vælg et andet navn, eller prøv igen om nogle minutter.",
+    "manage_site.apps.reconnect_account": "Du skal oprette forbindelse til Slack igen i \"Mine indstillinger\"",
+    "manage_site.duplicate_error_flash": "Der findes allerede et websted med dette navn – skift navnet, og prøv igen",
+    "manage_site.unable_to_lock_row_error_message": "Handlingen kan ikke udføres. Vent lidt, og forsøg igen",
+    "manage_site.slack.blank_slack_channel": "Du skal være medlem af denne Slack-kanal for at slå webstedsfeedaktivitet op"
+}

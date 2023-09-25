@@ -1,0 +1,17 @@
+<aura:component access="GLOBAL" implements="flexipage:availableForAllPageTypes" controller="LightningCarouselCtrl">
+	<ltng:require styles="{!$Resource.slds + '/styles/salesforce-lightning-design-system.min.css'}" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="carouselData" type="object[]"/>
+    <div class="slds-box slds-theme_default">
+	    <lightning:carousel disableAutoRefresh="false" disableAutoScroll="false">
+	    	<aura:iteration items="{!v.carouselData}" var="obj">
+	            <lightning:carouselImage
+	                src = "{!obj.item.imgLandscape}"
+	                href = "{!obj.item.url}"
+	                header="{!obj.item.title}" 
+	                description="{!obj.item.summary}">
+	            </lightning:carouselImage>
+	        </aura:iteration>
+	    </lightning:carousel>
+    </div>
+</aura:component>

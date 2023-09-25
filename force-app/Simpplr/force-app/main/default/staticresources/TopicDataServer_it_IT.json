@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "Impossibile aggiungere argomenti duplicati",
+    "manage_topics.spacing_and_capitilization_error_flash": "Impossibile modificare l'argomento - Solo la spaziatura dei caratteri e la maiuscola consentite"
+}

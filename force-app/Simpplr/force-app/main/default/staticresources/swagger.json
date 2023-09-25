@@ -1,0 +1,4871 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Simpplr APIs",
+    "description": "This collection of Simpplr APIs lets developers create and manage content outside the Simpplr UI. We have APIs for notifications, alerts, app searches, and content creation. Looking for parameters or code samples? Click on an endpoint to see a sample snippet along with descriptions of its parameters and responses.\n\nIf you have questions about an API, reach out to us support@simpplr.com",
+    "termsOfService": "http://www.simpplr.com",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "0.1.0"
+  },
+  "tags": [
+    {
+      "name": "Site",
+      "description": "Site related API's"
+    },
+    {
+      "name": "People",
+      "description": "People related API's"
+    },
+    {
+      "name": "Content",
+      "description": "Content related API's"
+    },
+    {
+      "name": "Blog",
+      "description": "Blog related API's"
+    },
+    {
+      "name": "Search",
+      "description": "Search related API's"
+    },
+    {
+      "name": "Alert",
+      "description": "Alert related API's"
+    },
+    {
+      "name": "Notification",
+      "description": "Notification related API's"
+    },
+    {
+      "name": "Digital Display",
+      "description": "Carousel related API's"
+    }
+  ],
+  "host": "/apex",
+  "basePath": "/DataServerRW?target=",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/apex/DataServerRW?target=SiteDataServer&action=getsiteDetailData": {
+      "get": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Get a Site",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site",
+        "operationId": "siteCreate",
+        "requestBody": {
+          "description": "Search Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteSearch"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=SiteCategory": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site Category",
+        "operationId": "siteCategory",
+        "requestBody": {
+          "description": "Search Site Category",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteCategory"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&category=CategoryById": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site CategoryById",
+        "operationId": "siteCategoryById",
+        "requestBody": {
+          "description": "Search Site CategoryById",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteCategoryById"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=SiteFeatured": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site Featured",
+        "operationId": "siteFeatured",
+        "requestBody": {
+          "description": "Search Site Featured",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteFeatured"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=SiteMember": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site Member",
+        "operationId": "siteMember",
+        "requestBody": {
+          "description": "Search Site Member",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteMember"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=SitePopular": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site Popular",
+        "operationId": "sitePopular",
+        "requestBody": {
+          "description": "Search Site Popular",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SitePopular"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=SiteLatest": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Site Latest",
+        "operationId": "siteLatest",
+        "requestBody": {
+          "description": "Search Site Latest",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteLatest"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&Mysite": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Mysite",
+        "operationId": "siteMysite",
+        "requestBody": {
+          "description": "Search Mysite",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteMysite"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=search&filter=following": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Search Following Site",
+        "operationId": "siteFollowing",
+        "requestBody": {
+          "description": "Search Following Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteFollow"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=createSite": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Create a Site",
+        "operationId": "siteCreate",
+        "requestBody": {
+          "description": "Create Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteCreate"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ManageSiteDataServer&action=saveSiteDetail&edit=SiteDetails": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Edit Site Details",
+        "operationId": "siteEdit",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the member needs to edit site details",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Edit Site Details",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteEdit"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteDataServer&action=setActivated": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Activate and Deactivate a Site",
+        "operationId": "siteActivateDeactivate",
+        "requestBody": {
+          "description": "Activate Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Activate"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ManageSiteDataServer&action=addPeople& membershipType=member&addMember": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Add Member to Site",
+        "operationId": "siteAddMember",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the member needs to be added",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Add Member Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/AddSiteMember"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ManageSiteDataServer&action=removePeople& membershipType=member&removeMember": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Remove Member to Site",
+        "operationId": "siteRemoveMember",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the member needs to be remove",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Remove Member Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/RemoveSiteMember"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ManageSiteDataServer&action=addPeople& membershipType=follower&addFollower": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Add Follower to Site",
+        "operationId": "siteAddFollower",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the follower needs to be added",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Add Follower Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/AddSiteFollower"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ManageSiteDataServer&action=removePeople& membershipType=follower&removeFollower": {
+      "post": {
+        "tags": [
+          "Site"
+        ],
+        "summary": "Remove Follower to Site",
+        "operationId": "siteRemoveFollower",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the follower needs to be remove",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Remove follower Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/RemoveSiteFollower"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=search": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "Search",
+        "operationId": "search",
+        "requestBody": {
+          "description": "Search",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/People"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=search&": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "List People",
+        "operationId": "listPeople",
+        "requestBody": {
+          "description": "List People",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/ListPeople"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=search&Department": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "List people in my department",
+        "operationId": "listPeopleInMyDepartment",
+        "requestBody": {
+          "description": "List people in my department",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/ListPeopleByDepartment"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=search&Location": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "List people in my location",
+        "operationId": "listPeopleInMyLocation",
+        "requestBody": {
+          "description": "List people in my location",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/ListPeopleByLocation"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=search&Expertise": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "List people by Expertise",
+        "operationId": "listPeopleByExpertise",
+        "requestBody": {
+          "description": "List people by Expertise",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/ListPeopleByExpertise"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=getUser": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "Get profile by People Id",
+        "operationId": "GetProfileByPeopleId",
+        "requestBody": {
+          "description": "Get profile by People Id",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/PeopleId"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=peopledataserver&action=getUser&": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "Get profile by User Id",
+        "operationId": "GetProfileByUserId",
+        "requestBody": {
+          "description": "Get profile by User Id",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/UserId"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=MySettingDataServer&action=saveProfileSettings": {
+      "post": {
+        "tags": [
+          "People"
+        ],
+        "summary": "Edit profile by people Id",
+        "operationId": "peopleUpdate",
+        "requestBody": {
+          "description": "Edit profile by people Id",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/PeopleUpdate"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddPageDataServer&action=get": {
+      "get": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Get a Page",
+        "operationId": "pageGet",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of the page",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddPageDataServer&action=publish": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Create a Page",
+        "operationId": "pageCreate",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the page needs to be created",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create Page",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Page"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=delete": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Delete a Page",
+        "operationId": "pageDelete",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the page needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Delete Page",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Delete"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddPageDataServer&action=update": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Edit a Page",
+        "operationId": "pageUpdate",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of page that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the page needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update Page",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Page"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddEventDataServer&action=get": {
+      "get": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Get an Event",
+        "operationId": "eventGet",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of event",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddEventDataServer&action=publish": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Create an Event",
+        "operationId": "eventCreate",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the event needs to be created",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create Event",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=delete&type=Event": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Delete an Event",
+        "operationId": "eventDelete",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the event needs to be deleted",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Delete Event",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Delete"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=SiteAddEventDataServer&action=update": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "Update an Event",
+        "operationId": "eventUpdate",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of event that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the event needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update Event",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/EventUpdate"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=search": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "List Latest Content from sites I follow",
+        "operationId": "ListLatestContentfromsitesIfollow",
+        "requestBody": {
+          "description": "List Latest Content from sites I follow",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/LatestContentFollowed"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=search&": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "List popular Content from sites I follow",
+        "operationId": "SearchContentFromSitesIFollow",
+        "requestBody": {
+          "description": "List popular Content from sites I follow",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/PopularContentFollowed"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=search&filter=latest": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "List Latest Content for a site by Site ID",
+        "operationId": "ListLatestContentForASiteBySiteID",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the Latest Content needs to be Listed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "List Latest Content for a site by Site ID",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/LatestContent"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=search&filter=popular": {
+      "post": {
+        "tags": [
+          "Content"
+        ],
+        "summary": "List Popular Content for a site by Site ID",
+        "operationId": "ListPopularContentForASiteBySiteID",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the Popular Content needs to be Listed",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "List Popular Content for a site by Site ID",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/PopularContent"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalSearch&searchForType=Site": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search a Site",
+        "operationId": "siteSearch",
+        "requestBody": {
+          "description": "Search a Site",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Site"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalSearch&searchForType=Top": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search a Top",
+        "operationId": "topSearch",
+        "requestBody": {
+          "description": "Search a Top",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Top"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalSearch&searchForType=File": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search a File",
+        "operationId": "fileSearch",
+        "requestBody": {
+          "description": "Search a File",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/File"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalSearch&searchForType=User": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search a User",
+        "operationId": "userSearch",
+        "requestBody": {
+          "description": "Search a User",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalSearch&searchForType=Content": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search a Content",
+        "operationId": "contentSearch",
+        "requestBody": {
+          "description": "Search a Content",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Content"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ExternalSearchDataServer&action=externalAutoComplete": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Auto Complete Search",
+        "operationId": "externalAutoComplete",
+        "requestBody": {
+          "description": "Auto Complete Search",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/AutoCompleteSearch"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=FeedDataServer&action=search": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search feed posts",
+        "operationId": "searchFeedPosts",
+        "parameters": [
+          {
+            "name": "nextPageToken",
+            "in": "query",
+            "description": "_",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subjectId",
+            "in": "query",
+            "description": "me",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "company",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "term",
+            "in": "query",
+            "description": "which need to be searched",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "by date",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=create": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Create an Alert For Everyone",
+        "operationId": "alertCreate",
+        "requestBody": {
+          "description": "Create an Alert For Everyone",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Alert"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=create&": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Create new alert for site members/ followers by site id",
+        "operationId": "alertCreate for site members",
+        "requestBody": {
+          "description": "Create new alert for site members/ followers by site id",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/AlertForSiteMembers"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=update": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Edit Alert By ID",
+        "operationId": "editAlertById",
+        "requestBody": {
+          "description": "Edit Alert By ID",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/UpdateAlert"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=delete": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Delete alert by ID",
+        "operationId": "Delete alert by ID",
+        "requestBody": {
+          "description": "Delete alert by ID",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/DeleteAlert"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=expireNow": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Expire alert by ID",
+        "operationId": "Expire alert by ID",
+        "requestBody": {
+          "description": "Expire alert by ID",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/DeleteAlert"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AlertDataServer&action=searchAlert": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "List Alerts",
+        "operationId": "listAlerts",
+        "requestBody": {
+          "description": "List Alerts",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/ListAlert"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ProfileAddBlogPostDataServer&action=get": {
+      "get": {
+        "tags": [
+          "Blog"
+        ],
+        "summary": "Get a Blog",
+        "operationId": "blogGet",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of blog",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ProfileAddBlogPostDataServer&action=publish": {
+      "post": {
+        "tags": [
+          "Blog"
+        ],
+        "summary": "Create a Blog",
+        "operationId": "blogCreate",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the blog need to be created",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Create Blog",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Blog"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=AllContentDataServer&action=delete&type=Blog": {
+      "post": {
+        "tags": [
+          "Blog"
+        ],
+        "summary": "Delete a Blog",
+        "operationId": "blogDelete",
+        "parameters": [
+          {
+            "name": "siteId",
+            "in": "query",
+            "description": "Site Id in which the blog need to be deleted",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Delete Blog",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Delete"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=ProfileAddBlogPostDataServer&action=update": {
+      "post": {
+        "tags": [
+          "Blog"
+        ],
+        "summary": "Update a Blog",
+        "operationId": "blogUpdate",
+        "parameters": [
+          {
+            "name": "contentId",
+            "in": "query",
+            "description": "Id of page that needs to be updated",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update Blog",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Blog"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=NotificationDataServer&action=search": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Notification List",
+        "operationId": "notiList",
+        "requestBody": {
+          "description": "Notification List",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/NotificationList"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=NotificationDataServer&action=create": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Create a notification",
+        "operationId": "notiCreate",
+        "requestBody": {
+          "description": "Create notification",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=NotificationDataServer&action=markAsActioned": {
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "Mark actionable notification as actioned",
+        "operationId": "notiUpdate",
+        "parameters": [
+          {
+            "name": "notificationId",
+            "in": "query",
+            "description": "Id of notification that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Mark actionable notification as actioned",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/NotificationActioned"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=CarouselDataServer&action=get&Carousel=Home": {
+      "post": {
+        "tags": [
+          "Digital Display"
+        ],
+        "summary": "Home Carousel",
+        "operationId": "siteHomeCarousel",
+        "requestBody": {
+          "description": "Home Carousel",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/HomeCarousel"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/apex/DataServerRW?target=CarouselDataServer&action=get&Carousel=Site": {
+      "post": {
+        "tags": [
+          "Digital Display"
+        ],
+        "summary": "SiteCarousel",
+        "operationId": "siteCarousel",
+        "requestBody": {
+          "description": "Site Carousel",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SiteCarousel"
+                  }
+                }
+              },
+              "encoding": {
+                "data": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "400": {
+            "description": "Invalid data supplied",
+            "content": {}
+          },
+          "403": {
+            "description": "Access denied",
+            "content": {}
+          },
+          "404": {
+            "description": "Item not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "body"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HomeCarousel": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": null,
+          "segmentId": null
+        }
+      },
+      "SiteCarousel": {
+        "required": [
+          "siteId"
+        ],
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": "a194W000009Rm1lQAC",
+          "segmentId": null
+        }
+      },
+      "People": {
+        "required": [
+          "size",
+          "term"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "userCategory": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          },
+          "limitToSubsegment": {
+            "type": "boolean"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "includeTotal": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "size": 16,
+          "term": "James Moss",
+          "department": null,
+          "location": null,
+          "userCategory": "all",
+          "expertise": null,
+          "limitToSubsegment": true,
+          "sortBy": "alphabetical",
+          "includeTotal": true
+        }
+      },
+      "ListPeople": {
+        "required": [
+          "size"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "userCategory": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          },
+          "limitToSubsegment": {
+            "type": "boolean"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "includeTotal": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "size": 16,
+          "term": "",
+          "department": null,
+          "location": null,
+          "userCategory": "all",
+          "expertise": null,
+          "limitToSubsegment": true,
+          "sortBy": "alphabetical",
+          "includeTotal": true
+        }
+      },
+      "ListPeopleByDepartment": {
+        "required": [
+          "size",
+          "department"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "userCategory": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          },
+          "limitToSubsegment": {
+            "type": "boolean"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "includeTotal": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "size": 16,
+          "term": "",
+          "department": "development",
+          "location": null,
+          "userCategory": "all",
+          "expertise": null,
+          "limitToSubsegment": true,
+          "sortBy": "alphabetical",
+          "includeTotal": true
+        }
+      },
+      "ListPeopleByLocation": {
+        "required": [
+          "size",
+          "location"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "userCategory": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          },
+          "limitToSubsegment": {
+            "type": "boolean"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "includeTotal": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "size": 16,
+          "term": "",
+          "department": null,
+          "location": "Gurugram @@ Haryana @@ IN",
+          "userCategory": "all",
+          "expertise": null,
+          "limitToSubsegment": true,
+          "sortBy": "alphabetical",
+          "includeTotal": true
+        }
+      },
+      "ListPeopleByExpertise": {
+        "required": [
+          "size",
+          "expertiseId"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "userCategory": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          },
+          "limitToSubsegment": {
+            "type": "boolean"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "includeTotal": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "size": 16,
+          "term": "",
+          "department": null,
+          "location": null,
+          "userCategory": "all",
+          "limitToSubsegment": true,
+          "sortBy": "alphabetical",
+          "includeTotal": true,
+          "expertiseId": "a663l000000UrM8AAK"
+        }
+      },
+      "PeopleId": {
+        "required": [
+          "peopleId"
+        ],
+        "type": "object",
+        "properties": {
+          "peopleId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "peopleId": "a114W00000L4guzQAB"
+        }
+      },
+      "PeopleUpdate": {
+        "required": [
+          "peopleId"
+        ],
+        "type": "object",
+        "properties": {
+          "peopleId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "peopleId": "a114W00000L52oWQAR",
+          "aboutme": null,
+          "companyName": null,
+          "customUserFieldList": [],
+          "extension": null,
+          "joiningDate": "2020-11-05",
+          "manager": null,
+          "peopleCategoryId": null,
+          "salesforceLanguageLocaleKey": "en-US",
+          "simpplrLanguageLocaleKey": "en-US",
+          "timeZone": "Asia/Kolkata",
+          "zoomId": null,
+          "birthdayMonth": "",
+          "city": null,
+          "country": null,
+          "department": null,
+          "division": null,
+          "firstName": null,
+          "lastName": null,
+          "mobile": null,
+          "phone": null,
+          "state": null,
+          "street": null,
+          "title": null,
+          "userCategory": null
+        }
+      },
+      "UserId": {
+        "required": [
+          "sfUserId"
+        ],
+        "type": "object",
+        "properties": {
+          "sfUserId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "sfUserId": "0054W00000BqEVUQA3"
+        }
+      },
+      "Page": {
+        "required": [
+          "contentSubType",
+          "category",
+          "siteId",
+          "publishAt"
+        ],
+        "type": "object",
+        "properties": {
+          "authoredBy": {
+            "type": "object"
+          },
+          "contentSubType": {
+            "type": "string"
+          },
+          "listOfFiles": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "publishAt": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "publishTo": {
+            "type": "string"
+          },
+          "imgOriginalFile": {
+            "type": "object"
+          },
+          "imgOriginal": {
+            "type": "string"
+          },
+          "imgLandscapeFile": {
+            "type": "object"
+          },
+          "imgLandscape": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isFeedEnabled": {
+            "type": "boolean"
+          },
+          "category": {
+            "type": "object"
+          },
+          "imgFile": {
+            "type": "object"
+          }
+        },
+        "example": {
+          "contentSubType": "knowledge",
+          "listOfFiles": [],
+          "publishAt": "2020-02-12T00:00:00+05:30",
+          "body": "<p>This is the basic description text.</p>",
+          "summary": "This is custom summary text.",
+          "imgOriginalFile": null,
+          "imgOriginal": null,
+          "imgLandscapeFile": null,
+          "imgLandscape": null,
+          "title": "API Demo Page Test",
+          "isFeedEnabled": true,
+          "category": {
+            "name": "News"
+          },
+          "imgFile": null
+        }
+      },
+      "Event": {
+        "required": [
+          "startsAt",
+          "endsAt",
+          "location"
+        ],
+        "type": "object",
+        "properties": {
+          "authoredBy": {
+            "type": "object"
+          },
+          "contentSubType": {
+            "type": "string"
+          },
+          "listOfFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "publishAt": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "imgCaption": {
+            "type": "string"
+          },
+          "img": {
+            "type": "string"
+          },
+          "startsAt": {
+            "type": "string"
+          },
+          "isAllDay": {
+            "type": "boolean"
+          },
+          "publishingStatus": {
+            "type": "string"
+          },
+          "listOfInlineImages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "listOfInlineVideos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "summary": {
+            "type": "string"
+          },
+          "publishTo": {
+            "type": "string"
+          },
+          "endsAt": {
+            "type": "string"
+          },
+          "timezoneIso": {
+            "type": "string"
+          },
+          "imgLayout": {
+            "type": "string"
+          },
+          "hasMapUrl": {
+            "type": "string"
+          },
+          "listOfContentTopicIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hasDirections": {
+            "type": "boolean"
+          },
+          "imgOriginalFile": {
+            "type": "string"
+          },
+          "mapUrl": {
+            "type": "string"
+          },
+          "directions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imgOriginal": {
+            "type": "string"
+          },
+          "imgLandscapeFile": {
+            "type": "string"
+          },
+          "hasRsvp": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "imgLandscape": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "listOfOrganizers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isFeedEnabled": {
+            "type": "boolean"
+          },
+          "listOfTopics": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "rsvp": {
+            "type": "object",
+            "properties": {
+              "dueAtDate": {
+                "type": "string"
+              },
+              "capacityCount": {
+                "type": "integer"
+              }
+            }
+          },
+          "imgFile": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "contentSubType": "",
+          "listOfFiles": [],
+          "publishAt": "2020-12-15T00:00:00",
+          "body": "<p>this is for body.</p>",
+          "siteId": "a194W000009TFfCQAW",
+          "imgCaption": null,
+          "img": null,
+          "startsAt": "2020-03-05T00:00:00+05:30",
+          "isAllDay": true,
+          "publishingStatus": "immediate",
+          "listOfInlineImages": [],
+          "listOfInlineVideos": [],
+          "summary": null,
+          "publishTo": null,
+          "endsAt": "2020-12-17T23:59:59+05:30",
+          "timezoneIso": "Asia/Kolkata",
+          "imgLayout": "small",
+          "hasMapUrl": null,
+          "listOfContentTopicIds": [],
+          "hasDirections": false,
+          "imgOriginalFile": null,
+          "mapUrl": null,
+          "directions": [],
+          "imgOriginal": null,
+          "imgLandscapeFile": null,
+          "hasRsvp": false,
+          "location": "delhi",
+          "imgLandscape": null,
+          "title": "New Event For Content",
+          "language": "en",
+          "listOfOrganizers": [],
+          "isFeedEnabled": true,
+          "listOfTopics": [],
+          "rsvp": {
+            "dueAtDate": null,
+            "capacityCount": null
+          }
+        }
+      },
+      "EventUpdate": {
+        "required": [
+          "startsAt",
+          "endsAt",
+          "location"
+        ],
+        "type": "object",
+        "properties": {
+          "authoredBy": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "contentSubType": {
+            "type": "string"
+          },
+          "listOfFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "publishAt": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "imgCaption": {
+            "type": "string"
+          },
+          "img": {
+            "type": "string"
+          },
+          "startsAt": {
+            "type": "string"
+          },
+          "isAllDay": {
+            "type": "boolean"
+          },
+          "publishingStatus": {
+            "type": "string"
+          },
+          "listOfInlineImages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "listOfInlineVideos": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "summary": {
+            "type": "string"
+          },
+          "publishTo": {
+            "type": "string"
+          },
+          "endsAt": {
+            "type": "string"
+          },
+          "timezoneIso": {
+            "type": "string"
+          },
+          "imgLayout": {
+            "type": "string"
+          },
+          "hasMapUrl": {
+            "type": "string"
+          },
+          "listOfContentTopicIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hasDirections": {
+            "type": "boolean"
+          },
+          "imgOriginalFile": {
+            "type": "string"
+          },
+          "mapUrl": {
+            "type": "string"
+          },
+          "directions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imgOriginal": {
+            "type": "string"
+          },
+          "imgLandscapeFile": {
+            "type": "string"
+          },
+          "hasRsvp": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": "string"
+          },
+          "imgLandscape": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "listOfOrganizers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "isFeedEnabled": {
+            "type": "boolean"
+          },
+          "listOfTopics": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "rsvp": {
+            "type": "object",
+            "properties": {
+              "dueAtDate": {
+                "type": "string"
+              },
+              "capacityCount": {
+                "type": "integer"
+              }
+            }
+          },
+          "imgFile": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "authoredBy": {
+            "id": "a114W00000L52oWQAR"
+          },
+          "contentSubType": "",
+          "listOfFiles": [],
+          "publishAt": "2020-12-15T00:00:00",
+          "body": "<p>this is for body.</p>",
+          "siteId": "a194W000009TFfCQAW",
+          "imgCaption": null,
+          "img": null,
+          "startsAt": "2020-03-05T00:00:00+05:30",
+          "isAllDay": true,
+          "publishingStatus": "immediate",
+          "listOfInlineImages": [],
+          "listOfInlineVideos": [],
+          "summary": null,
+          "publishTo": null,
+          "endsAt": "2020-12-17T23:59:59+05:30",
+          "timezoneIso": "Asia/Kolkata",
+          "imgLayout": "small",
+          "hasMapUrl": null,
+          "listOfContentTopicIds": [],
+          "hasDirections": false,
+          "imgOriginalFile": null,
+          "mapUrl": null,
+          "directions": [],
+          "imgOriginal": null,
+          "imgLandscapeFile": null,
+          "hasRsvp": false,
+          "location": "delhi",
+          "imgLandscape": null,
+          "title": "New Event For Content",
+          "language": "en",
+          "listOfOrganizers": [],
+          "isFeedEnabled": true,
+          "listOfTopics": [],
+          "rsvp": {
+            "dueAtDate": null,
+            "capacityCount": null
+          },
+          "imgFile": null,
+          "id": "a174W00000JNZ5JQAX"
+        }
+      },
+      "Blog": {
+        "type": "object",
+        "properties": {
+          "authoredBy": {
+            "type": "object"
+          },
+          "listOfFiles": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "publishAt": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "publishTo": {
+            "type": "string"
+          },
+          "imgOriginalFile": {
+            "type": "object"
+          },
+          "imgOriginal": {
+            "type": "string"
+          },
+          "imgLandscapeFile": {
+            "type": "object"
+          },
+          "imgLandscape": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isFeedEnabled": {
+            "type": "boolean"
+          },
+          "imgFile": {
+            "type": "object"
+          }
+        },
+        "example": {
+          "listOfFiles": [],
+          "publishAt": "2020-02-12T00:00:00+05:30",
+          "body": "<p>This is the basic description text.</p>",
+          "summary": "This is custom summary text.",
+          "imgOriginalFile": null,
+          "imgOriginal": null,
+          "imgLandscapeFile": null,
+          "imgLandscape": null,
+          "title": "API Demo Blog Test",
+          "isFeedEnabled": true,
+          "imgFile": null
+        }
+      },
+      "File": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "term": "example.pdf",
+          "section": "File",
+          "searchSite": false,
+          "isCorrectionEnabled": true,
+          "size": 16
+        }
+      },
+      "Content": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "contentType": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "term": "video",
+          "section": "Content",
+          "size": 16,
+          "isCorrectionEnabled": true
+        }
+      },
+      "PopularContent": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 4,
+          "siteId": "a194W000009TDNCQA4",
+          "status": "published",
+          "filter": "popular"
+        }
+      },
+      "PopularContentFollowed": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 4,
+          "siteId": null,
+          "status": "published",
+          "filter": "popular"
+        }
+      },
+      "LatestContent": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 4,
+          "siteId": "a194W000009T8HsQAK",
+          "status": "published",
+          "filter": "updates"
+        }
+      },
+      "LatestContentFollowed": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "filter": "updates",
+          "sortBy": "latest",
+          "siteId": null
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "term": "george",
+          "section": "User",
+          "size": 16,
+          "isCorrectionEnabled": true
+        }
+      },
+      "Site": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "term": "Human Resources",
+          "section": "Site",
+          "searchSite": false,
+          "isCorrectionEnabled": true,
+          "size": 16
+        }
+      },
+      "SiteSearch": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          }
+        },
+        "example": {
+          "size": 16
+        }
+      },
+      "SiteCategory": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 24,
+          "filter": "category",
+          "sortBy": "category",
+          "segmentId": null
+        }
+      },
+      "SiteCategoryById": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 4,
+          "category": "a145w00000R72akAAB",
+          "sortBy": "alphabetical"
+        }
+      },
+      "SiteFeatured": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 24,
+          "filter": "featured",
+          "sortBy": "featured",
+          "segmentId": null
+        }
+      },
+      "SiteMember": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "filter": "member",
+          "sortBy": "alphabetical"
+        }
+      },
+      "SitePopular": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "filter": "popular",
+          "sortBy": "popular"
+        }
+      },
+      "SiteLatest": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "sortBy": "createdNewest"
+        }
+      },
+      "SiteMysite": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "canManage": {
+            "type": "boolean"
+          },
+          "filter": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 21,
+          "canManage": true,
+          "filter": "active"
+        }
+      },
+      "SiteFollow": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "filter": "following",
+          "sortBy": "alphabetical"
+        }
+      },
+      "AddSiteMember": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "userDetail": {
+            "type": "array",
+            "items": {
+              "sfUserId": {
+                "type": "string"
+              },
+              "membershipType": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "siteId": "a194W000009TDMDQA4",
+          "userDetail": [
+            {
+              "sfUserId": "0054W00000A9rqtQAB",
+              "membershipType": "member"
+            }
+          ]
+        }
+      },
+      "RemoveSiteMember": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "sfUserId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": "a114T000000gnKeQAI",
+          "sfUserId": "0054T000001N18eQAC"
+        }
+      },
+      "AddSiteFollower": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "userDetail": {
+            "type": "array",
+            "items": {
+              "sfUserId": {
+                "type": "string"
+              },
+              "membershipType": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "siteId": "a194W000009TDMDQA4",
+          "userDetail": [
+            {
+              "sfUserId": "0054W00000A9rqtQAB",
+              "membershipType": "follower"
+            }
+          ]
+        }
+      },
+      "RemoveSiteFollower": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "sfUserId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": "a114T000000gnKeQAI",
+          "sfUserId": "0054T000001N18eQAC"
+        }
+      },
+      "Top": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "section": {
+            "type": "string"
+          },
+          "isCorrectionEnabled": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "term": "Human Resources",
+          "size": 16,
+          "section": "Top",
+          "isCorrectionEnabled": true
+        }
+      },
+      "AutoCompleteSearch": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "term": "p"
+        }
+      },
+      "Delete": {
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "contentId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": "a114T000000gmVhQAI",
+          "contentId": "a0z4T000000dIO5QAM"
+        }
+      },
+      "SiteCreate": {
+        "type": "object",
+        "properties": {
+          "access": {
+            "type": "string"
+          },
+          "landingPage": {
+            "type": "string"
+          },
+          "isContentSubmissionsEnabled": {
+            "type": "boolean"
+          },
+          "isOwner": {
+            "type": "boolean"
+          },
+          "hasPages": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "hasEvents": {
+            "type": "boolean"
+          },
+          "hasDashboard": {
+            "type": "boolean"
+          },
+          "hasAlbums": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "access": "public",
+          "landingPage": "dashboard",
+          "isContentSubmissionsEnabled": true,
+          "isOwner": true,
+          "hasPages": true,
+          "name": "Test API Site",
+          "hasEvents": true,
+          "hasDashboard": true,
+          "hasAlbums": true
+        }
+      },
+      "SiteEdit": {
+        "type": "object",
+        "properties": {
+          "isAccessRequested": {
+            "type": "boolean"
+          },
+          "managerCount": {
+            "type": "integer"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "canCreateAlbum": {
+            "type": "boolean"
+          },
+          "hasAlbumsEnabled": {
+            "type": "boolean"
+          },
+          "isManager": {
+            "type": "boolean"
+          },
+          "img": {
+            "type": "string"
+          },
+          "access": {
+            "type": "string"
+          },
+          "coverImage": {
+            "type": "string"
+          },
+          "editUrl": {
+            "type": "string"
+          },
+          "landingPage": {
+            "type": "string"
+          },
+          "analytics": {
+            "type": "object",
+            "properties": {
+              "totalPageCount": {
+                "type": "integer"
+              },
+              "totalEventCount": {
+                "type": "integer"
+              },
+              "totalAlbumCount": {
+                "type": "integer"
+              },
+              "csvUrl": {
+                "type": "string"
+              }
+            }
+          },
+          "isInMandatorySubscription": {
+            "type": "boolean"
+          },
+          "isListed": {
+            "type": "boolean"
+          },
+          "isFollower": {
+            "type": "boolean"
+          },
+          "imgThumbnail": {
+            "type": "string"
+          },
+          "isContentSubmissionsEnabled": {
+            "type": "boolean"
+          },
+          "isOwner": {
+            "type": "boolean"
+          },
+          "hasPages": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isChatterGroupOnly": {
+            "type": "boolean"
+          },
+          "informationTitle": {
+            "type": "string"
+          },
+          "information": {
+            "type": "string"
+          },
+          "storageProvider": {
+            "type": "string"
+          },
+          "dropboxRootPermission": {
+            "type": "string"
+          },
+          "canCreateEvent": {
+            "type": "boolean"
+          },
+          "hasEventsEnabled": {
+            "type": "boolean"
+          },
+          "url": {
+            "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "slack": {
+            "type": "string"
+          },
+          "totalMemberCount": {
+            "type": "integer"
+          },
+          "chatterGroupId": {
+            "type": "string"
+          },
+          "followerCount": {
+            "type": "integer"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "hasEvents": {
+            "type": "boolean"
+          },
+          "isContentFeedEnabled": {
+            "type": "boolean"
+          },
+          "memberCount": {
+            "type": "integer"
+          },
+          "teams": {
+            "type": "boolean"
+          },
+          "canActivateDeactivate": {
+            "type": "boolean"
+          },
+          "hasPagesEnabled": {
+            "type": "boolean"
+          },
+          "isBroadcast": {
+            "type": "boolean"
+          },
+          "isFeatured": {
+            "type": "boolean"
+          },
+          "isPrivate": {
+            "type": "boolean"
+          },
+          "hasDashboard": {
+            "type": "boolean"
+          },
+          "canEdit": {
+            "type": "boolean"
+          },
+          "hasAnyContentEnabled": {
+            "type": "boolean"
+          },
+          "canMention": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "canCreatePage": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isFavorited": {
+            "type": "boolean"
+          },
+          "isContentManager": {
+            "type": "boolean"
+          },
+          "category": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "categoryId": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "siteCoun": {
+                "type": "integer"
+              },
+              "isUncategorized": {
+                "type": "boolean"
+              },
+              "access": {
+                "type": "string"
+              },
+              "listOfSites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "dashboardLayout": {
+            "type": "string"
+          },
+          "hasAlbums": {
+            "type": "boolean"
+          },
+          "hasContent": {
+            "type": "boolean"
+          },
+          "imgFile": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "isAccessRequested": false,
+          "managerCount": 1,
+          "siteId": "a194W000009TFflQAG",
+          "canCreateAlbum": true,
+          "hasAlbumsEnabled": true,
+          "isManager": true,
+          "img": null,
+          "isMember": true,
+          "access": "public",
+          "coverImage": null,
+          "editUrl": "https://team-one-dev-ed--c.visualforce.com/apex/app?u=/manage/sites/a194W000009TFflQAG",
+          "landingPage": "dashboard",
+          "analytics": {
+            "totalPageCount": 0,
+            "totalEventCount": 0,
+            "totalAlbumCount": 0,
+            "csvUrl": "https://team-one-dev-ed--c.visualforce.com/apex/Reports?action=geSiteContentTypes&SiteId=a194W000009TFflQAG"
+          },
+          "isInMandatorySubscription": false,
+          "isListed": true,
+          "isFollower": false,
+          "imgThumbnail": null,
+          "isContentSubmissionsEnabled": true,
+          "isOwner": true,
+          "hasPages": true,
+          "name": "Site Test Edit",
+          "isChatterGroupOnly": false,
+          "informationTitle": null,
+          "information": null,
+          "storageProvider": "intranet",
+          "dropboxRootPermission": null,
+          "canCreateEvent": true,
+          "hasEventsEnabled": true,
+          "url": "https://team-one-dev-ed--c.visualforce.com/apex/app?u=/site/a194W000009TFflQAG/dashboard",
+          "isActive": true,
+          "slack": null,
+          "totalMemberCount": 1,
+          "chatterGroupId": "0F94W0000015vDCSAY",
+          "followerCount": 0,
+          "isPublic": true,
+          "hasEvents": true,
+          "isContentFeedEnabled": true,
+          "memberCount": 1,
+          "teams": false,
+          "canActivateDeactivate": true,
+          "hasPagesEnabled": true,
+          "isBroadcast": false,
+          "isFeatured": false,
+          "isPrivate": false,
+          "hasDashboard": true,
+          "canEdit": true,
+          "hasAnyContentEnabled": true,
+          "canMention": true,
+          "id": "a194W000009TFflQAG",
+          "createdAt": "2020-12-15T01:25:43.000-0800",
+          "canCreatePage": true,
+          "description": "add bio",
+          "isFavorited": false,
+          "isContentManager": false,
+          "category": {
+            "id": "a1B4W00000UgI8IUAV",
+            "categoryId": "a1B4W00000UgI8IUAV",
+            "name": "Uncategorized",
+            "siteCount": 0,
+            "isUncategorized": false,
+            "access": "all",
+            "listOfSites": []
+          },
+          "dashboardLayout": "e",
+          "hasAlbums": true,
+          "hasContent": false,
+          "imgFile": null
+        }
+      },
+      "Activate": {
+        "type": "object",
+        "properties": {
+          "idsArray": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "makeActivatedBool": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "idsArray": [
+            "a114T000000gQ9WQAU"
+          ],
+          "makeActivatedBool": true
+        }
+      },
+      "Alert": {
+        "required": [
+          "message",
+          "displayFrom",
+          "segmentId",
+          "isDismissible",
+          "membersType",
+          "hasUrl",
+          "recipient",
+          "displayTo"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "displayFrom": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          },
+          "isDismissible": {
+            "type": "boolean"
+          },
+          "membersType": {
+            "type": "string"
+          },
+          "hasUrl": {
+            "type": "boolean"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "displayTo": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "message": "This is alert message",
+          "displayFrom": "2020-12-09T11:03:04+05:30",
+          "segmentId": null,
+          "isDismissible": true,
+          "membersType": "site_members",
+          "hasUrl": false,
+          "recipient": "everyone",
+          "displayTo": "2020-12-10T11:03:04+05:30"
+        }
+      },
+      "AlertForSiteMembers": {
+        "required": [
+          "siteId",
+          "message",
+          "displayFrom",
+          "segmentId",
+          "isDismissible",
+          "membersType",
+          "hasUrl",
+          "recipient",
+          "displayTo"
+        ],
+        "type": "object",
+        "properties": {
+          "siteId": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "displayFrom": {
+            "type": "string"
+          },
+          "segmentId": {
+            "type": "string"
+          },
+          "isDismissible": {
+            "type": "boolean"
+          },
+          "membersType": {
+            "type": "string"
+          },
+          "hasUrl": {
+            "type": "boolean"
+          },
+          "recipient": {
+            "type": "string"
+          },
+          "displayTo": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "siteId": "a194W000009TBFdQAO",
+          "message": "This is alert message",
+          "displayFrom": "2020-12-08T22:05:48-08:00",
+          "segmentId": null,
+          "isDismissible": true,
+          "membersType": "site_members",
+          "hasUrl": false,
+          "recipient": "site",
+          "displayTo": "2020-12-09T22:05:48-08:00"
+        }
+      },
+      "UpdateAlert": {
+        "required": [
+          "alertId"
+        ],
+        "type": "object",
+        "properties": {
+          "alertId": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "alertId": "a014W000012zSpeQAE",
+          "itemData": {
+            "audience": null,
+            "message": "test updated",
+            "site": {
+              "siteId": "a194W000009TBFdQAO",
+              "isPrivate": false,
+              "isListed": true,
+              "id": "a194W000009TBFdQAO"
+            },
+            "isDismissible": true,
+            "hasUrl": false,
+            "recipient": "site"
+          }
+        }
+      },
+      "DeleteAlert": {
+        "required": [
+          "alertId"
+        ],
+        "type": "object",
+        "properties": {
+          "alertId": {
+            "type": "string"
+          }
+        },
+        "example": "a014W000012zSptQAE"
+      },
+      "ListAlert": {
+        "required": [
+          "size",
+          "filter",
+          "sortBy"
+        ],
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer"
+          },
+          "filter": {
+            "type": "string"
+          },
+          "sortBy": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "size": 16,
+          "filter": "all",
+          "sortBy": "createdNewest"
+        }
+      },
+      "Notification": {
+        "required": [
+          "propertyName",
+          "sentTo",
+          "sentBy",
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string"
+          },
+          "sentTo": {
+            "type": "string"
+          },
+          "sentBy": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "notificationType": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "propertyName": "email",
+          "sentTo": "blagoja@simpplr.com",
+          "sentBy": "ashish@simpplr.com",
+          "url": "https://simpplr.pbcpayroll.in/Pages/ESS1903.aspx?hash=IN0mRDbZON8fRsv481qnG9En4arlPDKzIJP8TMLrPKbC79GoH9Gc8Mrm9cyz89CmG1I",
+          "notificationType": "Actionable",
+          "comment": "{{fullName}} has submmitted leave request for approval"
+        }
+      },
+      "NotificationActioned": {
+        "required": [
+          "propertyName",
+          "actionBy",
+          "actionAt"
+        ],
+        "type": "object",
+        "properties": {
+          "propertyName": {
+            "type": "string"
+          },
+          "actionBy": {
+            "type": "string"
+          },
+          "actionAt": {
+            "type": "string"
+          },
+          "isDeleted": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "propertyName": "email",
+          "actionBy": "blagoja@simpplr.com",
+          "actionAt": "2020-03-05T00:00:00+05:30",
+          "isDeleted": false
+        }
+      },
+      "NotificationList": {
+        "type": "object",
+        "properties": {
+          "since": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer"
+          },
+          "includeActioned": {
+            "type": "boolean"
+          }
+        },
+        "example": {
+          "since": "1608021029402",
+          "size": 20,
+          "includeActioned": false
+        }
+      }
+    }
+  }
+}

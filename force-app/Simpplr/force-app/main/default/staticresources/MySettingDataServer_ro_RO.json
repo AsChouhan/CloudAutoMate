@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} „{{fieldValue}}” nu este atribuit niciunui segment - acest utilizator va fi blocat până când este atribuit unui segment",
+    "my_settings.profile.birthday_partial_error_flash": "Trebuie să selectați luna și ziua zilei de naștere",
+    "my_settings.profile.inactive_manager_error_flash": "Nu este posibilă configurarea unui utilizator inactiv ca manager",
+    "my_settings.profile.manager_recursion_error_flash": "Nu este posibilă configurarea subordonatului direct ca managerul dvs.",
+    "my_settings.profile.language_disabled_error_flash": "Nu s-a putut configura limba deoarece este dezactivată în Salesforce - contactați un administrator"
+}

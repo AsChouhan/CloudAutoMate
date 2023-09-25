@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "重複したトピックを追加することはできません",
+    "manage_topics.spacing_and_capitilization_error_flash": "トピックを編集できませんでした - 文字間隔と大文字/時入力のみ可能"
+}

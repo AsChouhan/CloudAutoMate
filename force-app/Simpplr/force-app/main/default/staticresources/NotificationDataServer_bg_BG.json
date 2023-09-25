@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Няма налични кодове за вашето местонахождение. Опитайта пак по-късно.",
+    "notification.branded_apps.user_not_found": "Потребителят не е открит",
+    "notification.branded_apps.no_codes_error": "Няма налични кодове за изтегляне. Опитайте пак по-късно.",
+    "notification.branded_apps.failed_to_send_to_all": "Неуспешно изпращане на имейли/SMS до всички потребители. Качете допълнителни кодове за потребители в {{countryList}}",
+    "notification.branded_apps.invalid_input": "Невалидни входни данни",
+    "notification.branded_apps.all_codes_used_error": "Всички кодове са използвани. Опитайте пак по-късно.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Неуспешно изпращане на имейли. Качете още {{codesNeeded}} кода и опитайте пак"
+}

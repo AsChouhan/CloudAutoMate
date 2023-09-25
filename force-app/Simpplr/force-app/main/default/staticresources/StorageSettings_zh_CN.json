@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "您的 SharePoint 实例尚未启用。请联系应用管理员",
+    "apps.connection.google.not_a_gsuite_account": "连接失败 - 请使用 GSuite 帐户",
+    "apps.connection.google.setup_domain_mismatch": "连接失败 - 用户帐户不属于应用管理员已设置的域",
+    "apps.connection.google.user_account_mismatch": "连接失败 - 请对所有 Google 集成类型使用相同的帐户",
+    "apps.connection.google.invalid_integration_type": "连接失败 - 传输的集成类型无效",
+    "apps.connection.success": "已成功连接到 {{appName}}",
+    "apps.connection.google.domain_or_account_mismatch": "连接失败 - 域名必须与现有的 Google 集成类型相匹配",
+    "apps.connection.google.domain_mismatch": "连接失败 - Google 集成需要您连接您的 {{domainName}} 帐户",
+    "apps.connection.error_flash": "无法连接到 {{appName}}",
+    "apps.connection.batch_processing_try_later": "无法执行操作，请稍后重试",
+    "apps.connection.google.OAuthError": "集成失败。请重试。"
+}

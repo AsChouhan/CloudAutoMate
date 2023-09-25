@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "非公開または削除されたコンテンツを含めることはできません",
+    "newsletter_manage.date_time_future_error_flash": "過去の送信日付/時刻を選択することはできません"
+}

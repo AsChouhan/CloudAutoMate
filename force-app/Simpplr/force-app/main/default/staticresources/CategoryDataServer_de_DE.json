@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Es ist nicht möglich, Seitenkategorien zu löschen, die Seiten enthalten",
+    "manage_page_categories.add.duplicate_error_flash": "Es ist nicht möglich, doppelte Seitenkategorien hinzuzufügen",
+    "manage_page_categories.delete.uncategorized_error_flash": "Die Seitenkategorie „Nicht kategorisiert“ kann nicht bearbeitet/gelöscht werden",
+    "manage_page_categories.edit.uncategorized_error_flash": "Die Seitenkategorie „Nicht kategorisiert“ kann nicht bearbeitet/gelöscht werden"
+}

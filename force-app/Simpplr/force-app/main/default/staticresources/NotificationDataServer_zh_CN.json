@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "您所在位置没有可用的代码。请稍后再试。",
+    "notification.branded_apps.user_not_found": "未找到用户",
+    "notification.branded_apps.no_codes_error": "没有可供下载的代码。请稍后再试。",
+    "notification.branded_apps.failed_to_send_to_all": "无法向所有用户发送电子邮件/短信。请在{{countryList}}中为用户上传更多代码",
+    "notification.branded_apps.invalid_input": "无效输入",
+    "notification.branded_apps.all_codes_used_error": "所有代码都已被使用。请稍后再试。",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "电子邮件发送失败。请再上传 {{codesNeeded}} 个代码并重试"
+}

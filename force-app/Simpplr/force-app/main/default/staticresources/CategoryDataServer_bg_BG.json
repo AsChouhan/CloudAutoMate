@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Не е възможно да изтриете категории на страници, които все още съдържат страници",
+    "manage_page_categories.add.duplicate_error_flash": "Не е възможно да добавите дублирани категории на страници",
+    "manage_page_categories.delete.uncategorized_error_flash": "Не е възможно да редактирате/изтриете категорията на страници „Некатегоризирано“",
+    "manage_page_categories.edit.uncategorized_error_flash": "Не е възможно да редактирате/изтриете категорията на страници „Некатегоризирано“"
+}

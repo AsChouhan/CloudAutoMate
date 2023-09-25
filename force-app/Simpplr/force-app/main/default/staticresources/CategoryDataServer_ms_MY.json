@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Kategori halaman yang mengandungi halaman tidak boleh dipadamkan",
+    "manage_page_categories.add.duplicate_error_flash": "Kategori halaman pendua tidak boleh ditambahkan",
+    "manage_page_categories.delete.uncategorized_error_flash": "Kategori halaman \"Tidak dikategorikan\" tidak boleh diedit/dipadam",
+    "manage_page_categories.edit.uncategorized_error_flash": "Kategori halaman \"Tidak dikategorikan\" tidak boleh diedit/dipadam"
+}

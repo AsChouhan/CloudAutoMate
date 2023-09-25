@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Հնարավոր չէ ավելացնել վեբ հանգույցի URL հասցե։ URL հասցեն պետք է սկսվի https://outlook.office.com/… էջով",
+    "manage_app.setup.privileges.site_owner": "Կայքի սեփականատեր կարող են լինել միայն կայքի արտոնություններ ունեցող օգտատերերը",
+    "manage_site.mandatory_subscription_remove": "Չհաջողվեց ջնջել {{name}}-ին կայքէջից։ Տվյալ անձը ներառված է պարտադիր բաժանորդագրության ցանկի մեջ",
+    "manage_sites.duplicate_site_name_error_message": "Այս անունով ակտիվ կամ արխիվացված խումբ արդեն գոյություն ունի կամ ջնջվում է։ Ընտրեք մեկ ակլ անուն կամ փորձեք կրկին մի քանի րոպեից։",
+    "manage_site.apps.reconnect_account": "Դուք պետք է կրկին միանաք Slack-ին՝ «Իմ կարգավորումները» բաժնում",
+    "manage_site.duplicate_error_flash": "Այս անունով կայք արդեն գոյություն ունի։ Խնդրում ենք փոխել անունը և փորձել կրկին",
+    "manage_site.unable_to_lock_row_error_message": "Հնարավոր չէ կատարել գործողություն․ խնդրում ենք որոշ ժամանակ անց փորձել կրկին",
+    "manage_site.slack.blank_slack_channel": "Կայքի թարմացվող գործունեությունը հրապարակելու համար դուք պետք է լինեք այս Slack ալիքի անդամ"
+}

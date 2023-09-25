@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Impossibile aggiungere competenze. Questa competenza esiste già \"{{expertiseName}}\"",
+    "expertise.create.permission.access_error": "Non hai l'autorizzazione per creare una nuova competenza",
+    "expertise.delete.permission.access_error": "Non hai l'autorizzazione per eliminare una competenza"
+}

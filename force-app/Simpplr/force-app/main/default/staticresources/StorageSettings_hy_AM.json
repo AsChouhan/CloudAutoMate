@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Ձեր SharePoint ատյանի միացված չէ։ Խնդրում ենք կապվել ձեր հավելվածի կառավարիչի հետ",
+    "apps.connection.google.not_a_gsuite_account": "Կապը խափանվեց։ Խնդրում ենք օգտագործել GSuite օգտահաշիվը",
+    "apps.connection.google.setup_domain_mismatch": "Կապը խափանվեց։ Օգտատիրոջ հաշիվը չի պատկանում այն տիրույթին, որը ստեղծվել է հավելվածի կառավարիչի կողմից",
+    "apps.connection.google.user_account_mismatch": "Կապը խափանվեց։ Խնդրում ենք օգտագործել նույն օգտահաշիվը Google-ի բոլոր ներդիրների համար",
+    "apps.connection.google.invalid_integration_type": "Կապը խափանվեց։ Անվավեր ինտեգրման տեսակ է անցել",
+    "apps.connection.success": "Հաջողությամբ միացվել է {{appName}}-ին",
+    "apps.connection.google.domain_or_account_mismatch": "Կապն ընդհատվեց - Տիրույթի անունը պետք է համապատասխանի Google-ի ինտեգրման առկա միջոցներին",
+    "apps.connection.google.domain_mismatch": "Միացման ձախողում․ Google-ի հետ ինտեգրումը պահանջում է, որ դուք միացնեք ձեր {{domainName}} օգտահաշիվը",
+    "apps.connection.error_flash": "Հնարավոր չէ միանալ {{appName}}-ին",
+    "apps.connection.batch_processing_try_later": "Հնարավոր չէ կատարել գործողություն․ խնդրում ենք որոշ ժամանակ անց փորձել կրկին",
+    "apps.connection.google.OAuthError": "Ինտեգրումը ձախողվեց: Խնդրում եմ կրկին փորձեք."
+}

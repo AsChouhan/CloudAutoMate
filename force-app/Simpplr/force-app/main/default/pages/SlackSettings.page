@@ -1,0 +1,5 @@
+<apex:page Controller="SlackSettingsCtrl" action="{!handleRequest}" 
+	applyHtmlTag="false" applyBodyTag="false" cache="true" contentType="text/html" 
+    docType="html-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false"
+     setup="false" >
+</apex:page>

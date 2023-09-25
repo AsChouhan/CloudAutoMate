@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Nu este posibilă adăugarea adresei URL webhook - adresa URL trebuie să înceapă cu „https://outlook.office.com/…”",
+    "manage_app.setup.privileges.site_owner": "Numai utilizatorii cu privilegii de adăugare a site-urilor pot fi proprietari de site",
+    "manage_site.mandatory_subscription_remove": "Ștergerea {{name}} de pe site nu a reușit. Această persoană este inclusă într-un abonament obligatoriu",
+    "manage_sites.duplicate_site_name_error_message": "Un grup activ sau arhivat cu acest nume există deja sau este în curs de ștergere. Alegeți un alt nume sau încercați din nou peste câteva minute.",
+    "manage_site.apps.reconnect_account": "Trebuie să vă reconectați la Slack în „Setările mele”",
+    "manage_site.duplicate_error_flash": "Există deja un site cu acest nume - schimbați numele și încercați din nou",
+    "manage_site.unable_to_lock_row_error_message": "Imposibil de efectuat acțiunea, încercați din nou după ceva timp",
+    "manage_site.slack.blank_slack_channel": "Trebuie să fiți membru al acestui canal Slack pentru a posta activitatea de flux a site-ului"
+}

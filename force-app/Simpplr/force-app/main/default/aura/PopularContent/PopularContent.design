@@ -1,0 +1,11 @@
+<design:component>
+    <design:attribute name="contentLabel" label="Component Label" description="Label for component." />
+    <design:attribute name="siteId" label="Site Id" description="Site id for popular content" />
+    <design:attribute name="contentType" label="Content Type" default="Page" datasource="All, Page, Event, Album, BlogPost" description="Content type for popular/ latest content"/>
+    <design:attribute name="tileLayout" label="Tile Layout" default="Standard" datasource="Standard" description="Tile layout for popular/ latest content"/>
+     
+    <sfdc:objects>
+        <sfdc:object>Simpplr_Site__c</sfdc:object>
+        <sfdc:object>Simpplr_Content__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

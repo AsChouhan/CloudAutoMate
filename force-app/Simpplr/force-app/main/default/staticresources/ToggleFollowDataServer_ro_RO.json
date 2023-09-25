@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "Nu este posibilă urmărirea mai multor subiecte întrucât ați atins limita",
+    "feed.create.tracking_disabled_error_flash": "Nu este posibilă efectuarea acestei acțiuni - urmărirea fluxului este dezactivată",
+    "manage_sites.site_limit_reached_error_flash": "Nu este posibilă gestionarea sau urmărirea mai multor site-uri întrucât ați atins limita site-ului"
+}

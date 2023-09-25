@@ -1,0 +1,598 @@
+<apex:page controller="ReportsCtrl" standardStylesheets="false" readOnly="true" 
+	showHeader="false" sidebar="false" showChat="false" cache="false" action="{!init}" contentType="text/csv#{!SUBSTITUTE(URLENCODE(fileName), '+', ' ')}.csv" language="en-US">
+	<apex:outputPanel rendered="{!NOT(ISNULL(rsvpCsvWrapperList))}" layout="none">
+		{!reportHeader}
+		{!STR_EVENT},{!STR_PERSON},{!STR_EVENT_RSVP},{!STR_EVENT_RSVP_NOTE},{!STR_EMAIL},{!STR_TITLE},{!STR_COMPANY_NAME},{!STR_DIVISION},{!STR_DEPARTMENT},{!STR_CITY},{!STR_STATE},{!STR_COUNTRY},
+		<apex:repeat value="{!rsvpCsvWrapperList}" var="wrapObj">
+			<apex:repeat value="{!wrapObj.CustomFieldNameList}" var="customFieldName">{!',' + customFieldName}</apex:repeat>
+		</apex:repeat>	 
+
+	    <apex:repeat value="{!rsvpCsvWrapperList}" var="wrapObj"> 
+		   <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.event,'\"', '\"\"')}","{!wrapObj.people}","{!SUBSTITUTE(wrapObj.response,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.responseText,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.email,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.title,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+		   <apex:repeat value="{!wrapObj.CustomFieldValueList}" var="customFieldValue">{!',' + customFieldValue}</apex:repeat>
+		</apex:repeat>
+	</apex:outputPanel> 
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(adoptionDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_DATE},{!STR_ACTIVE},{!STR_INACTIVE}
+	    <apex:repeat value="{!adoptionDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>{!wrapObj.localizedDate},{!wrapObj.counts.active}%,{!wrapObj.counts.inactive}%
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(loginsDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_DATE},{!STR_WEB_BROWSER},{!STR_MOBILE_BROWSERS},{!STR_HYBRID_APP}
+	    <apex:repeat value="{!loginsDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>{!wrapObj.localizedDate}, {!wrapObj.counts.desktop}%, {!wrapObj.counts.mobile}%, {!wrapObj.counts.mobile_app}%
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(pageViewsDataDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_DATE},{!STR_WEB_BROWSER},{!STR_MOBILE_BROWSERS},{!STR_HYBRID_APP}
+	    <apex:repeat value="{!pageViewsDataDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>{!wrapObj.localizedDate},{!wrapObj.counts.desktop}, {!wrapObj.counts.mobile}, {!wrapObj.counts.mobile_app}
+	    </apex:repeat>
+	</apex:outputPanel> 
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(adoptionOverviewObj))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		,
+		{!STR_ANALYTICS_ADOPTION_CONTRIBUTORS}, {!adoptionOverviewObj.contributorCount}
+		{!STR_ANALYTICS_ADOPTION_PARTICIPANTS}, {!adoptionOverviewObj.participantCount}
+		{!STR_ANALYTICS_ADOPTION_OBSERVERS}, {!adoptionOverviewObj.observerCount}
+		{!STR_ANALYTICS_ADOPTION_NO_LOGIN}, {!adoptionOverviewObj.inactiveCount}
+		,
+		{!STR_ANALYTICS_ADOPTION_ONLY_ACTIVE_USERS}
+		,
+		<apex:outputPanel rendered="{!NOT(ISNULL(adoptionOverviewObj.adoptionOverviewDataList))}" layout="none">
+			<apex:variable value="{!''}" var="rowNum"/>
+			<apex:repeat value="{!adoptionOverviewObj.customFields}" var="fieldName">
+				 <apex:variable var="rowNum" value="{!rowNum + fieldName + ','}"/>
+			</apex:repeat>
+			{!LEFT(rowNum,LEN(rowNum)-1)}
+			
+			<apex:repeat value="{!adoptionOverviewObj.adoptionOverviewDataList}" var="wrapObj"> 
+	            <apex:variable value="{!''}" var="tempVar"/>
+	            <apex:repeat value="{!wrapObj.fieldValues}" var="fName">
+	                 <apex:variable var="tempVar" value="{!tempVar + fName + ','}"/>
+	            </apex:repeat>
+	           <apex:outputText value="{!newLine}"/>{!LEFT(tempVar,LEN(tempVar)-1)}
+	        </apex:repeat>
+		 </apex:outputPanel>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(mustReadHistoryObject.mRHDataList))}" layout="none">
+		"{!reportHeader}"
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_USER_NAME}, {!STR_EMAIL}, {!STR_STATUS},{!STR_TIME},{!STR_CITY},{!STR_STATE},{!STR_COUNTRY},{!STR_DEPARTMENT} <apex:repeat value="{!mustReadHistoryObject.mRHCustomFieldNameList}" var="customFieldName">{!',' + customFieldName}</apex:repeat>
+	    <apex:repeat value="{!mustReadHistoryObject.mRHDataList}" var="wrapObj">
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}",{!wrapObj.status},{!wrapObj.readDateTime},"{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}"
+		   <apex:repeat value="{!wrapObj.mRHCustomFieldValues}" var="customFieldValue">{!',' + customFieldValue}</apex:repeat>
+		</apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceSiteDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_ANALYTICS_SITE_NAME},{!STR_COUNT}
+	    <apex:repeat value="{!performanceSiteDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.count}"
+	    </apex:repeat>
+	</apex:outputPanel> 
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performancePeopleDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_NAME},{!STR_COUNT}
+	    <apex:repeat value="{!performancePeopleDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.count}"
+	    </apex:repeat>
+	</apex:outputPanel> 
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getSitePublication')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_ANALYTICS_CONTENT_SITE},{!STR_PAGES},{!STR_EVENTS},{!STR_ALBUMS},{!STR_TOTAL}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.pages}","{!wrapObj.events}","{!wrapObj.albums}","{!wrapObj.value}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentInfo)),action == 'getContentPublications')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		<apex:outputText value="{!newLine}"/>{!fromToHeader}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteMembersNFollowersCount}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+		{!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_CONTENT_URL}
+	    <apex:repeat value="{!contentInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.title,'"', '""')}","{!wrapObj.type}","{!SUBSTITUTE(wrapObj.authorName,'"', '""')}","{!SUBSTITUTE(wrapObj.siteName,'"', '""')}","{!wrapObj.publishedLocalizedDate}","{!wrapObj.url}" 
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentInfo)),action == 'getContentPopularity')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_CONTENT_URL},{!STR_LIKES},{!STR_POSTS},{!STR_REPLIES},{!STR_SHARES},{!STR_FAVORITES},{!STR_TOTAL_POPULARITY}
+	    <apex:repeat value="{!contentInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.title,'"', '""')}","{!wrapObj.type}","{!SUBSTITUTE(wrapObj.authorName,'"', '""')}","{!SUBSTITUTE(wrapObj.siteName,'"', '""')}","{!wrapObj.publishedLocalizedDate}","{!wrapObj.views}","{!wrapObj.url}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}","{!wrapObj.totalCount}"
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(peopleData)),action == 'getGovernanceList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:repeat value="{!governanceInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{wrapObj}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceContentDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+	    {!STR_ANALYTICS_CONTENT_TITLE},{!STR_COUNT}
+	    <apex:repeat value="{!performanceContentDataList}" var="wrapObj"> 
+	    <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.count}"
+	        
+	    </apex:repeat> 
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getSitePopularity')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_ANALYTICS_SITE_NAME},{!STR_LIKES},{!STR_POSTS},{!STR_REPLIES},{!STR_SHARES},{!STR_FAVORITES},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_SITE_POPULARITY_SCORE}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}","{!wrapObj.views}","{!wrapObj.value}"
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getAppPageViews')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_WEBPAGE_CATEGORY},{!STR_TOTAL_PEOPLE},{!STR_TOTAL_VIEWS},{!STR_PERCENTAGE_OF_TOTAL_VIEWS}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+			<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.page,'"', '""')}","{!wrapObj.uniqueViewsCount}","{!wrapObj.totalViewsCount}","{!wrapObj.totalViewsPercentage}"%
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(peopleData)),action == 'getPeoplePerformance')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!peopleDataCSVHeader}
+		<apex:repeat value="{!peopleDataCSVValueList}" var="peopleDataStr"> 
+	       <apex:outputText value="{!newLine}"/>{!peopleDataStr}
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentInfo)),action == 'getContentViewsList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_CONTENT_URL}
+	    <apex:repeat value="{!contentInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.type}","{!SUBSTITUTE(wrapObj.authorName,'"', '""')}","{!SUBSTITUTE(wrapObj.siteName,'"', '""')}","{!wrapObj.publishedLocalizedDate}","{!wrapObj.value}","{!wrapObj.url}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!OR(action == 'getLoginsOverTimeCsv', action == 'getViewsOverTimeCsv', action == 'getContentViewsOverTimeCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!filterValueName}
+		<apex:variable value="{!''}" var="rowNum"/>
+	    <apex:repeat value="{!adoptionCSVData.fieldsList}" var="fieldName">
+			<apex:variable var="rowNum" value="{!rowNum + fieldName + ','}"/>
+		</apex:repeat>
+		{!LEFT(rowNum,LEN(rowNum)-1)}
+
+	    <apex:repeat value="{!adoptionCSVData.adoptionCSVList}" var="wrapObj">
+			<apex:variable value="{!''}" var="rowNumVal"/> 
+			<apex:repeat value="{!wrapObj.fieldValues}" var="fieldValue">
+				<apex:variable var="rowNumVal" value="{!rowNumVal + fieldValue + ','}"/>
+			</apex:repeat>
+			<apex:outputText value="{!newLine}"/>{!LEFT(rowNumVal,LEN(rowNumVal)-1)}
+		</apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentViewsCSV)),action == 'getContentViewsCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_CONTENT_TITLE}: {!contentTitle} 
+	    {!STR_NAME},{!STR_ANALYTICS_CONTENT_JOB_TITLE},{!STR_ANALYTICS_CONTENT_DEPT_NAME},{!STR_ANALYTICS_CONTENT_LOCATION},{!STR_ANALYTICS_CONTENT_PHONE},{!STR_EMAIL},{!STR_ANALYTICS_CONTENT_TOTAL_VIEWS}, {!STR_ANALYTICS_CONTENT_FIRST_VIEWED}, {!STR_ANALYTICS_CONTENT_LAST_VIEWED}
+	    <apex:repeat value="{!contentViewsCSV}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.jobTitle}","{!wrapObj.department}","{!wrapObj.location}","{!wrapObj.phone}","{!wrapObj.email}","{!wrapObj.totalViews}","{!wrapObj.firstViewed}","{!wrapObj.lastViewed}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentViewsCSV)),action == 'getContentViewsWithAudienceMetricCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_CONTENT_TITLE}: {!contentTitle} 
+	    {!STR_NAME},{!STR_ANALYTICS_CONTENT_JOB_TITLE},{!STR_STATUS},{!STR_ANALYTICS_SITE_NAME},{!STR_ANALYTICS_AUDIENCE_ROLE},{!STR_ANALYTICS_SITE_ROLE},{!STR_ANALYTICS_CONTENT_DEPT_NAME},{!STR_ANALYTICS_CONTENT_LOCATION},{!STR_ANALYTICS_CONTENT_PHONE},{!STR_EMAIL},{!STR_ANALYTICS_CONTENT_TOTAL_VIEWS},{!STR_ANALYTICS_CONTENT_FIRST_VIEWED}, {!STR_ANALYTICS_CONTENT_LAST_VIEWED}
+	    <apex:repeat value="{!contentViewsCSV}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}" />"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.jobTitle}","{!wrapObj.status}","{!wrapObj.siteName}","{!wrapObj.role}","{!wrapObj.siteRole}","{!wrapObj.department}","{!wrapObj.location}","{!wrapObj.phone}","{!wrapObj.email}","{!wrapObj.totalViews}","{!wrapObj.firstViewed}","{!wrapObj.lastViewed}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentRelatedDate)),action == 'getContentViewsTopDepartmentsCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_CONTENT_TITLE}: {!contentTitle} 
+	    {!STR_ANALYTICS_CONTENT_DEPT_NAME},{!STR_ANALYTICS_SITE_VIEWS}
+	    <apex:repeat value="{!contentRelatedDate.topDepartments}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.name}","{!wrapObj.viewCount}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentRelatedDate)),action == 'getContentViewsTopLocationsCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_CONTENT_TITLE}: {!contentTitle} 
+	    {!STR_ANALYTICS_CONTENT_LOCATION},{!STR_ANALYTICS_SITE_VIEWS}
+	    <apex:repeat value="{!contentRelatedDate.topLocations}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.name}","{!wrapObj.viewCount}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getEngagementList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!listOfHeaders[0]},{!STR_LIKES},{!STR_POSTS},{!STR_REPLIES},{!STR_SHARES},{!STR_FAVORITES}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getEngagement')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!filterValueName}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteMembersNFollowersCount}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+		<apex:outputText value="{!newLine}"/>
+	    <apex:repeat value="{!listOfHeaders}" var="listOfHeaderObj"> 
+				<apex:variable var="i" value="{!0}"/>
+					<apex:outputText value="{!listOfHeaderObj}"/>,
+				<apex:variable var="i" value="{!i+1}"/>
+			</apex:repeat>		
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.label}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getContentEngagementCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!filterValueName}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteMembersNFollowersCount}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+	    {!STR_DATE},{!STR_CONTENT_VIEWS},{!STR_UNIQUE_CONTENT_VIEWS},{!STR_CONTENT_LIKES},{!STR_CONTENT_COMMENTS},{!STR_CONTENT_REPLIES},{!STR_CONTENT_SHARES},{!STR_CONTENT_FAVOURITES}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.label}","{!wrapObj.contentViews}","{!wrapObj.uniqueContentViews}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(listOfMonthlyReportData)),action == 'getMonthlyReports')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+	    {!STR_MONTH},{!STR_ANALYTICS_USERS_LOGGED_IN},{!STR_ANALYTICS_ACTIVE_USERS_ADOPTION},{!STR_ANALYTICS_VIEWED_CONTENT},{!STR_ANALYTICS_AVG_VIEWS_PER_USER},{!STR_POSTS} &amp; {!STR_REPLIES},{!STR_LIKES},{!STR_SHARES}
+	    <apex:repeat value="{!listOfMonthlyReportData}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.label}","({!wrapObj.usersLoggedInCount}) {!wrapObj.usersLoggedInPercentage}%" ,"({!wrapObj.activeUsersLoggedInCount}) {!wrapObj.activeUsersLoggedInPercentage}%" ,"({!wrapObj.viewedContentCount}){!wrapObj.viewedContentPercentage}%","{!wrapObj.averageViewsPerUserCount}","{!wrapObj.postsAndRepliesCount}","{!wrapObj.likesCount}","{!wrapObj.sharesCount}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getLoginsList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!listOfHeaders[0]},{!STR_LOGINS}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.value}"%
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getAppAdoption')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!listOfHeaders[0]},{!STR_LOGINS}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.percentageValue}"%
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getViewsList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!listOfHeaders[0]},{!STR_ANALYTICS_SITE_VIEWS}
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.value}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(viewList)),action == 'getContentViewsList')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!listOfHeaders[0]},{!listOfHeaders[1]} 
+	    <apex:repeat value="{!viewList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.value}"
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentRelatedDate)),action == 'getSiteViewsTotal')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+		<apex:outputText value="{!newLine}"/>{!siteMembersCount}
+		<apex:outputText value="{!newLine}"/>{!siteFollowersCount}
+	    {!listOfHeaders[0]},{!listOfHeaders[1]},{!listOfHeaders[2]},{!listOfHeaders[3]} 
+	    <apex:outputText value="{!newLine}"/>"{!contentRelatedDate.totalCountForCSV}","{!contentRelatedDate.desktopPercentage}","{!contentRelatedDate.mobilePercentage}","{!contentRelatedDate.mobileAppPercentage}"
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(performanceContentDataListForExternalAnalytics)),metric == 'popularity')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteMembersNFollowersCount}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+	    {!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_CONTENT_URL},{!STR_LIKES},{!STR_POSTS},{!STR_REPLIES},{!STR_SHARES},{!STR_FAVORITES},{!STR_TOTAL_POPULARITY}
+	    <apex:repeat value="{!performanceContentDataListForExternalAnalytics}" var="wrapObj"> 
+	    	<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.type}","{!SUBSTITUTE(wrapObj.authorName,'"', '""')}","{!SUBSTITUTE(wrapObj.siteName,'"', '""')}","{!wrapObj.publishedLocalizedDate}","{!wrapObj.views}","{!wrapObj.url}","{!wrapObj.likes}","{!wrapObj.posts}","{!wrapObj.replies}","{!wrapObj.shares}","{!wrapObj.favorites}","{!wrapObj.value}"
+	    </apex:repeat> 
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(performanceContentDataListForExternalAnalytics)),metric == 'views')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+		<apex:outputText value="{!newLine}"/>{!siteMembersNFollowersCount}
+		<apex:outputText value="{!newLine}"/>{!siteManagersCount}
+	    {!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_CONTENT_URL}
+	    <apex:repeat value="{!performanceContentDataListForExternalAnalytics}" var="wrapObj"> 
+	    	<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.type}","{!SUBSTITUTE(wrapObj.authorName,'"', '""')}","{!SUBSTITUTE(wrapObj.siteName,'"', '""')}","{!wrapObj.publishedLocalizedDate}","{!wrapObj.views}","{!wrapObj.url}"
+	    </apex:repeat> 
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(searchdata)), or(action == 'getSearchList', action == 'getSearches'))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!listOfHeaders[0]},{!listOfHeaders[1]}
+	    <apex:repeat value="{!searchdata}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'"', '""')}","{!wrapObj.value}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceTopicsDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_TOPIC_NAME},{!STR_COUNT}
+	    <apex:repeat value="{!performanceTopicsDataList}" var="wrapObj"> 
+	      <apex:outputText value="{!newLine}"/> "{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.count}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceSearchDataList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_ANALYTICS_SEARCH_TERM},{!STR_COUNT}
+	    <apex:repeat value="{!performanceSearchDataList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'"', '""')}","{!wrapObj.count}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceEngagementFeedList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+	    {!STR_DATE},{!STR_COUNT}
+	    <apex:repeat value="{!performanceEngagementFeedList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>{!wrapObj.localizedDate},{!wrapObj.counts[engagementType]}  
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceEngagementContentList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+	    {!STR_DATE},{!STR_COUNT}
+	    <apex:repeat value="{!performanceEngagementContentList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>{!wrapObj.localizedDate},{!wrapObj.counts[engagementType]} 
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!NOT(ISNULL(performanceEngagementContentTypesList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		<apex:outputText value="{!newLine}"/>{!siteName}
+	    {!STR_DATE}{! if(isPageEnabled, ',' + STR_ANALYTICS_ENGAGEMENT_CONTENT_PAGE_COUNT_PLURAL , '')}{! if(isAlbumEnabled, ',' + STR_ANALYTICS_ENGAGEMENT_CONTENT_ALBUM_COUNT_PLURAL, '')}{! if(isEventEnabled, ',' + STR_ANALYTICS_ENGAGEMENT_CONTENT_EVENT_COUNT_PLURAL, '')}{! if(isBlogEnabled, ',' + STR_ANALYTICS_ENGAGEMENT_CONTENT_BLOGPOST_COUNT_PLURAL, '')}
+	    <apex:repeat value="{!performanceEngagementContentTypesList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>
+	       {!wrapObj.day}{! if(isPageEnabled, ',' + TEXT(wrapObj.counts.pages), '')}{! if(isAlbumEnabled, ',' + TEXT(wrapObj.counts.albums), '')}{! if(isEventEnabled, ',' + TEXT(wrapObj.counts.events), '')}{! if(isBlogEnabled, ',' + TEXT(wrapObj.counts.blog_posts), '')}
+	    </apex:repeat>
+	</apex:outputPanel>
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(campaignHistoryReportList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+	    {!STR_CAMPAIGN_HISTORY_FULL_NAME}, {!STR_EMAIL}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}, {!STR_CAMPAIGN_HISTORY_TIME_SHARED}, {!STR_CAMPAIGN_HISTORY_SOCIAL_NTWRK_SHARES}, {!STR_CAMPAIGN_HISTORY_RESHARES}, {!STR_LIKES}
+	    <apex:repeat value="{!campaignHistoryReportList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.username,'\"', '\"\"')}",{!wrapObj.email},"{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}","{!wrapObj.localizedTimeShared}","{!wrapObj.what_service_campaign_shared_to}",{!wrapObj.reshares},"{!wrapObj.likes}"
+	    </apex:repeat>
+		</apex:outputPanel>
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(listOfUnassignedSegmentUsers))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+	    {!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}
+	    <apex:repeat value="{!listOfUnassignedSegmentUsers}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}",{!wrapObj.email}, "{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}", "{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}", "{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}", "{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}", "{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}", "{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+	    </apex:repeat>
+		</apex:outputPanel>
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(listOfSegmentationUsers))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+	    {!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_SEGMENT}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}
+	    <apex:repeat value="{!listOfSegmentationUsers}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.segmentName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+	    </apex:repeat>
+		</apex:outputPanel>	
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(listOfAudienceUsers)), ISNULL(segmentName))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}   
+			<apex:outputText value="{!newLine}"/>
+			<apex:repeat value="{!listOfHeaders}" var="listOfHeaderObj"> 
+				<apex:variable var="i" value="{!0}"/>
+					<apex:outputText value="{!listOfHeaderObj}"/>,
+				<apex:variable var="i" value="{!i+1}"/>
+			</apex:repeat>		
+			<apex:repeat value="{!listOfAudienceUsers}" var="wrapObj"> 
+			   <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+			</apex:repeat>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(listOfAudienceUsers)), NOT(ISNULL(segmentName)))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}   
+			<apex:outputText value="{!newLine}"/>
+			<apex:repeat value="{!listOfHeaders}" var="listOfHeaderObj"> 
+				<apex:variable var="i" value="{!0}"/>
+					<apex:outputText value="{!listOfHeaderObj}"/>,
+				<apex:variable var="i" value="{!i+1}"/>
+			</apex:repeat>		
+			<apex:repeat value="{!listOfAudienceUsers}" var="wrapObj"> 
+			   <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.segmentName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+			</apex:repeat>
+		</apex:outputPanel>
+		
+		<apex:outputPanel rendered="{!NOT(ISNULL(peopleCompletenessList))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+	    {!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}, {!STR_PROFILE_COMPLETENESS_PROFILE_IMAGE}, {!STR_PROFILE_COMPLETENESS_PHONE_NUMBER}, {!STR_PROFILE_COMPLETENESS_ABOUT_TEXT}, {!STR_PROFILE_COMPLETENESS_BIRTHDAY}
+	    <apex:repeat value="{!peopleCompletenessList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}","{!wrapObj.profileImage}","{!wrapObj.phoneNumber}","{!wrapObj.aboutText}","{!wrapObj.birthday}"
+	    </apex:repeat>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentViewsByTypeList)), ISNULL(currentSiteId))}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+	    {!STR_CONTENT_VIEW_PAGE_VIEWS}, {!STR_CONTENT_VIEW_EVENT_VIEWS}, {!STR_CONTENT_VIEW_ALBUM_VIEWS}, {!STR_CONTENT_VIEW_BLOG_VIEWS}, {!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}
+	    <apex:repeat value="{!contentViewsByTypeList}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.pageViews}","{!wrapObj.eventViews}","{!wrapObj.albumViews}","{!wrapObj.blogViews}","{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+	    </apex:repeat>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentViewsByTypeList)), NOT(ISNULL(currentSiteId)))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+			{!STR_CONTENT_VIEW_PAGE_VIEWS}, {!STR_CONTENT_VIEW_EVENT_VIEWS}, {!STR_CONTENT_VIEW_ALBUM_VIEWS}, {!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}
+			<apex:repeat value="{!contentViewsByTypeList}" var="wrapObj"> 
+			   <apex:outputText value="{!newLine}"/>"{!wrapObj.pageViews}","{!wrapObj.eventViews}","{!wrapObj.albumViews}","{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+			</apex:repeat>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!(NOT(ISNULL(knowledgePageCsvData)))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+			{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+			{!STR_ANALYTICS_CONTENT_TITLE},{!STR_ANALYTICS_CONTENT_TYPE},{!STR_ANALYTICS_CONTENT_AUTHOR},{!STR_ANALYTICS_CONTENT_SITE},{!STR_ANALYTICS_CONTENT_PUBLISHED_DATE},{!STR_ANALYTICS_SITE_VIEWS},{!STR_ANALYTICS_CONTENT_URL},{!STR_ANALYTICS_LAST_VALIDATED},{!STR_ANALYTICS_VALIDATION_EXPIRED},{!STR_ANALYTICS_VALIDATION_REQUIRED}
+			<apex:repeat value="{!knowledgePageCsvData}" var="wrapObj"> 
+				<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}",{!wrapObj.type},"{!SUBSTITUTE(wrapObj.authorName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.siteName,'\"', '\"\"')}",{!wrapObj.publishedLocalizedDate},{!wrapObj.views},{!wrapObj.url},{!wrapObj.lastValidatedLocalizedDate},{!wrapObj.validationExpiredLocalizedDate},{!wrapObj.validationRequired}
+			</apex:repeat> 
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentReferralSourceDataList)), ISNULL(contentId))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+			{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+			{!STR_ANALYTICS_REFERRAL_REFERRAL_SOURCE},{!STR_ANALYTICS_REFERRAL_CONTENT_ITEMS},{!STR_ANALYTICS_REFERRAL_REFERRALS},{!STR_ANALYTICS_REFERRAL_REFERRALS_PER_ITEM}
+			<apex:repeat value="{!contentReferralSourceDataList}" var="wrapObj"> 
+				<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'\"', '\"\"')}",{!wrapObj.contentItemsCount},"{!wrapObj.referralsCount}","{!wrapObj.referralsPerItemCount}"
+			</apex:repeat> 
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(contentReferralSourceDataList)), NOT(ISNULL(contentId)))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+			{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+			{!STR_ANALYTICS_REFERRAL_REFERRAL_SOURCE},{!STR_ANALYTICS_REFERRAL_REFERRALS}
+			<apex:repeat value="{!contentReferralSourceDataList}" var="wrapObj"> 
+				<apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.label,'\"', '\"\"')}","{!wrapObj.referralsCount}"
+			</apex:repeat> 
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!NOT(ISNULL(listOfPeopleExpertise))}" layout="none">
+			{!reportHeader}
+			{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+			{!STR_USER_NAME}, {!STR_EMAIL}, {!STR_COMPANY_NAME}, {!STR_DIVISION}, {!STR_DEPARTMENT}, {!STR_CITY}, {!STR_STATE}, {!STR_COUNTRY}
+			<apex:repeat value="{!listOfPeopleExpertise}" var="wrapObj"> 
+			   <apex:outputText value="{!newLine}"/>"{!SUBSTITUTE(wrapObj.name,'\"', '\"\"')}","{!wrapObj.email}","{!SUBSTITUTE(wrapObj.companyName,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.division,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.department,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.city,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.state,'\"', '\"\"')}","{!SUBSTITUTE(wrapObj.country,'\"', '\"\"')}"
+			</apex:repeat>
+		</apex:outputPanel>
+
+		<apex:outputPanel rendered="{!AND(NOT(ISNULL(videoInfo)),action == 'getVideoPopularity')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_VIDEO_VIDEO_TITLE},{!STR_ANALYTICS_VIDEO_UPLOADER},{!STR_ANALYTICS_VIDEO_UPLOADED_DATE},{!STR_ANALYTICS_VIDEO_VIEWS}
+	    <apex:repeat value="{!videoInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.label}","{!wrapObj.uploader}","{!wrapObj.uploadedAt}","{!wrapObj.views}"
+	    </apex:repeat>
+	</apex:outputPanel>
+
+	<apex:outputPanel rendered="{!AND(NOT(ISNULL(videoAdoptionInfo)),action == 'getVideoAdoptionCsv')}" layout="none">
+		{!reportHeader}
+		{!STR_HEADER_CREATED_ON}: {!currentDateTime}
+		{!STR_HEADER_FROM} : {!localizedFromDate} {!STR_HEADER_TO} : {!localizedToDate}
+		{!STR_ANALYTICS_VIDEO_VIDEO_TITLE},{!STR_ANALYTICS_VIDEO_VIEWS},{!STR_ANALYTICS_VIDEO_VIEWERS},{!STR_ANALYTICS_WATCH_TIME}
+	    <apex:repeat value="{!videoAdoptionInfo}" var="wrapObj"> 
+	       <apex:outputText value="{!newLine}"/>"{!wrapObj.label}","{!wrapObj.views}","{!wrapObj.viewers}","{!wrapObj.watchTime}"
+	    </apex:repeat>
+	</apex:outputPanel>
+	
+</apex:page>

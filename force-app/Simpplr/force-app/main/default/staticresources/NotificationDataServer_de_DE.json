@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Für Ihren Standort sind keine Codes verfügbar. Versuchen Sie es später noch einmal.",
+    "notification.branded_apps.user_not_found": "Benutzer nicht gefunden",
+    "notification.branded_apps.no_codes_error": "Es stehen keine Codes zum Download zur Verfügung. Versuchen Sie es später noch einmal.",
+    "notification.branded_apps.failed_to_send_to_all": "Fehler beim Senden von E-Mails/SMS an alle Benutzer. Laden Sie weitere Codes für Nutzer in {{countryList}} hoch",
+    "notification.branded_apps.invalid_input": "Ungültige Eingabe",
+    "notification.branded_apps.all_codes_used_error": "Alle Codes werden verwendet. Versuchen Sie es später noch einmal.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Fehler beim Senden von E-Mails. Laden Sie {{codesNeeded}} weitere Codes hoch und versuchen Sie es noch einmal"
+}

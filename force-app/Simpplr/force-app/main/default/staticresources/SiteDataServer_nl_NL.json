@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "Er bestaat al een actieve of gearchiveerde groep met deze naam of deze wordt verwijderd. Kies een andere naam of probeer het over een paar minuten opnieuw.",
+    "common.storage_full_error_flash": "De actie kan niet worden uitgevoerd: geheugen is vol",
+    "manage_sites.site_limit_reached_error_flash": "U hebt de sitelimiet bereikt en kunt niet meer sites beheren of volgen",
+    "manage_sites.duplicate_error_flash": "Er bestaat al een site met deze naam. Wijzig de naam en probeer het opnieuw",
+    "manage_sites.unable_to_lock_row_error_message": "De actie kan niet worden uitgevoerd; probeer het na een tijdje opnieuw"
+}

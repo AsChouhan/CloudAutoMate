@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "ไม่มีรหัสที่ใช้งานสำหรับสถานที่ตั้งของคุณ​โปรดลองอีกครั้งในภายหลัง",
+    "notification.branded_apps.user_not_found": "ไม่พบผู้ใช้",
+    "notification.branded_apps.no_codes_error": "ไม่มีรหัสที่ใช้ได้สำหรับการดาวน์โหลด โปรดลองอีกครั้งในภายหลัง",
+    "notification.branded_apps.failed_to_send_to_all": "ส่งอีเมล/SMS ให้ผู้ใช้ทั้งหมดไม่สำเร็จ อัปโหลดรหัสเพิ่มสำหรับผู้ใช้ใน {{countryList}}",
+    "notification.branded_apps.invalid_input": "ข้อมูลที่ป้อนไม่ถูกต้อง",
+    "notification.branded_apps.all_codes_used_error": "มีการใช้งานรหัสทั้งหมดแล้ว โปรดลองอีกครั้งในภายหลัง",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "ส่งอีเมลไม่สำเร็จ อัปโหลดรหัสอีก {{codesNeeded}} รหัส แล้วลองอีกครั้ง"
+}

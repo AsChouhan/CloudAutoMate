@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "无法添加网络钩子 URL。URL 开头应该是“https://outlook.office.com/…”",
+    "manage_app.setup.privileges.site_owner": "只有具有添加站点权限的用户才能成为站点所有者",
+    "manage_site.mandatory_subscription_remove": "无法从站点中移除{{name}}。此人被包含于一项强制订阅中",
+    "manage_sites.duplicate_site_name_error_message": "具有此名称的一个活跃的或已存档的群已存在或正被删除。请选择其他名称，或在几分钟后重试。",
+    "manage_site.apps.reconnect_account": "您必须在“我的设置”中重新连接 Slack",
+    "manage_site.duplicate_error_flash": "已存在使用此名称的站点，请更改名称并重试",
+    "manage_site.unable_to_lock_row_error_message": "无法执行操作，请稍后重试",
+    "manage_site.slack.blank_slack_channel": "您必须是此 Slack Channel 的成员才能发布站点信息流活动"
+}

@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "การย้ายข้อมูลเสร็จสมบูรณ์แล้ว เริ่มต้นอีกครั้งไม่ได้",
+    "post_install.analytics_already_exists_error_flash": "มีข้อมูลการวิเคราะห์ของวันที่ดังกล่าวอยู่แล้ว"
+}

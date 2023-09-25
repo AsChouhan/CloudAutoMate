@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Nu există coduri disponibile pentru locația dvs. Încercați din nou mai târziu.",
+    "notification.branded_apps.user_not_found": "Utilizatorul nu a fost găsit",
+    "notification.branded_apps.no_codes_error": "Nu există coduri disponibile pentru descărcare. Încercați din nou mai târziu.",
+    "notification.branded_apps.failed_to_send_to_all": "Nu s-a reușit trimiterea e-mailurilor / mesajelor SMS către toți utilizatorii. Încărcați mai multe coduri pentru utilizatori în {{countryList}}",
+    "notification.branded_apps.invalid_input": "Intrare incorectă",
+    "notification.branded_apps.all_codes_used_error": "Toate codurile sunt folosite. Încercați din nou mai târziu.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Trimiterea e-mailurilor nu a reușit. Încărcați încă {{codesNeeded}} coduri și încercați din nou"
+}

@@ -1,0 +1,12 @@
+{
+    "files.system_folder.site_files": "Sitedateien",
+    "files.system_folder.files": "Dateien",
+    "files.system_folder.images": "Bilder",
+    "files.system_folder.content_files": "Inhaltsdateien",
+    "files.system_folder.site_videos": "Sitevideos",
+    "files.system_folder.crm_files": "CRM-Dateien",
+    "files.system_folder.box_files": "Box-Dateien",
+    "files.system_folder.feed_files": "Feed-Dateien",
+    "files.system_folder.albums": "Alben",
+    "files.system_folder.videos": "Videos"
+}

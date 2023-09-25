@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "Kumpulan aktif atau diarkibkan dengan nama ini sudah wujud atau sedang dipadamkan. Pilih nama lain atau cuba lagi dalam beberapa minit.",
+    "common.storage_full_error_flash": "Tidak dapat melaksanakan tindakan - storan penuh",
+    "manage_sites.site_limit_reached_error_flash": "Anda tidak boleh mengurus atau mengikuti lagi tapak kerana anda sudah mencapai had tapak anda",
+    "manage_sites.duplicate_error_flash": "Tapak dengan nama ini sudah wujud - sial tukar nama dan cuba lagi",
+    "manage_sites.unable_to_lock_row_error_message": "Tidak dapat melaksanakan tindakan, sila cuba sebentar lagi"
+}

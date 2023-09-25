@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Din SharePoint-instans er ikke aktiveret. Kontakt venligst din app-manager",
+    "apps.connection.google.not_a_gsuite_account": "Tilslutning mislykkedes – brug en GSuite-konto",
+    "apps.connection.google.setup_domain_mismatch": "Tilslutning mislykkedes – brugerkontoen tilhører ikke det domæne, der er konfigureret af appadministratoren",
+    "apps.connection.google.user_account_mismatch": "Tilslutning mislykkedes – brug venligst samme konto til alle Google-integrationer",
+    "apps.connection.google.invalid_integration_type": "Tilslutning mislykkedes – ugyldig integrationstype overført",
+    "apps.connection.success": "Tilsluttet {{appName}}",
+    "apps.connection.google.domain_or_account_mismatch": "Tilslutning mislykkedes – domænenavnet skal matche eksisterende Google-integrationer",
+    "apps.connection.google.domain_mismatch": "Tilslutningen mislykkedes – Google-integrationen kræver, at du tilkslutter din {{domainName}}-konto",
+    "apps.connection.error_flash": "Der kunne ikke oprettes forbindelse til {{appName}}",
+    "apps.connection.batch_processing_try_later": "Handlingen kan ikke udføres. Vent lidt, og forsøg igen",
+    "apps.connection.google.OAuthError": "Integrationen mislykkedes. Prøv igen."
+}

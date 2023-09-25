@@ -1,0 +1,505 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false"
+	contentType="text/html" docType="html-5.0" showChat="false"
+	showHeader="false" sidebar="false" standardStylesheets="false"
+	setup="false" controller="FileDetailCtrl" action="{!init}">
+	<apex:composition template="BaseTemplate">
+
+		<apex:define name="PageTitle">
+            <apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define> 
+
+		<apex:define name="MainContent">
+			<input id="fileInfoId" type="hidden"
+				value='{"folderPath": "{!fileDetailWrapObj.fileUrl}","id": "{!fileDetailWrapObj.id}", "type": "{!fileDetailWrapObj.fileType}", "provider": "{!provider}", "downloadURL" : "{!fileDetailWrapObj.downloadURL}"}'/>
+            <div class="row">
+				<div class="column">
+					<div class="Page">
+						<apex:outputPanel layout="none"
+							rendered="{!showBoxNotConnectedMessage}">
+							<div class="row">
+								<div class="column">
+									<div class="no-results no-results-alert">
+										<h3>{!SUBSTITUTE(STR_CANNOT_SHOW, "{{provider}}", STR_PROVIDER_BOX)}</h3>
+										<apex:outputPanel layout="none" rendered="{!isMobileMode}">
+											<p class="mobile-only">{!SUBSTITUTE(STR_CONNECT_PROVIDER_WARNING_MOBILE, "{{provider}}", STR_PROVIDER_BOX)}</p>
+										</apex:outputPanel>
+										<apex:outputPanel layout="none"
+											rendered="{!Not(isMobileMode)}">
+											<p class="tablet-up">
+												<apex:outputText value="{!userNotConnectedMessage}" escape="false" />
+											</p>
+										</apex:outputPanel>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none"
+							rendered="{!showGdriveNotConnectedMessage}">
+							<div class="row">
+								<div class="column">
+									<div class="no-results no-results-alert">
+										<h3>{!SUBSTITUTE(STR_CANNOT_SHOW, "{{provider}}", STR_PROVIDER_GOOGLE_DRIVE)}</h3>
+										<apex:outputPanel layout="none" rendered="{!isMobileMode}">
+											<p class="mobile-only">{!SUBSTITUTE(STR_CONNECT_PROVIDER_WARNING_MOBILE, "{{provider}}", STR_PROVIDER_GOOGLE_DRIVE)}</p>
+										</apex:outputPanel>
+										<apex:outputPanel layout="none"
+											rendered="{!Not(isMobileMode)}">
+											<p class="tablet-up">
+												<apex:outputText value="{!userNotConnectedMessage}" escape="false" />
+											</p>
+										</apex:outputPanel>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none"
+							rendered="{!showDropboxNotConnectedMessage}">
+							<div class="row">
+								<div class="column">
+									<div class="no-results no-results-alert">
+										<h3>{!SUBSTITUTE(STR_CANNOT_SHOW, "{{provider}}", STR_PROVIDER_DROPBOX)}</h3>
+										<apex:outputPanel layout="none" rendered="{!isMobileMode}">
+											<p class="mobile-only">{!SUBSTITUTE(STR_CONNECT_PROVIDER_WARNING_MOBILE, "{{provider}}", STR_PROVIDER_DROPBOX)}</p>
+										</apex:outputPanel>
+										<apex:outputPanel layout="none"
+											rendered="{!Not(isMobileMode)}">
+											<p class="tablet-up">
+												<apex:outputText value="{!userNotConnectedMessage}" escape="false" />
+											</p>
+										</apex:outputPanel>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none"
+							rendered="{!showSharepointNotConnectedMessage}">
+							<div class="row">
+								<div class="column">
+									<div class="no-results no-results-alert">
+										<h3>{!SUBSTITUTE(STR_CANNOT_SHOW, "{{provider}}", STR_PROVIDER_SHAREPOINT)}</h3>
+										<apex:outputPanel layout="none" rendered="{!isMobileMode}">
+											<p class="mobile-only">{!SUBSTITUTE(STR_CONNECT_PROVIDER_WARNING_MOBILE, "{{provider}}", STR_PROVIDER_SHAREPOINT)}</p>
+										</apex:outputPanel>
+										<apex:outputPanel layout="none"
+											rendered="{!Not(isMobileMode)}">
+											<p class="tablet-up">
+												<apex:outputText value="{!userNotConnectedMessage}" escape="false" />
+											</p>
+										</apex:outputPanel>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none" rendered="{!showSpFileAccessDeniedMessage}">
+							<div class="error-box">
+								<div class="row">
+									<div class="large-12 column">
+										<img src="https://static.simpplr.com/simpplr/img/sharepoint-logo.png" alt="sharepoint-logo" class="u-borderRadius--4 u-marg-t--small u-marg-b--medium u-marg-lr--auto"
+										 style="width: 50px;">
+										</img>
+									</div>
+									<apex:outputPanel layout="none" rendered="{!If(OR(isShowOpenInSharePoint),false,true)}">
+										<h4 class="type--h4 u-textCenter u-marg-b--xsmall">{!STR_DONT_HAVE_FILE_ACCESS_MSG} </h4>
+										<p class="type--b2 u-textCenter type--noteDark">{!STR_FILE_DONT_EXIST_MSG} </p>
+									</apex:outputPanel>
+									<apex:outputPanel layout="none" rendered="{!If(OR(isShowOpenInSharePoint),true,false)}">
+										<h4 class="type--h4 u-textCenter u-marg-b--xsmall">{!STR_UNABLE_TO_DISPLAY_FILE_MSG} </h4>
+										<p class="type--b2 u-textCenter type--noteDark">{!STR_FILE_DONT_EXIST_MSG} </p>
+										<div class="u-textCenter u-marg-t--mediumlarge">
+											<a class="Button Button--large" href="{!fileExternalUrl}"><apex:outputText value="{! HTMLENCODE(STR_BTN_OPEN_IN_SHAREPOINT) }" escape="false" />
+											</a>
+										</div>
+									</apex:outputPanel>
+
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none"
+							rendered="{!showOnedriveNotConnectedMessage}">
+							<div class="row">
+								<div class="column">
+									<div class="no-results no-results-alert">
+										<h3>{!SUBSTITUTE(STR_CANNOT_SHOW, "{{provider}}", STR_PROVIDER_ONEDRIVE)}</h3>
+										<apex:outputPanel layout="none" rendered="{!isMobileMode}">
+											<p class="mobile-only">{!SUBSTITUTE(STR_CONNECT_PROVIDER_WARNING_MOBILE, "{{provider}}", STR_PROVIDER_ONEDRIVE)}</p>
+										</apex:outputPanel>
+										<apex:outputPanel layout="none"
+											rendered="{!Not(isMobileMode)}">
+											<p class="tablet-up">
+												<apex:outputText value="{!userNotConnectedMessage}" escape="false" />
+											</p>
+										</apex:outputPanel>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+						<apex:outputPanel layout="none"
+							rendered="{!If(OR(showDropboxNotConnectedMessage,showBoxNotConnectedMessage,showGdriveNotConnectedMessage, showOnedriveNotConnectedMessage, showSharepointNotConnectedMessage, showSpFileAccessDeniedMessage),false,true)}">
+							<div class="file-detail"
+								data-file-detail="{!fileDetailWrapObj.id}"
+								data-file-directoryName="{!directoryName}"
+								data-file-provider="{!provider}"
+								data-file-pathOnClient="{!fileDetailWrapObj.pathOnClient}"
+								data-file-object="{!fileDetailJson}">
+								<div class="row">
+									<div class="large-8 large-push-4 column">
+										<div class="file-preview"
+											id="chatterFileViewerPanel">
+											
+											<apex:outputPanel rendered="{!provider == 'box'}"
+												layout="none">
+												<apex:outputPanel rendered="{!fileDetailWrapObj.fileUrl != null}"
+													layout="none">
+													<iframe id="preview-frame"
+														src="{!fileDetailWrapObj.fileUrl}"
+														style="width: 100%; height: 100%; border-radius: 5px; border: 1px solid #d9d9d9;"></iframe>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!fileDetailWrapObj.fileUrl == null }"
+													layout="none">
+													<div id="fileNoFlashPreviewDiv" class="no-results"
+														data-no-results=" ">
+													-	<p>{!STR_NO_PREVIEW}</p>
+													</div>
+												</apex:outputPanel>
+											</apex:outputPanel>
+											
+											<apex:outputPanel rendered="{!provider == 'googledrive'}"
+												layout="none">
+												<apex:outputPanel rendered="{!fileDetailWrapObj.isImage}"
+													layout="none">
+													<a href="{!fileDetailWrapObj.fileUrl}">
+														<div class="file-preview-imageWrapper"> 
+															<img id="imageRendition" src="{!fileDetailWrapObj.fileUrl}"
+															alt="{!STR_LOADING}" title="{!fileDetailWrapObj.title}"
+															style="max-width: 100%; max-height: 100%;" />
+														</div>
+													</a>
+												</apex:outputPanel>												
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),provider == 'googledrive', OR(fileDetailWrapObj.fileType=='PDF', fileDetailWrapObj.fileType=='GDOC', fileDetailWrapObj.fileType=='GSLIDES', fileDetailWrapObj.fileType=='GSHEET', fileDetailWrapObj.fileType=='GDRAW' )), TRUE, FALSE)}"
+													layout="none">
+													<iframe webkitallowfullscreen="true" allowfullscreen="true"
+														style="width: 100%; height: 100%;"
+														src="{!fileDetailWrapObj.pdfViewUrl}" />
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),provider == 'googledrive', fileDetailWrapObj.fileType !='PDF', fileDetailWrapObj.fileType !='GDOC', fileDetailWrapObj.fileType !='GSLIDES', fileDetailWrapObj.fileType !='GSHEET', fileDetailWrapObj.fileType !='GDRAW'), TRUE, FALSE)}"
+													layout="none">
+													<div class="no-results" data-no-results=" ">
+														<p>{!STR_NO_PREVIEW}</p> 
+													</div>
+												</apex:outputPanel>
+												<div class="no-results" data-no-results=" "></div>
+											</apex:outputPanel>
+
+											<apex:outputPanel rendered="{!provider == 'dropbox'}"
+												layout="none">
+												<apex:outputPanel rendered="{!fileDetailWrapObj.isImage}"
+													layout="none">
+													<div class="file-preview-imageWrapper">
+														<img id="imageRendition" src="" alt="{!STR_LOADING}"
+															title="{!fileDetailWrapObj.title}"
+															style="max-width: 100%; max-height: 100%;" />
+														</div>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),provider == 'dropbox', previewResponseAsPdfBool), TRUE, FALSE)}"
+													layout="none">
+													<iframe id="preview-frame" webkitallowfullscreen="true"
+														allowfullscreen="true" style="width: 100%; height: 100%;"
+														alt="{!STR_LOADING}" src="{!fileDetailWrapObj.pdfViewUrl}" />
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),provider == 'dropbox', previewResponseAsHtmlBool), TRUE, FALSE)}"
+													layout="none">
+													<iframe id="preview-frame-html"
+														webkitallowfullscreen="true" allowfullscreen="true"
+														style="width: 100%; height: 100%;" src="" alt="{!STR_LOADING}" />
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),provider == 'dropbox', !previewResponseAsHtmlBool, !previewResponseAsPdfBool), TRUE, FALSE)}"
+													layout="none">
+													<div class="no-results" data-no-results=" ">
+														<p>{!STR_NO_PREVIEW}</p> 
+													</div>
+												</apex:outputPanel>
+												<div class="no-results" data-no-results=" "></div>
+											</apex:outputPanel>
+											
+											
+											<apex:outputpanel rendered="{!IF(OR (provider=='sharepoint',provider=='onedrive'), true, false)}">
+												<apex:outputPanel rendered="{!fileDetailWrapObj.iframeViewUrl != null}" layout="none">
+													<iframe id="preview-frame"
+														src="{!fileDetailWrapObj.iframeViewUrl}"
+														allowfullscreen="true"
+														style="width: 100%; height: 100%; border-radius: 5px; border: 1px solid #d9d9d9;"></iframe>
+												</apex:outputpanel>
+												<apex:outputPanel rendered="{!fileDetailWrapObj.iframeViewUrl == null}" layout="none">
+													<div class="no-results" data-no-results=" ">
+														<p>{!STR_NO_PREVIEW}</p> 
+													</div>
+												</apex:outputPanel>
+											</apex:outputpanel>
+											<!-- Native Video-->
+											<apex:outputpanel rendered="{!provider == 'native_video'}">
+												<iframe id="preview-frame" src="{!native_video_url}" 
+														allowfullscreen="true"
+														style="width: 100%; height: 100%; border-radius: 5px; border: 1px solid #d9d9d9;"></iframe>											
+                                            </apex:outputpanel>
+                                             
+                                            
+                                            <apex:outputPanel rendered="{!IF(AND(provider !='onedrive', provider != 'sharepoint', provider != 'googledrive', provider != 'box', provider != 'dropbox'), true, false)}"
+                                                layout="none">
+												<apex:outputPanel id="fileImagePreviewPanel"
+													rendered="{!fileDetailWrapObj.isImage}" layout="none">
+													<a href="{!fileDetailWrapObj.imageFullSizeRenderUrl}"
+														data-lightbox="{!fileDetailWrapObj.imageFullSizeRenderUrl}"> 
+														<div class="file-preview-imageWrapper">
+															<img
+															id="imageRendition" src="{!fileDetailWrapObj.imageFullSizeRenderUrl}"
+															alt="{!fileDetailWrapObj.title}"
+															title="{!fileDetailWrapObj.title}"
+															style="max-width: 100%; max-height: 100%;" />
+														</div>
+													</a>
+												</apex:outputPanel>
+												<apex:outputPanel id="fileFlashPreviewPanel"
+													rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),fileDetailWrapObj.fileType == 'PDF', Not(isFileNameHasInvalidChar)), TRUE, FALSE)}"
+													layout="none">
+													<iframe id="preview-frame"
+														src="{!fileDetailWrapObj.iframeViewUrl}"
+														allowfullscreen="true"
+														style="width: 100%; height: 100%; border-radius: 5px; border: 1px solid #d9d9d9;"></iframe>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage), isNonPDFIntranetFilePreviewAvailable == true), TRUE, FALSE)}"
+													layout="none">
+													<iframe id="preview-frame"
+														src="{!fileDetailWrapObj.iframeViewUrl}"
+														allowfullscreen="true"
+														style="width: 100%; height: 100%; border-radius: 5px; border: 1px solid #d9d9d9;"></iframe>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(Not(fileDetailWrapObj.isImage),fileDetailWrapObj.fileType != 'PDF' , isNonPDFIntranetFilePreviewAvailable == false,provider !='native_video' ), TRUE, FALSE)}"
+													layout="none">
+													<div class="no-results" data-no-results=" ">
+														<p>{!STR_NO_PREVIEW}</p> 
+													</div>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(isFileNameHasInvalidChar, TRUE, FALSE)}"
+													layout="none">
+													<div class="no-results" data-no-results=" ">
+														<p>{!STR_NO_PREVIEW}</p>
+													</div>
+												</apex:outputPanel>
+											</apex:outputPanel>
+											
+										</div>
+									</div>
+									<div class="large-4 large-pull-8 column">
+										<div class="file-overview">
+											<header>
+												<h2>{!fileDetailWrapObj.title}</h2>
+												<apex:outputPanel rendered="{!showSocialOptions}" layout="none">
+													<div data-mount-component="LegacyFileActionBar" data-mount-component-props='{"fileId": "{!fileDetailWrapObj.id}"}'></div>
+												</apex:outputPanel>
+											</header>
+											<dl>
+												<apex:outputPanel rendered="{!provider == 'dropbox'}">
+													<dt class="file-owner">{!STR_MODIFIED_BY}</dt>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!provider != 'dropbox'}">
+													<dt class="file-owner">{!STR_OWNER}</dt>
+												</apex:outputPanel>
+												<dd class="file-owner">
+													<apex:outputPanel rendered="{!fileDetailWrapObj.Owner.URL != null}"
+														layout="none">
+														<a href="{!JSENCODE(fileDetailWrapObj.Owner.URL)}"><apex:outputText value="{!fileDetailWrapObj.Owner.Name}" /></a>
+													</apex:outputPanel>
+													<apex:outputPanel rendered="{!fileDetailWrapObj.Owner.URL == null}"
+														layout="none">
+														<apex:outputText value="{!fileDetailWrapObj.Owner.Name}" />
+													</apex:outputPanel>
+												</dd>
+												<dt class="file-type">{!STR_TYPE}</dt>
+												<dd class="file-type">
+													<span class="type">{!fileDetailWrapObj.fileType}</span>
+												</dd>
+												<apex:outputPanel rendered="{!IF(OR(fileDetailWrapObj.fileType=='GDOC', fileDetailWrapObj.fileType=='GSLIDES', fileDetailWrapObj.fileType=='GSHEET', fileDetailWrapObj.fileType=='GDRAW' ), TRUE, FALSE)}">
+													<dt class="file-size"></dt>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(NOT(OR(fileDetailWrapObj.fileType=='GDOC', fileDetailWrapObj.fileType=='GSLIDES', fileDetailWrapObj.fileType=='GSHEET', fileDetailWrapObj.fileType=='GDRAW' )), TRUE, FALSE)}">
+													<dt class="file-size">{!STR_SIZE}</dt>
+												</apex:outputPanel>
+												<dd class="file-size">
+													<apex:outputPanel rendered="{!IF(NOT(OR(fileDetailWrapObj.fileType=='GDOC', fileDetailWrapObj.fileType=='GSLIDES', fileDetailWrapObj.fileType=='GSHEET', fileDetailWrapObj.fileType=='GDRAW' )), TRUE, FALSE)}">
+														<span class="file-size">{!fileDetailWrapObj.fileSize}</span>
+                                                    </apex:outputPanel>
+												</dd>
+												<apex:outputPanel rendered="{!If(OR(fileDetailWrapObj.listOfSite == null, fileDetailWrapObj.listOfSite.size == 0), true, false)}" layout="none">
+													<apex:variable var="parentIndex" value="{!1}"/>
+													<dt class="file-location">{!STR_LOCATION}</dt>
+													<dd class="file-location">
+														<div class="path">
+															<apex:repeat value="{!fileDetailWrapObj.listOfParents}" var="parent">
+																<div>
+																	<apex:outputPanel rendered="{!parent.url != null}">
+																		<a href="{!parent.url}">{!parent.name}</a>	
+																	</apex:outputPanel>
+																	<apex:outputPanel rendered="{!parent.url == null}">
+																		{!parent.name}	
+																	</apex:outputPanel>
+																	
+																	<apex:outputPanel rendered="{!parentIndex != fileDetailWrapObj.listOfParents.size}"
+																		layout="none">
+																		<span class="ss-standard">navigateright</span>
+																	</apex:outputPanel>
+																</div>
+																<apex:variable var="parentIndex" value="{!parentIndex+1}"/>
+															</apex:repeat>
+														</div>
+														<div class="u-marg-t--small">
+															<apex:outputText escape="false" value="{!viewInHTML}" />
+														</div>
+													</dd>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!If(AND(fileDetailWrapObj.listOfSite != null, fileDetailWrapObj.listOfSite.size > 0),true,false)}"
+													layout="none">
+													<dt class="file-location">{!STR_SITE_PLURAL}</dt>
+													<dd class="file-location">
+														<div data-file-sites-list=" "></div>
+														<div class="u-marg-t--small">
+															<apex:outputText escape="false" value="{!viewInHTML}" />
+														</div>
+													</dd>
+												</apex:outputPanel>
+												<dt class="file-modified">{!STR_EDITED}</dt>
+												<dd class="file-modified">
+													<span class="post-date">{!fileDetailWrapObj.lastModifiedDate}</span>
+												</dd>
+												<apex:outputPanel rendered="{!If(showVersionHistory && OR(fileDetailWrapObj.canCreateNewVersion,provider != 'googledrive'),true,false)}"
+													layout="none">
+													<dt class="file-version">{!STR_VERSION}</dt>
+													<dd class="file-version">
+														<span class="file-version">{!fileDetailWrapObj.versionNumber}</span>
+														<ul>
+															<li><a href="#" data-version-history=" ">{!STR_VESRION_HISTORY}</a></li>
+															<apex:outputPanel rendered="{!fileDetailWrapObj.canCreateNewVersion}"
+																layout="none">
+																<li><a href="#" data-new-version=" ">{!STR_ADD_NEW_VERSION}</a></li>
+															</apex:outputPanel>
+															<apex:outputPanel rendered="{!fileDetailWrapObj.canDelete}" layout="none">
+																<li><a href="#" data-delete="Salesforce">{!STR_DELETE_FILE}</a></li>
+															</apex:outputPanel>
+														</ul>
+													</dd>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!provider == 'native_video'}"
+													layout="none">
+													<apex:outputPanel rendered="{!fileDetailWrapObj.canDelete}" layout="none">
+														<a href="#" style="position: relative; left: 50%;" data-delete="Salesforce">{!STR_DELETE_FILE} </a>
+													</apex:outputPanel>
+												</apex:outputPanel>
+											</dl>
+											<div class="u-cf u-marg-b--medium">
+												<apex:outputPanel rendered="{!If(AND(provider != 'dropbox',provider != 'box', provider != 'googledrive', provider != 'sharepoint', provider != 'onedrive' ,provider != 'native_video'),true,false)}" layout="none">
+													<a class="Button Button--brand u-floatRight {!iosHiddenCSS}" href="{!JSENCODE(fileDetailWrapObj.downloadURL)}">{!STR_DOWNLOAD}</a>
+												</apex:outputPanel> 
+												<apex:outputPanel rendered="{!provider == 'googledrive' && fileDetailWrapObj.canDownload}" layout="none">
+													<a href="#" data-gdrive-download="{!fileDetailJson}" class="Button Button--brand u-floatRight {!iosHiddenCSS}"> 
+														<apex:outputText rendered="{! NOT(fileDetailWrapObj.onlyPDFDownload)}"> {!STR_DOWNLOAD} </apex:outputText> 
+														<apex:outputText rendered="{!fileDetailWrapObj.onlyPDFDownload}"> {!STR_DOWNLOAD_AS_PDF} </apex:outputText>
+													</a>
+												</apex:outputPanel> 
+												<apex:outputPanel rendered="{!provider == 'box'}" layout="none">
+													<a href="#" data-box-download="{!fileDetailJson}" data-box-download-version=" " 
+																class="Button Button--brand u-floatRight {!iosHiddenCSS}">{!STR_DOWNLOAD}</a>
+												</apex:outputPanel> 
+												<apex:outputPanel rendered="{!provider == 'dropbox'}" layout="none">
+													<a href="#" data-dropbox-download="{!fileDetailJson}" data-dropbox-download-version=" "
+																class="Button Button--brand u-floatRight {!iosHiddenCSS}">{!STR_DOWNLOAD}</a>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!And((provider == 'sharepoint' || provider == 'onedrive'), fileDetailWrapObj.canDownload)}" layout="none">
+													<a class="Button Button--brand u-floatRight {!iosHiddenCSS}" href="#" onclick="checkForBlockedDownload('{!STR_SHAREPOINT_BLOCK_DOWNLOAD_MESSAGE}'); return false;">{!STR_DOWNLOAD}</a>
+												</apex:outputPanel>
+											</div>
+											<apex:outputPanel rendered="{!If(AND (provider != 'dropbox', provider != 'onedrive', provider != 'sharepoint', OR(fileDetailWrapObj.canCreateNewVersion,provider != 'googledrive')),true,false)}"
+												layout="none">
+												<div class="block">
+													<h3>{!STR_DESCRIPTION}</h3>
+													<apex:outputPanel rendered="{!fileDetailWrapObj.canCreateNewVersion}"
+														layout="none">
+														<a href="#" class="more" data-edit-description=" ">{!STR_BTN_EDIT_LBL}</a>
+													</apex:outputPanel>
+													<apex:outputPanel rendered="{!provider == 'native_video'}" layout="none">
+														<apex:outputPanel rendered="{!fileDetailWrapObj.canEdit}" layout="none">
+														<a href="#" class="more" data-edit-description=" ">{!STR_BTN_EDIT_LBL}</a>
+													</apex:outputPanel>													
+												</apex:outputPanel>
+													<div data-description="{!fileDetailWrapObj.description}">
+														<p>
+															<apex:outputText value="{!fileDetailWrapObj.description}"
+																escape="true" />
+														</p>
+													</div>
+												</div>
+											</apex:outputPanel>
+										</div>
+									</div>
+								</div>
+							</div>
+						</apex:outputPanel>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+
+		<apex:define name="PageControlButtons">
+			<div class="controls controls-buttons" data-mobile-controls=" ">
+				<div class="trail">
+					<a href="javascript:window.history.back();" class="backwards"
+						title="Back" data-history-back=" "> <span class="ss-standard">navigateleft</span>
+					</a> <a href="javascript:window.location.reload(true);" class="reload"
+						title="Reload"> <span class="ss-standard">{!STR_REFRESH_LBL}</span>
+					</a> <a href="javascript:window.history.forward();" class="forwards"
+						title="Forward"> <span class="ss-standard">navigateright</span>
+					</a>
+				</div>
+				<div class="context">
+					<div class="context-content">
+						<div class="action action-bar">
+							<ul>
+								<li>
+									<div class="like" data-like="{!fileDetailWrapObj.Id}"
+										data-like-type="file">
+										<a href="#" class="counter" data-toggle-off="Like"
+											data-toggle-on="Unlike" data-toggle="off"
+											data-like-action=" " data-modal-close=" "> <span
+											data-toggle-text=" " class="like-action"> {!STR_LIKE} </span>
+										</a>
+									</div>
+								</li>
+								<li><a href="#"
+									data-share-content="{!fileDetailWrapObj.id}"
+									data-share-type="File"
+									data-share-title="{!fileDetailWrapObj.title}"
+									data-share-url="{!fileDetailWrapObj.publicUrl}"
+									data-can-create-public-share-link="{!fileDetailWrapObj.canCreateNewVersion}">
+										{!STR_BTN_SHARE_LBL} </a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+
+		<apex:define name="BeforeTemplateScriptContent">
+		</apex:define>
+
+		<apex:define name="AfterTemplateScriptContent">
+			<apex:outputPanel rendered="{!provider == 'googledrive'}" layout="none">
+				<script type="text/javascript" src="{!resourcePath}GDIFilePreview"></script>
+			</apex:outputPanel>
+			<apex:outputPanel rendered="{!provider == 'dropbox'}" layout="none">
+				<script type="text/javascript" src="{!resourcePath}DBIFilePreview"></script>
+			</apex:outputPanel>
+			<apex:outputPanel rendered="{!(provider == 'sharepoint'|| provider == 'onedrive')}" layout="none">
+				<script type="text/javascript" src="{!resourcePath}MSIFilePreview"></script>
+			</apex:outputPanel>
+		</apex:define>
+
+	</apex:composition>
+</apex:page>

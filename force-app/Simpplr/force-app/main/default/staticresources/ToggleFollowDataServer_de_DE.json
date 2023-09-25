@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "Es ist nicht möglich, weiteren Themen zu folgen, da Sie bereits Ihr Limit erreicht haben",
+    "feed.create.tracking_disabled_error_flash": "Diese Aktion kann nicht durchgeführt werden – Feed-Tracking ist deaktiviert",
+    "manage_sites.site_limit_reached_error_flash": "Es ist nicht möglich, weiteren Sites zu folgen, da Sie bereits Ihr Sitelimit erreicht haben"
+}

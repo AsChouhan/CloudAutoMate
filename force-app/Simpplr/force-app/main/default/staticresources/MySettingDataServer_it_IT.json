@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" non è assegnato a nessun segmento: questo utente verrà bloccato fino a quando non verrà assegnato a un segmento",
+    "my_settings.profile.birthday_partial_error_flash": "È necessario selezionare sia il mese e sia il giorno del compleanno",
+    "my_settings.profile.inactive_manager_error_flash": "Impossibile impostare un'utente inattivo come gestore",
+    "my_settings.profile.manager_recursion_error_flash": "Impossibile impostare un'utente tuo dipendente diretto come gestore",
+    "my_settings.profile.language_disabled_error_flash": "Impossibile impostare la lingua in quanto disattivata in Salesforce - Contatta un amministratore"
+}

@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "„{{fieldValue}}“ на {{fieldName}} не е присвоена на никой сегмент. Този потребител ще бъде блокиран, докато не бъде присвоен на сегмент",
+    "my_settings.profile.birthday_partial_error_flash": "Задължително е да изберете месец и ден за рождения ден",
+    "my_settings.profile.inactive_manager_error_flash": "Невъзможно е да конфигурирате неактивен потребител като мениджър",
+    "my_settings.profile.manager_recursion_error_flash": "Не е възможно да конфигурирате прекия си подчинен като ваш началник",
+    "my_settings.profile.language_disabled_error_flash": "Неуспешно задаване на езика поради това, че той е деактивиран в Salesforce. Свържете се с администратор"
+}

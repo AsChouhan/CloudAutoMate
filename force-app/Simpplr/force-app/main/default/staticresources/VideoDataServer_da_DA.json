@@ -1,0 +1,12 @@
+{
+    "files.system_folder.site_files": "Webstedsfiler",
+    "files.system_folder.files": "Filer",
+    "files.system_folder.images": "Billeder",
+    "files.system_folder.content_files": "Indholdsfiler",
+    "files.system_folder.site_videos": "Webstedsvideoer",
+    "files.system_folder.crm_files": "CRM-filer",
+    "files.system_folder.box_files": "Box-filer",
+    "files.system_folder.feed_files": "Feed-filer",
+    "files.system_folder.albums": "Albummer",
+    "files.system_folder.videos": "Videoer"
+}

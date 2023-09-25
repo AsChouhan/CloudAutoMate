@@ -1,0 +1,562 @@
+<aura:component access="GLOBAL" implements="flexipage:availableForAllPageTypes" controller="LightningPopularContentCtrl">
+    <ltng:require styles="{!$Resource.slds + '/styles/salesforce-lightning-design-system.min.css'}" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="popularContents" type="Simpplr_Content__c[]"/>
+     <aura:attribute name="latestContents" type="Simpplr_Content__c[]"/>
+    <aura:attribute name="siteId" type="String" access="GLOBAL"/>
+    <aura:attribute name="contentLabel" type="String" access="GLOBAL"/>
+	<aura:attribute name="contentType" type="String" access="GLOBAL"/>
+    <aura:attribute name="tileLayout" type="String" access="GLOBAL"/>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-page-header__title">
+    		{!v.contentLabel}
+        </div>
+	    <lightning:tabset>
+	    <!-- Pages View start-->
+	    	<aura:if isTrue="{!v.contentType =='Page'}">
+		        <!--Latest tab Page-->
+		        <lightning:tab label="Latest">
+		            <!-- latest tab standard view-->
+		            <aura:if isTrue="{!v.tileLayout =='Standard'}">
+		                <ul class="slds-has-dividers_bottom-space">
+		                	<aura:iteration items="{!v.latestContents}" var="obj">
+		                        <li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                    </aura:iteration>
+		                </ul>
+		                <!-- Latest showcase view-->
+		                <aura:set attribute="else">
+		            	</aura:set>
+		            </aura:if>
+		        </lightning:tab>
+		        <!--Popular tab Pages-->
+		        <lightning:tab label="Popular" title="Popular">
+		            <!--Standard view pages-->
+		            <aura:if isTrue="{!v.tileLayout =='Standard'}">
+		            	<ul class="slds-has-dividers_bottom-space">
+		                	<aura:iteration items="{!v.popularContents}" var="obj">
+		                		<li class="slds-item">
+		                    		<div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                     	</li>
+		            		</aura:iteration>
+		            	</ul>
+		                <!--Its show case popular view Pages-->
+		                <aura:set attribute="else">
+		            		Its show case view.
+		            	</aura:set>
+		        	</aura:if>
+		        </lightning:tab>
+			</aura:if>
+			<!-- Pages View ends -->
+			<!-- Events view start-->
+			<aura:if isTrue="{!v.contentType =='Event'}">
+				 <lightning:tab label="Upcoming" title="Upcoming">
+				 	<ul class="slds-has-dividers_bottom-space">
+	                	<aura:iteration items="{!v.latestContents}" var="obj">
+	                        <li class="slds-item">
+	                            <div class="slds-grid slds-grid_vertical-align-center">
+                                    <div class="slds-media__figure square_box_container">
+                                        <div class="square-box">
+                                        	<div  class="slds-box slds-box_xx-small theme-bg">
+                                        		<ui:outputDate value="{!obj.createdAt}" format="MMM"/>
+                                        	</div>
+                                        	<div class="slds-box slds-box_x-small CalendarDay-date">
+                                        		<ui:outputDate value="{!obj.createdAt}" format="D"/>
+                                        	</div>
+										</div>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+                                        <div class="slds-tile__detail slds-text-body_small">
+                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+                                                <li class="slds-item slds-text-color_weak">
+                                                	<lightning:icon iconName="utility:event" size="x-small"/>&nbsp;
+                                                	<ui:outputDate value="{!obj.createdAt}" format="MMM dd"/>&nbsp;-&nbsp; 
+                                                    <ui:outputDate value="{!obj.endsAt}" format="MMM dd, yyyy"/>
+                                                </li>                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+	                    	</li>
+	                    </aura:iteration>
+	             	</ul>
+				 </lightning:tab>
+				 <lightning:tab label="Popular" title="Popular">
+				 	<ul class="slds-has-dividers_bottom-space">
+		                	<aura:iteration items="{!v.popularContents}" var="obj">
+		                		<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure square_box_container">
+	                                        <div class="square-box">
+	                                        	<div  class="slds-box slds-box_xx-small theme-bg">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="MMM"/>
+	                                        	</div>
+	                                        	<div class="slds-box slds-box_x-small CalendarDay-date">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="D"/>
+	                                        	</div>
+											</div>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">
+	                                                	<lightning:icon iconName="utility:event" size="x-small"/>&nbsp;
+	                                                	<ui:outputDate value="{!obj.createdAt}" format="MMM dd"/>&nbsp;-&nbsp; 
+	                                                    <ui:outputDate value="{!obj.endsAt}" format="MMM dd, yyyy"/>
+	                                                </li>    
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		            		</aura:iteration>
+		            	</ul>
+				 </lightning:tab>
+			</aura:if>
+			<!-- Event view end -->
+			<!-- BlogPost view start -->
+			<aura:if isTrue="{!v.contentType =='BlogPost'}">
+		        <!--Latest tab blogpost-->
+		        <lightning:tab label="Latest">
+		        	<ul class="slds-has-dividers_bottom-space">
+	                	<aura:iteration items="{!v.latestContents}" var="obj">
+	                        <li class="slds-item">
+	                            <div class="slds-grid slds-grid_vertical-align-center">
+                                    <div class="slds-media__figure">
+                                        <span class="slds-avatar content-title-image-icon">
+                                            <a href="{!obj.url}" title="{!obj.title}">
+                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+                                        <div class="slds-tile__detail slds-text-body_small">
+                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+                                                        {!obj.authoredBy.name}
+                                                    </a>
+                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+                                                </li>                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+	                    	</li>
+	                    </aura:iteration>
+	                </ul>
+		        </lightning:tab>
+		        <lightning:tab label="Popular">
+		        	<ul class="slds-has-dividers_bottom-space">
+	                	<aura:iteration items="{!v.popularContents}" var="obj">
+	                        <li class="slds-item">
+	                            <div class="slds-grid slds-grid_vertical-align-center">
+                                    <div class="slds-media__figure">
+                                        <span class="slds-avatar content-title-image-icon">
+                                            <a href="{!obj.url}" title="{!obj.title}">
+                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+                                        <div class="slds-tile__detail slds-text-body_small">
+                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+                                                        {!obj.authoredBy.name}
+                                                    </a>
+                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+                                                </li>                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+	                    	</li>
+	                    </aura:iteration>
+	                </ul>
+		        </lightning:tab>
+		     </aura:if>
+		     <!-- Blogpost view ends here -->
+			<!-- All content view Start-->
+			<aura:if isTrue="{!v.contentType =='All'}">
+				 <lightning:tab label="Latest" title="Latest">
+				 	<ul class="slds-has-dividers_bottom-space">
+		                <aura:iteration items="{!v.latestContents}" var="obj">
+		               		<!-- All content Latest events rendering starts -->
+		                	<aura:if isTrue="{!obj.type =='Event'}">
+		                		<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure square_box_container">
+	                                        <div class="square-box">
+	                                        	<div  class="slds-box slds-box_xx-small theme-bg">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="MMM"/>
+	                                        	</div>
+	                                        	<div class="slds-box slds-box_x-small CalendarDay-date">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="D"/>
+	                                        	</div>
+											</div>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">EVENT</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">
+	                                                	<lightning:icon iconName="utility:event" size="x-small"/>&nbsp;
+	                                                	<ui:outputDate value="{!obj.createdAt}" format="MMM dd"/>&nbsp;-&nbsp; 
+	                                                    <ui:outputDate value="{!obj.endsAt}" format="MMM dd, yyyy"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!--All content Latest events rendering ends -->
+		                     <!--All content Latest pages rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='Page'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">PAGE</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Latest pages rendering ends -->
+		                     <!--All content  Latest blogs rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='blog_post'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type"> BLOG POST</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+	                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+	                                                        {!obj.authoredBy.name}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Latest blogs rendering ends -->
+		                     <!-- All content Latest album rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='Album'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type ">ALBUM</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+	                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+	                                                        {!obj.authoredBy.name}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Latest album rendering ends -->
+		                </aura:iteration>
+		            </ul>
+				 </lightning:tab>
+				 <!-- All content popular view -->
+				 <lightning:tab label="Popular" title="Popular">
+				 	<ul class="slds-has-dividers_bottom-space">
+		                <aura:iteration items="{!v.popularContents}" var="obj">
+		                <!-- All content Popular Events rendering starts-->
+		                	<aura:if isTrue="{!obj.type =='Event'}">
+		                		<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure square_box_container">
+	                                        <div class="square-box">
+	                                        	<div  class="slds-box slds-box_xx-small theme-bg">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="MMM"/>
+	                                        	</div>
+	                                        	<div class="slds-box slds-box_x-small CalendarDay-date">
+	                                        		<ui:outputDate value="{!obj.createdAt}" format="D"/>
+	                                        	</div>
+											</div>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">EVENT</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">
+	                                                	<lightning:icon iconName="utility:event" size="x-small"/>&nbsp;
+	                                                	<ui:outputDate value="{!obj.createdAt}" format="MMM dd"/>&nbsp;-&nbsp; 
+	                                                    <ui:outputDate value="{!obj.endsAt}" format="MMM dd, yyyy"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!--All content  Popular Events rendering ends -->
+		                     <!-- All content Popular pages rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='Page'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">PAGE</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Popular pages rendering ends -->
+		                     <!-- All content Popular blogposts rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='blog_post'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">BLOG POST</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+	                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+	                                                        {!obj.authoredBy.name}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Popular blogposts rendering ends -->
+		                     <!-- All content Popular album rendering starts -->
+		                     <aura:if isTrue="{!obj.type =='Album'}">
+		                     	<li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                    	<p class="slds-text-color_weak All-content-content-type">ALBUM</p>
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">
+	                                        	{!obj.title}
+	                                        </a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">By&nbsp;
+	                                                    <a href="{!obj.authoredBy.url}" title="{!obj.authoredBy.name}">
+	                                                        {!obj.authoredBy.name}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                     </aura:if>
+		                     <!-- All content Popular album rendering ends -->
+		                </aura:iteration>
+		            </ul>
+				 </lightning:tab>
+			</aura:if>
+			<!-- All Content view ends -->
+			<!-- Album view start -->
+	    		<aura:if isTrue="{!v.contentType =='Album'}">
+		        	<!--Album Latest tab starts-->
+		        	<lightning:tab label="Latest">
+		        		 <ul class="slds-has-dividers_bottom-space">
+		                	<aura:iteration items="{!v.latestContents}" var="obj">
+		                        <li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                    </aura:iteration>
+		                </ul>
+		        	</lightning:tab>
+		        	<!--Album Latest tab ends-->
+		        	<!--Album popular tab starts-->
+		        	<lightning:tab label="Popular">
+		        		 <ul class="slds-has-dividers_bottom-space">
+		                	<aura:iteration items="{!v.popularContents}" var="obj">
+		                        <li class="slds-item">
+		                            <div class="slds-grid slds-grid_vertical-align-center">
+	                                    <div class="slds-media__figure">
+	                                        <span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+	                                            <a href="{!obj.url}" title="{!obj.title}">
+	                                                <img alt="{!obj.title}" src="{!obj.img}" title="{!obj.title}" />
+	                                            </a>
+	                                        </span>
+	                                    </div>
+	                                    <div class="slds-media__body">
+	                                        <a href="{!obj.url}" title="{!obj.title}" class="slds-text-title_bold slds-text-color_default">{!obj.title}</a>
+	                                        <div class="slds-tile__detail slds-text-body_small">
+	                                            <ul class="slds-list_horizontal slds-has-dividers_right">
+	                                                <li class="slds-item slds-text-color_weak">In&nbsp;
+	                                                    <a href="{!obj.site.url}" title="{!obj.site.title}">
+	                                                        {!obj.site.title}
+	                                                    </a>
+	                                                    &nbsp;on&nbsp;<ui:outputDate value="{!obj.createdAt}"/>
+	                                                </li>                                                
+	                                            </ul>
+	                                        </div>
+	                                    </div>
+	                                </div>
+		                    	</li>
+		                    </aura:iteration>
+		                </ul>
+		        	</lightning:tab>
+		        	<!--Album popular tab ends-->
+		        </aura:if>
+		    <!-- Album view ends here -->
+	    </lightning:tabset>
+	</div>
+</aura:component>

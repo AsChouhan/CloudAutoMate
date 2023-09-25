@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "La tua istanza di SharePoint non è attivata. Contatta il tuo gestore dell'app",
+    "apps.connection.google.not_a_gsuite_account": "Connessione non riuscita - Utilizzare un account GSuite",
+    "apps.connection.google.setup_domain_mismatch": "Connessione non riuscita - L'account utente non appartiene al dominio che è stato impostato dal gestore dell'app",
+    "apps.connection.google.user_account_mismatch": "Connessione non riuscita - Utilizzare lo stesso account per tutte le integrazioni di Google",
+    "apps.connection.google.invalid_integration_type": "Connessione non riuscita - Tipo di integrazione passata non valida",
+    "apps.connection.success": "Connessione a {{appName}} completata",
+    "apps.connection.google.domain_or_account_mismatch": "Connessione non riuscita - Il nome di dominio deve corrispondere alle integrazioni di Google esistenti",
+    "apps.connection.google.domain_mismatch": "Connessione non riuscita - L'integrazione di Google richiede la connessione del tuo account {{domainName}}",
+    "apps.connection.error_flash": "Impossibile connettersi a {{appName}}",
+    "apps.connection.batch_processing_try_later": "Impossibile eseguire l'azione, riprova più tardi",
+    "apps.connection.google.OAuthError": "Integrazione non riuscita. Riprova."
+}

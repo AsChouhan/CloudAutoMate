@@ -1,0 +1,135 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html"
+    docType="html-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false"
+    setup="false" controller="KnowledgeArticleDetailCtrl" action="{!handleRequest}">
+	 <apex:composition template="BaseTemplate">
+		<apex:define name="PageTitle"> 
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>
+		
+		<apex:define name="MainContent">
+			<div class="row">
+				<div class="column">
+					<div class="Page">
+						<header class="Page-header Page-header--noBorder">
+							<div class="Page-header-inner">
+								<h1 class="Page-heading type--h4 type--brand">
+									<a href="{!knowledgeHomeURL}">Knowledge</a>
+								</h1>
+							</div>
+						</header>						
+						<div class="article detail article-detail" data-like="ContentIdGoesHere">
+							<div class="row">
+								<div class="column">
+									<div class="container"> 
+										<header class="hero">
+											<div class="Hero-inner">
+												<div class="large-centered column Content-column large-8 column">
+													<header class="Hero"  style="min-height:0px;">
+														<div class="Hero-inner">
+															<div class="u-marg-b--small">
+																<h1 class="type--h1">{!knowledgeArticleObj.title}</h1>
+															</div>
+														</div>
+													</header>
+												</div>
+											</div>
+										</header>
+										<div class="row">
+											<div class="large-centered column Content-column large-8 column">
+												<div class="Content Content--knowledge fr-simpplr-theme">
+													<div class="fr-element">
+														<apex:outputText escape="false" value="{!knowledgeArticleObj.description}"/>
+													</div>
+												</div>
+												<aside data-reactroot="" class="block">
+													<h3>Author</h3>
+													<div class="ListItem-bodyText">
+														<div class="Meta">
+															<div class="Meta-thumb">
+																<div class="Emblem Emblem--round ">
+																	<a href="{!knowledgeArticleObj.owner.URL}">
+																		<apex:outputPanel rendered="{!knowledgeArticleObj.owner.profileImage != null}" layout="none">
+																			<img src="{!knowledgeArticleObj.owner.profileImage}" class="Emblem-element" role="presentation"/>
+																		</apex:outputPanel>
+																		<apex:outputPanel rendered="{!knowledgeArticleObj.owner.profileImage == null}" layout="none">
+																			<div class="Emblem-iconContainer">
+																				<i class="Icon Icon--user Icon--line" aria-label="" role="img">
+																					<svg viewBox="0 0 28 28">
+																						<path d="M13.79 4c-2.757 0-5 2.243-5 5s2.243 5 5 5 5-2.243 5-5-2.243-5-5-5m0 1a4 4 0 1 1 0 8 4 4 0 0 1 0-8M5.022 24.5l1.016-4.824A4.017 4.017 0 0 1 9.952 16.5h7.675a4.02 4.02 0 0 1 3.915 3.176l1.015 4.824h1.022l-1.06-5.03a5 5 0 0 0-4.892-3.97H9.952a5 5 0 0 0-4.893 3.97l-1.06 5.03h1.023z"></path>
+																					</svg>
+																				 </i>
+																			</div>
+																		</apex:outputPanel>
+																	</a>
+																</div>
+															</div>
+															<ul class="InlineList InlineList--noBottom">
+																<li class="InlineList-item">
+																	<span class="type--b3">By <a href="{!knowledgeArticleObj.owner.url}">{!knowledgeArticleObj.owner.name}</a></span>
+																</li>
+															</ul>
+															<span class="type--b3 type--tertiary">{!knowledgeArticleObj.createdDate}</span>
+														</div>
+													</div>
+												</aside>
+												<apex:outputPanel rendered="{!IF(AND(NOT(ISBLANK(knowledgeArticleObj.listOfVirtualTopics)), knowledgeArticleObj.listOfVirtualTopics.size>0), true, false)}" layout="none">
+													<aside class="block">
+														<h3>Categories</h3>
+														<div class="topics">
+															<ul  data-topic-list=" ">
+																<apex:repeat value="{!knowledgeArticleObj.listOfVirtualTopics}" var="topic">
+																	<li>
+																		<a href="{!topic.url}" class="topic">{!topic.name}</a>
+																	</li>
+																</apex:repeat>
+															</ul>
+														</div>
+													</aside>
+												</apex:outputPanel>
+												<apex:outputPanel rendered="{!IF(AND(NOT(ISBLANK(knowledgeArticleObj.listOfCustomFields)), knowledgeArticleObj.listOfCustomFields.size > 0), true, false )}" layout="none">
+													<apex:repeat value="{!knowledgeArticleObj.listOfCustomFields}" var="customField">
+														<aside class="block">
+															<h3>{!customField.label}</h3>
+															<div>{!customField.value}</div>
+														</aside>
+													</apex:repeat>
+												</apex:outputPanel>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+		
+		<apex:define name="PageControlButtons">
+			<div class="controls controls-buttons" data-mobile-controls=" ">
+				<div class="trail">
+					<a href="javascript:window.history.back();" class="backwards" title="Back" data-history-back=" ">
+						<span class="ss-standard">navigateleft</span>
+					</a>
+					<a href="javascript:window.location.reload(true);" class="reload" title="Reload">
+						<span class="ss-standard">refresh</span>
+					</a>
+					<a href="javascript:window.history.forward();" class="forwards" title="Forward">
+						<span class="ss-standard">navigateright</span>
+					</a>
+				</div>
+				<div class="context">
+					<div class="context-feed">
+						<a href="#feed-post-body" class="button add" data-modal-close=" ">
+							<span class="ss-standard">
+								<span>plus</span>
+							</span>
+							Post
+						</a>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+	</apex:composition>
+	<script type="text/javascript" src="{!resourcePath}Knowledge?v=8" ></script>
+</apex:page>

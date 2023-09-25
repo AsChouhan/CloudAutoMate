@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "De expertise kan niet worden toegevoegd. Deze expertise bestaat al ‘{{expertiseName}}’",
+    "expertise.create.permission.access_error": "U mag geen nieuwe expertise maken",
+    "expertise.delete.permission.access_error": "U mag geen expertise verwijderen"
+}

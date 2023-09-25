@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} ไม่ได้กำหนด \"{{fieldValue}}\" ไว้ในเซกเมนต์ใด ๆ - ผู้ใช้รายนี้จะถูกล็อกให้เข้าใช้งานไม่ได้จนกว่าจะมีการกำหนดค่าดังกล่าวไว้ในเซกเมนต์",
+    "my_settings.profile.birthday_partial_error_flash": "ต้องเลือกทั้งเดือนและวันเกิด",
+    "my_settings.profile.inactive_manager_error_flash": "ตั้งค่าผู้ใช้ที่ไม่ได้ใช้งานให้เป็นผู้จัดการไม่ได้",
+    "my_settings.profile.manager_recursion_error_flash": "ตั้งค่าพนักงานที่ขึ้นตรงกับคุณเป็นผู้จัดการไม่ได้",
+    "my_settings.profile.language_disabled_error_flash": "ตั้งค่าภาษาไม่ได้เนื่องจากมีการปิดใช้งานใน Salesforce - โปรดติดต่อผู้ดูแลระบบ"
+}

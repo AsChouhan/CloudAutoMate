@@ -1,0 +1,73 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="true" contentType="text/html"
+    docType="html-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false"
+    setup="false">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://static.simpplr.com/simpplr/css/swagger-ui.css" />
+    <link rel="icon" type="image/png" href="https://api2.simpplr.com/css/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://api2.simpplr.com/css/favicon-16x16.png" sizes="16x16" />
+    
+ 
+    <script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-standalone-preset.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-bundle.js"></script>
+<style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+      .topbar-wrapper img {
+          content: url(https://static.simpplr.com/email-assets/img/logo.png);
+          width: 120px;
+          height: 40px;
+      }
+      .topbar-wrapper span {
+          visibility: hidden;
+      }
+
+    </style>
+</head>
+<body>
+
+    <div id="swagger-ui"></div>
+
+    <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "{!$Resource.swagger}",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      })
+      // End Swagger UI call region
+
+      window.ui = ui
+    }
+  </script>
+  </body>
+</html>
+
+</apex:page>

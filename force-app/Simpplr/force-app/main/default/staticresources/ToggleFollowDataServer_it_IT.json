@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "Non puoi seguire altri argomenti perché hai raggiunto il limite",
+    "feed.create.tracking_disabled_error_flash": "Non è possibile eseguire questa azione - Il monitoraggio del feed è disattivato",
+    "manage_sites.site_limit_reached_error_flash": "Non puoi gestire o seguire altri siti perché hai raggiunto il limite di siti"
+}

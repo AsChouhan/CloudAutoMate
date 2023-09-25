@@ -1,0 +1,31 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html"
+    docType="html-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false"
+    setup="false" controller="KnowledgeCategoriesCtrl" action="{!handleRequest}">
+	 <apex:composition template="BaseTemplate">
+		<apex:define name="PageTitle">
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>
+		
+		<apex:define name="MainContent">
+			<div class="row">
+				<div class="column">
+					<div class="Page">
+						<header class="Page-header Page-header--noBorder">
+							<div class="Page-header-inner">
+								<h1 class="Page-heading type--h4 type--brand">
+									<a href="{!knowledgeHomeURL}">Knowledge</a>
+								</h1>
+							</div>
+						</header>
+						<div class="container">
+							<div data-listing="Knowledge" data-listing-default-params='{!defaultParamString}' data-listing-view-params='{"canSort":false}'>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+	</apex:composition>
+	<script type="text/javascript" src="{!resourcePath}Knowledge?v=8" ></script>
+</apex:page>

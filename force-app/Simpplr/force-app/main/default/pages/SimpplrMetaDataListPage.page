@@ -1,0 +1,3 @@
+<apex:page standardController="Simpplr_Metadata__c" recordsetvar="listView">
+<c:IDAccessOutSideSimpplr />
+</apex:page>

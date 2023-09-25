@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "It's not possible to add webhook URL - The URL should start with \"https://outlook.office.com/…\"",
+    "manage_app.setup.privileges.site_owner": "Only users with add site privileges can be site owner",
+    "manage_site.mandatory_subscription_remove": "Failed to remove {{name}} from site. This person is included in a mandatory subscription",
+    "manage_sites.duplicate_site_name_error_message": "An active or archived group with this name already exists or is being deleted. Choose a different name or try again in a few minutes.",
+    "manage_site.apps.reconnect_account": "You must reconnect to Slack in 'My settings'",
+    "manage_site.duplicate_error_flash": "A site already exists with this name - please change the name and try again",
+    "manage_site.unable_to_lock_row_error_message": "Δεν είναι δυνατή η εκτέλεση της ενέργειας, προσπαθήστε ξανά μετά από λίγη ώρα",
+    "manage_site.slack.blank_slack_channel": "Πρέπει να είστε μέλος αυτού του καναλιού Slack για να αναρτήσετε δραστηριότητα ροής ιστότοπου"
+}

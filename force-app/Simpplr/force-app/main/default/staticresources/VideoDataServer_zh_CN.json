@@ -1,0 +1,12 @@
+{
+    "files.system_folder.site_files": "站点文件",
+    "files.system_folder.files": "文件",
+    "files.system_folder.images": "图像",
+    "files.system_folder.content_files": "内容文件",
+    "files.system_folder.site_videos": "站点视频",
+    "files.system_folder.crm_files": "CRM 文件",
+    "files.system_folder.box_files": "Box 文件",
+    "files.system_folder.feed_files": "信息流文件",
+    "files.system_folder.albums": "相册",
+    "files.system_folder.videos": "视频"
+}

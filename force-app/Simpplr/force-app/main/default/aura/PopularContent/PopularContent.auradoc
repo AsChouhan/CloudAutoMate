@@ -1,0 +1,6 @@
+<aura:documentation>
+	<aura:description>Simpplr Popular Content</aura:description>
+	<aura:example name="ExampleName" ref="exampleComponentName" label="Label">
+		Simpplr Popular Content
+	</aura:example>
+</aura:documentation>

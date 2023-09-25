@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "เพิ่มความเชี่ยวชาญไม่สำเร็จ ความเชี่ยวชาญนี้มีข้อมูลอยู่แล้ว '{{expertiseName}}'",
+    "expertise.create.permission.access_error": "คุณไม่มีสิทธิ์สร้างความเชี่ยวชาญใหม่",
+    "expertise.delete.permission.access_error": "คุณไม่มีสิทธิ์ลบความเชี่ยวชาญ"
+}

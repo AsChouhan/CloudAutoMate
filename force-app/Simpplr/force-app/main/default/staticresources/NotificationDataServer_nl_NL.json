@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Er zijn geen codes beschikbaar voor uw locatie. Probeer het later opnieuw.",
+    "notification.branded_apps.user_not_found": "Gebruiker niet gevonden",
+    "notification.branded_apps.no_codes_error": "Er zijn geen codes beschikbaar die niet zijn gedownload. Probeer het later opnieuw.",
+    "notification.branded_apps.failed_to_send_to_all": "Er kunnen geen e-mails/sms'jes worden verzonden naar alle gebruikers. Upload meer codes voor gebruikers in {{countryList}}",
+    "notification.branded_apps.invalid_input": "Ongeldige invoer",
+    "notification.branded_apps.all_codes_used_error": "Alle codes zijn gebruikt. Probeer het later opnieuw.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Er kunnen geen e-mails worden verzonden. Upload nog {{codesNeeded}} codes en probeer het opnieuw"
+}

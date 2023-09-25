@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "迁移已完成，无法重新开始",
+    "post_install.analytics_already_exists_error_flash": "指定日期的分析数据已存在"
+}

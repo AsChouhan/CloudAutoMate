@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "无法包含已取消发布或删除的内容",
+    "newsletter_manage.date_time_future_error_flash": "无法选择过去的时间作为“发送日期/时间”"
+}

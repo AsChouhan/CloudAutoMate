@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Uw SharePoint-exemplaar is niet ingeschakeld. Neem contact op met uw app-beheerder",
+    "apps.connection.google.not_a_gsuite_account": "Verbinding mislukt - Gebruik een GSuite-account",
+    "apps.connection.google.setup_domain_mismatch": "Verbinding mislukt - Het gebruikersaccount behoort niet tot het domein dat door de app-beheerder is ingesteld",
+    "apps.connection.google.user_account_mismatch": "Verbinding mislukt - Gebruik voor alle Google-integraties hetzelfde account",
+    "apps.connection.google.invalid_integration_type": "Verbinding mislukt - Ongeldig integratietype gepasseerd",
+    "apps.connection.success": "Er is verbinding gemaakt met {{appName}}",
+    "apps.connection.google.domain_or_account_mismatch": "Verbinding mislukt - De domeinnaam moet overeenkomen met bestaande Google-integraties",
+    "apps.connection.google.domain_mismatch": "Connection failed - The Google integration requires you to connect your {{domainName}} account",
+    "apps.connection.error_flash": "Er kan geen verbinding worden gemaakt met {{appName}}",
+    "apps.connection.batch_processing_try_later": "De actie kan niet worden uitgevoerd; probeer het na een tijdje opnieuw",
+    "apps.connection.google.OAuthError": "Integratie is mislukt. Probeer het nog eens."
+}

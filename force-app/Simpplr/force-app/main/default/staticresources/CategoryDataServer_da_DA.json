@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Det er ikke muligt at slette sidekategorier, der indeholder sider",
+    "manage_page_categories.add.duplicate_error_flash": "Det er ikke muligt at tilføje dublerede sidekategorier",
+    "manage_page_categories.delete.uncategorized_error_flash": "Det er ikke muligt at redigere/slette sidekategorien \"ikke kategoriseret\"",
+    "manage_page_categories.edit.uncategorized_error_flash": "Det er ikke muligt at redigere/slette sidekategorien \"ikke kategoriseret\""
+}

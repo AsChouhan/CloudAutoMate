@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "Հնարավոր չէ ներառել չհրապարակված կամ ջնջված բովանդակություն",
+    "newsletter_manage.date_time_future_error_flash": "Հնարավոր չէ ընտրել ուղարկման ամսաթիվ/ժամանակ, որն անցյալում է"
+}

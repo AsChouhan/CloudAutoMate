@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "ページを含むページカテゴリーを削除することはできません",
+    "manage_page_categories.add.duplicate_error_flash": "重複するページカテゴリーを追加することはできません",
+    "manage_page_categories.delete.uncategorized_error_flash": "ページカテゴリー \"未分類\" は編集/削除できません",
+    "manage_page_categories.edit.uncategorized_error_flash": "ページカテゴリー \"未分類\" は編集/削除できません"
+}

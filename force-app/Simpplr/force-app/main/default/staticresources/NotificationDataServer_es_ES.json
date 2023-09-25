@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "No hay ningún código disponible para tu ubicación. Inténtalo de nuevo más tarde.",
+    "notification.branded_apps.user_not_found": "Usuario no encontrado",
+    "notification.branded_apps.no_codes_error": "No hay ningún código disponible para descargar. Inténtalo de nuevo más tarde.",
+    "notification.branded_apps.failed_to_send_to_all": "Error al enviar los e-mails/SMS a todos los usuarios. Sube más códigos para los usuarios de {{countryList}}",
+    "notification.branded_apps.invalid_input": "Entrada no válida",
+    "notification.branded_apps.all_codes_used_error": "Todos los códigos están utilizados. Inténtalo de nuevo más tarde.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Error al enviar los e-mails. Sube {{codesNeeded}} códigos más e inténtalo de nuevo"
+}

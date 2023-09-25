@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "お住まいの地域で利用可能なコードがありません。後でもう一度やり直してください。",
+    "notification.branded_apps.user_not_found": "ユーザーが見つかりません",
+    "notification.branded_apps.no_codes_error": "ダウンロードできるコードがありません。後でもう一度やり直してください。",
+    "notification.branded_apps.failed_to_send_to_all": "すべてのユーザーへのメール/SMS の送信に失敗しました。{{countryList}} のユーザー用にさらにコードをアップロードしてください。",
+    "notification.branded_apps.invalid_input": "無効な入力",
+    "notification.branded_apps.all_codes_used_error": "すべてのコードが使用中です。後でもう一度やり直してください。",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "メールの送信に失敗しました。さらに {{codesNeeded}} 個のコードをアップロードして、もう一度やり直してください。"
+}

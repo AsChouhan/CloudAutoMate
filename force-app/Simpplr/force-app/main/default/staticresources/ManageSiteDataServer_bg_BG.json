@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Невъзможно е добавянето на webhook URL. URL адресът трябва да започва с „https://outlook.office.com/…“",
+    "manage_app.setup.privileges.site_owner": "Само потребители с права за добавяне на сайтове могат да бъдат собственици на сайт",
+    "manage_site.mandatory_subscription_remove": "Неуспешно отстраняване на {{name}} от сайта. Лицето е включено в задължителен абонамент",
+    "manage_sites.duplicate_site_name_error_message": "Активна или архивирана група с това име вече съществува или е в процес на изтриване. Изберете друго име или опитайте пак след няколко минути.",
+    "manage_site.apps.reconnect_account": "Необходимо е да се свържете повторно с Slack в „Моите настройки“",
+    "manage_site.duplicate_error_flash": "Вече съществува сайт с това име. Променете името и опитайте пак",
+    "manage_site.unable_to_lock_row_error_message": "Действието не може да бъде изпълнено. Опитайте пак по-късно",
+    "manage_site.slack.blank_slack_channel": "Необходимо е да сте член на този канал в Slack, за да можете да публикувате активността в канал на сайт"
+}

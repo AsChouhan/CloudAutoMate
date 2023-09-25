@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Екземплярът ви във SharePoint не е активиран. Свържете се с мениджъра ви на приложения",
+    "apps.connection.google.not_a_gsuite_account": "Неуспешно свързване - Използвайте акаунт в GSuite",
+    "apps.connection.google.setup_domain_mismatch": "Неуспешна връзка. Потребителският акаунт не принадлежи на домейна, конфигуриран от мениджъра на приложението",
+    "apps.connection.google.user_account_mismatch": "Неуспешно свързване - Използвайте един и същи акаунт за всички интеграции с Google",
+    "apps.connection.google.invalid_integration_type": "Неуспешно свързване - Подаден е невалиден тип на интегриране",
+    "apps.connection.success": "Успешно свързване с приложението {{appName}}",
+    "apps.connection.google.domain_or_account_mismatch": "Неуспешна връзка. Името на домейна трябва да съответства на наличните интеграции с Google",
+    "apps.connection.google.domain_mismatch": "Неуспешно свързване - Интеграцията с Google изисква да свържете акаунта си за {{domainName}}",
+    "apps.connection.error_flash": "Неуспешно свързване с {{appName}}",
+    "apps.connection.batch_processing_try_later": "Действието не може да бъде изпълнено. Опитайте пак по-късно",
+    "apps.connection.google.OAuthError": "Интегрирането е неуспешно. Моля, опитайте отново."
+}

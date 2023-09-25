@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Der er ingen koder tilgængelige for din placering. Prøv igen senere.",
+    "notification.branded_apps.user_not_found": "Bruger ikke fundet",
+    "notification.branded_apps.no_codes_error": "Der er ingen koder tilgængelige for download. Prøv igen senere.",
+    "notification.branded_apps.failed_to_send_to_all": "E-mails/SMS kunne ikke sendes til alle brugere. Overfør flere koder til brugere i {{countryList}}",
+    "notification.branded_apps.invalid_input": "Ugyldigt input",
+    "notification.branded_apps.all_codes_used_error": "Alle koderne bruges. Prøv igen senere.",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Det lykkedes ikke at sende e-mails. Upload {{codesNeeded}} flere koder, og prøv igen"
+}

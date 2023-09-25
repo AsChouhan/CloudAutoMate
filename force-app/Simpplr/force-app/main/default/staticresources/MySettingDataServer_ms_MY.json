@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" tidak ditetapkan kepada mana-mana segmen - pengguna ini akan dikunci hingga segmen ditetapkan",
+    "my_settings.profile.birthday_partial_error_flash": "Anda mesti memilih bulan dan juga hari bagi hari lahir",
+    "my_settings.profile.inactive_manager_error_flash": "Pengguna tidak aktif tidak boleh ditetapkan sebagai pengurus",
+    "my_settings.profile.manager_recursion_error_flash": "Orang bawahan langsung anda tidak boleh ditetapkan sebagai pengurus anda",
+    "my_settings.profile.language_disabled_error_flash": "Tidak boleh menetapkan bahasa kerana dilumpuhkan dalam Salesforce - sila hubungi pentadbir"
+}

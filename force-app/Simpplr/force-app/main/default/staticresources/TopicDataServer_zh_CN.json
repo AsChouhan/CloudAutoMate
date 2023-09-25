@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "无法添加重复的主题",
+    "manage_topics.spacing_and_capitilization_error_flash": "无法编辑主题-仅允许字符间距和大写"
+}

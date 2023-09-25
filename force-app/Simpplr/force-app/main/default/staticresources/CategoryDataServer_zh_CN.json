@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "无法删除包含页面的页面类别",
+    "manage_page_categories.add.duplicate_error_flash": "无法添加重复的页面类别",
+    "manage_page_categories.delete.uncategorized_error_flash": "无法编辑/删除“未分类”页面类别",
+    "manage_page_categories.edit.uncategorized_error_flash": "无法编辑/删除“未分类”页面类别"
+}

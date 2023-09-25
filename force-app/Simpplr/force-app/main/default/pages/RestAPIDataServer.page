@@ -1,0 +1,1 @@
+<apex:page readOnly="true" applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="application/json" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false" controller="RestAPIDataServer" action="{!handleRequest}"><apex:outputText value="{!resultString}"></apex:outputText></apex:page>

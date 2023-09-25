@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "Det er ikke muligt at følge flere emner, da du har nået din grænse",
+    "feed.create.tracking_disabled_error_flash": "Det er ikke muligt at udføre denne handling – feedsporing er deaktiveret",
+    "manage_sites.site_limit_reached_error_flash": "Det er ikke muligt at administrere eller følge flere websteder, da du har nået din webstedsgrænse"
+}

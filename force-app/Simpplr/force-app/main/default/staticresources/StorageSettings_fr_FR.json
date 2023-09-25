@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Votre instance SharePoint n'est pas activée. Veuillez contacter votre gestionnaire d'application",
+    "apps.connection.google.not_a_gsuite_account": "Échec de la connexion - Veuillez utiliser un compte GSuite",
+    "apps.connection.google.setup_domain_mismatch": "Échec de la connexion - Le compte d’utilisateur n’appartient pas au domaine qui a été configuré par le gestionnaire d’applications",
+    "apps.connection.google.user_account_mismatch": "Échec de la connexion - Veuillez utiliser le même compte pour toutes les intégrations Google",
+    "apps.connection.google.invalid_integration_type": "Échec de la connexion - Type d’intégration invalide passé",
+    "apps.connection.success": "Connexion à {{appName}} réussie",
+    "apps.connection.google.domain_or_account_mismatch": "Échec de la connexion - Le nom de domaine doit correspondre aux intégrations Google existantes",
+    "apps.connection.google.domain_mismatch": "Échec de la connexion - L’intégration Google nécessite que vous connectiez votre compte {{domainName}}",
+    "apps.connection.error_flash": "Impossible de se connecter à {{appName}}",
+    "apps.connection.batch_processing_try_later": "Impossible d’effectuer l’action, veuillez réessayer après un certain temps",
+    "apps.connection.google.OAuthError": "L’intégration a échoué. S’ll vous plaît, réessaiez."
+}

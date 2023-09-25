@@ -1,0 +1,12 @@
+{
+    "files.system_folder.site_files": "ไฟล์ของไซต์",
+    "files.system_folder.files": "ไฟล์",
+    "files.system_folder.images": "ภาพ",
+    "files.system_folder.content_files": "ไฟล์เนื้อหา",
+    "files.system_folder.site_videos": "วิดีโอของไซต์",
+    "files.system_folder.crm_files": "ไฟล์ CRM",
+    "files.system_folder.box_files": "ไฟล์ของ Box",
+    "files.system_folder.feed_files": "ไฟล์ของฟีด",
+    "files.system_folder.albums": "อัลบั้ม",
+    "files.system_folder.videos": "วิดีโอ"
+}

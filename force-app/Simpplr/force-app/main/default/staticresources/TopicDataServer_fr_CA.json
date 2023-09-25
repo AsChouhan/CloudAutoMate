@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "Il est impossible d'ajouter des sujets en double",
+    "manage_topics.spacing_and_capitilization_error_flash": "Ne pouvait pas modifier le sujet - Seul l’espacement des caractères et la capitalisation autorisés"
+}

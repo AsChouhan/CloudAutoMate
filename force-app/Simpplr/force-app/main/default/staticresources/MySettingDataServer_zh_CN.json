@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}}“{{fieldValue}}”未分配给任何分支机构。此用户将被排除在外，直到其被分配给某个分支机构",
+    "my_settings.profile.birthday_partial_error_flash": "您必须同时选择生日月份和日期",
+    "my_settings.profile.inactive_manager_error_flash": "无法将非活跃用户设置为管理员",
+    "my_settings.profile.manager_recursion_error_flash": "无法将您的直接下属设置为您的管理员",
+    "my_settings.profile.language_disabled_error_flash": "由于在 Salesforce 中已禁用相关功能，无法设置语言。 请联系管理员"
+}

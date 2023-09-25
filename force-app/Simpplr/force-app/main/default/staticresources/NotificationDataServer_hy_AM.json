@@ -1,0 +1,9 @@
+{
+    "notification.branded_apps.no_codes_in_user_location": "Ձեր գտնվելու վայրի կոդերն անհասանելի են։ Խնդրում ենք փորձել կրկին ավելի ուշ։",
+    "notification.branded_apps.user_not_found": "Օգտատերը չի գտնվվել",
+    "notification.branded_apps.no_codes_error": "Ներբեռնման համար կոդեր չկան։ Խնդրում ենք փորձել կիկին ավելի ուշ։",
+    "notification.branded_apps.failed_to_send_to_all": "Չի հաջողվել ուղարկել էլ․նամակ/տեքստային հաղորդագրություն բոլոր օգտատերերին։ Վերբեռնեք ավելի շատ կոդեր {{countryList}}-ում թվարկված օգտատերերի համար",
+    "notification.branded_apps.invalid_input": "Անվավեր մուտք",
+    "notification.branded_apps.all_codes_used_error": "Բոլոր կոդերն օգտագործվում են։ Խնդրում ենք փորձել կրկին ավելի ուշ։",
+    "notification.branded_apps.failed_to_send_upload_more_codes": "Չհաջողվեց ուղարկել էլեկտրոնային նամակներ։ Ներբեռնեք {{codesNeeded}} լրացուցիչ կոդերը և կրկին փորձեք"
+}

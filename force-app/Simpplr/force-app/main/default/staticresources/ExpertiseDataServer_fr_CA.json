@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Échec de l'ajout de l'expertise. Cette expertise existe déjà « {{expertiseName}} »",
+    "expertise.create.permission.access_error": "Vous n’avez pas l’autorisation de créer une nouvelle expertise",
+    "expertise.delete.permission.access_error": "Vous n’avez pas l’autorisation de supprimer l'expertise"
+}

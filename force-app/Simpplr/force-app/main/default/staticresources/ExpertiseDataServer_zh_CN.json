@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "无法添加专业知识。此专业知识“{{expertiseName}}”已经存在",
+    "expertise.create.permission.access_error": "您没有创建新专业知识的权限",
+    "expertise.delete.permission.access_error": "您没有删除专业知识的权限"
+}

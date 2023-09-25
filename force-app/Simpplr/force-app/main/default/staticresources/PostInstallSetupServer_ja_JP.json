@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "移行はすでに完了しています。再度開始することはできません。",
+    "post_install.analytics_already_exists_error_flash": "指定された日付のアナリティクスデータがすでに存在します"
+}

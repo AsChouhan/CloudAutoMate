@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "Il est impossible d'inclure du contenu qui a été retiré de la publication ou supprimé",
+    "newsletter_manage.date_time_future_error_flash": "Il est impossible de sélectionner une date/heure d'envoi qui est dans le passé"
+}

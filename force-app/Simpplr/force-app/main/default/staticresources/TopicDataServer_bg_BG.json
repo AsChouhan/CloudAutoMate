@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "Невъзможно е добавянето на дублиращи се теми",
+    "manage_topics.spacing_and_capitilization_error_flash": "Темата не може да се редактира - Разрешени са само разстоянието между буквите и изписването с главни букви"
+}

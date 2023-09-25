@@ -1,0 +1,29 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html" docType="html-5.0" showChat="false" showHeader="false"
+	sidebar="false" standardStylesheets="false" setup="false" controller="AnalyticsCtrl" action="{!init}">
+	<apex:composition template="BaseTemplate">
+		
+		<apex:define name="PageTitle">
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>
+
+		<apex:define name="MainContent">
+		 <!--  access  = full | site --> 
+		 <div class="row">
+		 	<div class="column">
+		 		<div class="Page">
+					<div data-analytics='{"access": "{!accessLevel}", "siteId": "{!siteId}", "hiddenContentFilters":{!hiddenContentFilters}}'></div>		
+				</div>
+			</div>
+		</div>
+		</apex:define>
+
+		<apex:define name="BeforeTemplateScriptContent">
+
+		</apex:define>
+
+		<apex:define name="AfterTemplateScriptContent">
+
+		</apex:define>
+
+	</apex:composition>
+</apex:page>

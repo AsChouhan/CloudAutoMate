@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "由于您已达到限制，无法关注更多主题",
+    "feed.create.tracking_disabled_error_flash": "无法执行此操作，信息流跟踪功能已禁用",
+    "manage_sites.site_limit_reached_error_flash": "由于您的站点已达到限制，无法管理或关注更多站点"
+}

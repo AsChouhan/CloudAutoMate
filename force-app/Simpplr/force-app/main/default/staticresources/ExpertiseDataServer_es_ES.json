@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Error al añadir la experiencia. Esta experiencia ya existe \"{{expertiseName}}\"",
+    "expertise.create.permission.access_error": "No tienes el permiso necesario para crear una experiencia nueva",
+    "expertise.delete.permission.access_error": "No tienes el permiso necesario para eliminar una experiencia"
+}

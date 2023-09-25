@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "専門分野の追加に失敗しました。この専門分野はすでに存在します「{{expertiseName}}」",
+    "expertise.create.permission.access_error": "新しい専門分野を作成する権限がありません",
+    "expertise.delete.permission.access_error": "新しい専門分野を削除する権限がありません"
+}

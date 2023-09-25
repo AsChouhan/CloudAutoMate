@@ -1,0 +1,82 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html" docType="html-5.0" showChat="false" showHeader="false"
+    sidebar="false" standardStylesheets="false" setup="false" controller="ContentBodyController" action="{!init}">
+    <apex:outputText escape="false" value='{!"<!DOCTYPE html>"}' />
+    <html class="no-js">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+        <script type="text/javascript">
+            var baseURL = "{!salesforceBaseUrl}";
+            function updateHeight() {
+                try {
+                    webkit.messageHandlers.callbackHandler.postMessage({
+                        "CSSName": "DOMContentLoaded",
+                        "height": document.body.offsetHeight
+                    })
+                } catch (err) {
+                    console.log('The iOS native context does not exist yet ChangingHeight : ChangingHeight, height : ' + document.body.offsetHeight)
+                }
+                try {
+                    if (typeof Android != 'undefined') Android.postMobilePageLoadUpdate({
+                        "ChangingHeight": "ChangingHeight",
+                        "height": document.body.offsetHeight
+                    })
+                } catch (err) {
+                    console.log('The Android native context does not exist yet ChangingHeight : ChangingHeight, height : ' + document.body.offsetHeight)
+                }
+            }
+            var timer = setInterval(updateHeight, 100);
+            window.addEventListener('load', function(event) {
+                clearInterval(timer);
+                try {
+                    webkit.messageHandlers.callbackHandler.postMessage({
+                        "CSSName": "load",
+                        "height": document.body.offsetHeight
+                    })
+                } catch (err) {
+                    console.log('The iOS native context does not exist yet load : ' + document.body.offsetHeight)
+                }
+                try {
+                    if (typeof Android != 'undefined') Android.postMobilePageLoadUpdate({
+                        "CSSName": "load",
+                        "height": document.body.offsetHeight
+                    })
+                } catch (err) {
+                    console.log('The Android native context does not exist yet CSSName : ' + cssType + ' height : ' + document.body.offsetHeight)
+                }
+            });
+        </script>
+        <link rel="stylesheet" href="{!fontCSSURL}" type="text/css" />
+        <link rel="stylesheet" href="https://static.simpplr.com/simpplr/css/mobileContent.min.css" />
+        <link rel="stylesheet" href="{!brandingCSSURL}" type="text/css" data-branding-css=" " />
+    </head>
+    <body>
+        <div class="Content" id="content">
+            <apex:outputText value="{!contentBody}" escape="true" />
+        </div>
+        <script type="text/javascript" src="https://static.simpplr.com/simpplr/js/mobileContent.min.js"></script>
+        <script>
+            window.simpplrFormatContent(document.getElementById('content'), {
+                mentionsUrlMap: {
+                    people: '/profile/page?profileId=:peopleId:',
+                    sites: '/site?siteId=:siteId:',
+                    topics: '/topic/listing?topicId=:topicId:&term=:text:',
+                },
+                navigationCallback: function(json) {
+                    try {
+                        webkit.messageHandlers.internalLinkClickedCallBack.postMessage(json)
+                    } catch (err) {
+                        console.log('The iOS native context does not exist yet')
+                    }
+                    try {
+                        if (typeof Android != 'undefined') Android.internalLinkClickedCallBack(json)
+                    } catch (err) {
+                        console.log('The Android native context does not exist yet ChangingHeight : ChangingHeight, height : ' + document.body.offsetHeight)
+                    }
+                },
+            });
+    </script>
+    </body>
+    </html>
+</apex:page>

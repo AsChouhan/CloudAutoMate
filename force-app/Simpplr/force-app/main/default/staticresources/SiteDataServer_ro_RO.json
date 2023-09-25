@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "Un grup activ sau arhivat cu acest nume există deja sau este în curs de ștergere. Alegeți un alt nume sau încercați din nou peste câteva minute.",
+    "common.storage_full_error_flash": "Imposibil de efectuat acțiunea - spațiu de stocare plin",
+    "manage_sites.site_limit_reached_error_flash": "Nu este posibilă gestionarea sau urmărirea mai multor site-uri întrucât ați atins limita site-ului",
+    "manage_sites.duplicate_error_flash": "Există deja un site cu acest nume - schimbați numele și încercați din nou",
+    "manage_sites.unable_to_lock_row_error_message": "Imposibil de efectuat acțiunea, încercați din nou după ceva timp"
+}

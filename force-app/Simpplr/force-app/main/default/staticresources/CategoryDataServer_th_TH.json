@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "ลบหมวดหมู่เพจที่มีเว็บเพจอยู่ไม่ได้",
+    "manage_page_categories.add.duplicate_error_flash": "เพิ่มหมวดหมู่เพจซ้ำกันไม่ได้",
+    "manage_page_categories.delete.uncategorized_error_flash": "แก้ไข/ลบหมวดหมู่เพจที่ \"ไม่มีหมวดหมู่\" ไม่ได้",
+    "manage_page_categories.edit.uncategorized_error_flash": "แก้ไข/ลบหมวดหมู่เพจที่ \"ไม่มีหมวดหมู่\" ไม่ได้"
+}

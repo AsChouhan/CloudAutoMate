@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "Det er ikke muligt at medtage indhold, der er afpubliceret eller slettet",
+    "newsletter_manage.date_time_future_error_flash": "Det er ikke muligt at vælge afsendelsesdato/-klokkeslæt i fortiden"
+}

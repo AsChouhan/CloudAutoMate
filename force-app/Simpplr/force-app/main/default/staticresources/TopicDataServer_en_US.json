@@ -1,0 +1,4 @@
+{
+"manage_topics.duplicate_error_flash": "It's not possible to add duplicate topics",
+"manage_topics.spacing_and_capitilization_error_flash": "Could not edit Topic - Only character spacing and capitalization allowed"
+}

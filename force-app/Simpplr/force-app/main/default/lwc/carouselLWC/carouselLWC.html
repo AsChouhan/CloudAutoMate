@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <lightning-carousel if:true={carouselData}>
+            <template for:each={carouselData} for:item="obj">
+                <lightning-carousel-image key={obj.item.id}
+                src={obj.item.imgLandscape}
+	                href={obj.item.url}
+	                header={obj.item.title}
+	                description={obj.item.summary}>
+                </lightning-carousel-image>
+            </template>
+        </lightning-carousel>
+    </div>
+</template>

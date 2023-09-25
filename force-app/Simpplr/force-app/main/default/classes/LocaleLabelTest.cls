@@ -1,0 +1,688 @@
+@isTest
+private class LocaleLabelTest { 
+	static String s = '';
+
+	@testSetup static void setup() {
+
+		TestHelper.setupAppConfig();
+
+	}
+
+	@isTest static void test_RsvpDataServer() {
+
+		Test.startTest();
+		RsvpDataServer objName = new RsvpDataServer();
+		s = objName.STR_ERROR_RSVP_EVENT_FULL;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_CategoryDataServer() {
+
+		Test.startTest();
+		CategoryDataServer objName = new CategoryDataServer();
+		s = objName.STR_ERROR_DELETE_UNCATEGORIES;
+		s = objName.STR_ERROR_DELETE_NOT_EMPTY;
+		s = objName.STR_ERROR_EDIT_UNCATEGORIES;
+		s = objName.STR_ERROR_EDIT_DUPLICATE;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ToggleFollowDataServer() {
+
+		Test.startTest();
+		ToggleFollowDataServer objName = new ToggleFollowDataServer();
+		s = objName.STR_ERROR_SITE_LIMIT_ERROR;
+		s = objName.STR_ERROR_TOPIC_FEED_TRACKING_DISABLED;
+		s = objName.STR_ERROR_SITE_PER_USER_SUBSCRIPTION_EXCEEDED;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_FileDetailCtrl() {
+
+		Test.startTest();
+		PageReference pageRef = Page.FileDetail;
+		Test.setCurrentpage(pageRef);
+		FileDetailCtrl objName = new FileDetailCtrl();
+		s = objName.STR_LOADING;
+		s = objName.STR_UNLIKE;
+		s = objName.STR_LIKE;
+		s = objName.STR_FAVORITE;
+		s = objName.STR_UNFAVORITE;
+		s = objName.STR_BTN_SHARE_LBL;
+		s = objName.STR_LIKE_PLURAL;
+		s = objName.STR_OWNER;
+		s = objName.STR_TYPE;
+		s = objName.STR_SIZE;
+		s = objName.STR_FILE;
+		s = objName.STR_DOWNLOAD;
+		s = objName.STR_SITE_PLURAL;
+		s = objName.STR_EDITED;
+		s = objName.STR_VERSION;
+		s = objName.STR_VESRION_HISTORY;
+		s = objName.STR_ADD_NEW_VERSION;
+		s = objName.STR_DELETE_FILE;
+		s = objName.STR_BTN_EDIT_LBL;
+		s = objName.STR_DESCRIPTION;
+		s = objName.STR_MODIFIED_BY;
+		s = objName.STR_LOCATION;
+		s = objName.STR_REFRESH_LBL;
+		s = objName.STR_NO_PREVIEW;
+		s = objName.STR_CANNOT_SHOW;
+		s = objName.STR_CONNECT_PROVIDER_WARNING_MOBILE;
+		s = objName.STR_CONNECT_PROVIDER_WARNING_DESKTOP;
+		s = objName.STR_DOWNLOAD_AS_PDF;
+		s = objName.STR_PROVIDER_BOX;
+		s = objName.STR_PROVIDER_GOOGLE_DRIVE;
+		s = objName.STR_PROVIDER_ONEDRIVE;
+		s = objName.STR_PROVIDER_SHAREPOINT;
+		s = objName.STR_PROVIDER_DROPBOX;
+		s = objName.STR_VIEW_ON_PROVIDER;
+		s = objName.STR_FAVORITE_FILE;
+		s = objName.STR_SHARE_THIS_FILE;
+		s = objName.STR_LIKE_THIS_FILE;
+		s = objName.STR_UNLIKE_THIS_FILE;
+		s = objName.STR_FAVORITE_THIS_FILE;
+		s = objName.STR_UNFAVORITE_THIS_FILE;
+		s = objName.STR_BTN_OPEN_IN_SHAREPOINT;
+		s = objName.STR_DONT_HAVE_FILE_ACCESS_MSG;
+		s = objName.STR_FILE_DONT_EXIST_MSG;
+		s = objName.STR_UNABLE_TO_DISPLAY_FILE_MSG;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ProfileAddBlogPostDataServer() {
+
+		Test.startTest();
+		ProfileAddBlogPostDataServer objName = new ProfileAddBlogPostDataServer();
+		s = objName.STR_ERROR_ONLY_INFLUENCERS_CREATE_BLOG;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_StorageSettingsCtrl() {
+
+		Test.startTest();
+		PageReference pageRef = Page.StorageSettings;
+		Test.setCurrentpage(pageRef);
+		StorageSettingsCtrl objName = new StorageSettingsCtrl();
+		s = objName.STR_APPS_CONNECTION_SUCCESS_LABEL;
+		s = objName.STR_APPS_CONNECTION_ERROR_LABEL;
+		s = objName.STR_SHAREPOINT_CONNECTION_ERROR;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ExpertiseDataServer() {
+
+		Test.startTest();
+		ExpertiseDataServer objName = new ExpertiseDataServer();
+		s = objName.STR_ERROR_DUPLICATE_EXPERTISE;
+		s = objName.STR_ERROR_CREATE_EXPERTISE_PERMISSION;
+		s = objName.STR_ERROR_DELETE_EXPERTISE_PERMISSION;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_MySettingDataServer() {
+
+		Test.startTest();
+		MySettingDataServer objName = new MySettingDataServer();
+		s = objName.STR_ERROR_PROFILE_BIRTHDAY_PARTIAL;
+		s = objName.STR_ERROR_PROFILE_INACTIVE_MANAGER;
+		s = objName.STR_ERROR_PROFILE_MANAGER_RECURSION;
+		s = objName.STR_ERROR_PROFILE_SEGMENT_BLANK;
+		s = objName.STR_ERROR_LANGUAGE_NOT_ENABLED;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_TopicDataServer() {
+
+		Test.startTest();
+		TopicDataServer objName = new TopicDataServer();
+		s = objName.STR_ERROR_DUPLICATE_FLASH;
+		s = objName.STR_ERROR_TOPIC_SPACING_N_CAPITALIZATION_ALLOWED_FLASH;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_SiteDataServer() {
+
+		Test.startTest();
+		SiteDataServer objName = new SiteDataServer();
+		s = objName.STR_ERROR_STORAGE_FULL;
+		s = objName.STR_ERROR_MANAGE_SITE_DUPLICATE;
+		s = objName.STR_ERROR_SITE_PER_USER_LIMIT_EXCEEDED;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ManageSiteDataServer() {
+
+		Test.startTest();
+		ManageSiteDataServer objName = new ManageSiteDataServer();
+		s = objName.STR_ERROR_DUPLICATE_FLASH;
+		s = objName.STR_ERROR_WEBHOOK;
+		s = objName.STR_ERROR_PRIVILEGE_SITE_OWNER;
+		s = objName.STR_SLACK_RECONNECT_ACCOUNT;
+		s = objName.STR_ERROR_MANDATORY_USER_REMOVE;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_PostInstallSetupServer() {
+
+		Test.startTest();
+		PostInstallSetupServer objName = new PostInstallSetupServer();
+		s = objName.STR_ERROR_MIGRATION_ALREADY_COMPLETE;
+		s = objName.STR_ERROR_ANALYTICS_ALREADY_EXISTS;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_SlackSettingsCtrl() {
+
+		Test.startTest();
+		PageReference pageRef = Page.SlackSettings;
+		Test.setCurrentpage(pageRef);
+		SlackSettingsCtrl objName = new SlackSettingsCtrl();
+		s = objName.STR_APPS_CONNECTION_SUCCESS_LABEL;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_CarouselDataServer() {
+
+		Test.startTest();
+		CarouselDataServer objName = new CarouselDataServer();
+		s = objName.STR_ERROR_DUPLICATE_FLASH;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ReportsCtrl() {
+
+		Test.startTest();
+		PageReference pageRef = Page.Reports;
+		Test.setCurrentpage(pageRef);
+		ReportsCtrl objName = new ReportsCtrl();
+		s = objName.STR_ACTIVE;
+		s = objName.STR_ADOPTION;
+		s = objName.STR_ALBUMS;
+		s = objName.STR_BLOG_POSTS;
+		s = objName.STR_CITY;
+		s = objName.STR_COMPANY_NAME;
+		s = objName.STR_COUNT;
+		s = objName.STR_COUNTRY;
+		s = objName.STR_CATEGORY;
+		s = objName.STR_DATE;
+		s = objName.STR_DEPARTMENT;
+		s = objName.STR_DIVISION;
+		s = objName.STR_EMAIL;
+		s = objName.STR_TITLE;
+		s = objName.STR_EVENTS;
+		s = objName.STR_FAVORITES;
+		s = objName.STR_FILTERED_TO;
+		s = objName.STR_HEADER_CREATED_ON;
+		s = objName.STR_HEADER_FROM;
+		s = objName.STR_HEADER_TO;
+		s = objName.STR_HYBRID_APP;
+		s = objName.STR_INACTIVE;
+		s = objName.STR_LIKES;
+		s = objName.STR_LOGINS;
+		s = objName.STR_MANAGERS;
+		s = objName.STR_MEMBERS;
+		s = objName.STR_FOLLOWERS;
+		s = objName.STR_MOBILE_BROWSERS;
+		s = objName.STR_MONTH;
+		s = objName.STR_NAME;
+		s = objName.STR_POSTS;
+		s = objName.STR_FEED_POSTS_CONTENT_COMMENTS;
+		s = objName.STR_PAGES;
+		s = objName.STR_WEBPAGE_CATEGORY;
+		s = objName.STR_TOTAL_PEOPLE;
+		s = objName.STR_PERCENTAGE_OF_TOTAL_VIEWS;
+		s = objName.STR_PERSON;
+		s = objName.STR_REPLIES;
+		s = objName.STR_SEGMENT;
+		s = objName.STR_SHARES;
+		s = objName.STR_STATE;
+		s = objName.STR_STATUS;
+		s = objName.STR_TIME;
+		s = objName.STR_TOTAL;
+		s = objName.STR_TOTAL_POPULARITY;
+		s = objName.STR_TOTAL_TYPE;
+		s = objName.STR_TOTAL_VIEWS;
+		s = objName.STR_TYPE;
+		s = objName.STR_USER_NAME;
+		s = objName.STR_WEB_BROWSER;
+		s = objName.STR_ANALYTICS_ADOPTION;
+		s = objName.STR_ANALYTICS_ADOPTION_CONTRIBUTORS;
+		s = objName.STR_ANALYTICS_ADOPTION_DATE_LAST_LOGIN;
+		s = objName.STR_ANALYTICS_ADOPTION_NO_LOGIN;
+		s = objName.STR_ANALYTICS_ADOPTION_NUMBER_LOGINS_PERIODS;
+		s = objName.STR_ANALYTICS_ADOPTION_OBSERVERS;
+		s = objName.STR_ANALYTICS_ADOPTION_ONLY_ACTIVE_USERS;
+		s = objName.STR_ANALYTICS_ADOPTION_PAGE_VIEWS_PERIOD;
+		s = objName.STR_ANALYTICS_ADOPTION_PARTICIPANTS;
+		s = objName.STR_ANALYTICS_AVG_VIEWS_PER_USER;
+		s = objName.STR_ANALYTICS_CONTENT_AUTHOR;
+		s = objName.STR_ANALYTICS_CONTENT_TITLE;
+		s = objName.STR_ANALYTICS_CONTENT_TYPE;
+		s = objName.STR_ANALYTICS_CONTENT_PUBLISHED_DATE;
+		s = objName.STR_ANALYTICS_CONTENT_SITE;
+		s = objName.STR_ANALYTICS_CONTENT_URL;
+		s = objName.STR_ANALYTICS_CONTENT_DEPT_NAME;
+		s = objName.STR_ANALYTICS_CONTENT_FIRST_VIEWED;
+		s = objName.STR_ANALYTICS_CONTENT_JOB_TITLE;
+		s = objName.STR_ANALYTICS_CONTENT_LAST_VIEWED;
+		s = objName.STR_ANALYTICS_CONTENT_LOCATION;
+		s = objName.STR_ANALYTICS_CONTENT_PHONE;
+		s = objName.STR_ANALYTICS_CONTENT_TOTAL_VIEWS;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_ALBUM_COUNT;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_ALBUM_COUNT_PLURAL;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_BLOGPOST_COUNT;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_BLOGPOST_COUNT_PLURAL;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_EVENT_COUNT;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_EVENT_COUNT_PLURAL;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_PAGE_COUNT;
+		s = objName.STR_ANALYTICS_ENGAGEMENT_CONTENT_PAGE_COUNT_PLURAL;
+		s = objName.STR_ANALYTICS_OFFICE_LOCATION;
+		s = objName.STR_ANALYTICS_PEOPLE_CONTENT_PUBLISHED;
+		s = objName.STR_ANALYTICS_PEOPLE_FAV_RECIEVED;
+		s = objName.STR_ANALYTICS_PEOPLE_FEED_POSTS;
+		s = objName.STR_ANALYTICS_PEOPLE_LIKES_MADE;
+		s = objName.STR_ANALYTICS_PEOPLE_LIKES_RECIEVED;
+		s = objName.STR_ANALYTICS_PEOPLE_PROFILE_VIEWS;
+		s = objName.STR_ANALYTICS_PEOPLE_REPLIES;
+		s = objName.STR_ANALYTICS_PEOPLE_OTHER_USERS;
+		s = objName.STR_ANALYTICS_PEOPLE_SHARES_RECIEVED;
+		s = objName.STR_ANALYTICS_SEARCH_CLICK_THROUGH_SINGULAR;
+		s = objName.STR_ANALYTICS_SEARCH_CLICK_THROUGH_PLURAL;
+		s = objName.STR_ANALYTICS_SEARCH_TERM;
+		s = objName.STR_ANALYTICS_SEARCH_SEARCHES_MADE;
+		s = objName.STR_ANALYTICS_SITE_PERCENT_VIEWS_BROWSER;
+		s = objName.STR_ANALYTICS_SITE_CONTENT_PERCENT_VIEWS_MOBILE_APP;
+		s = objName.STR_ANALYTICS_SITE_CONTENT_PERCENT_VIEWS_MOBILE_BROWSER;
+		s = objName.STR_ANALYTICS_SITE_DASHBOARD_PERCENT_VIEWS_BROWSER;
+		s = objName.STR_ANALYTICS_SITE_DASHBOARD_PERCENT_VIEWS_MOBILE_APP;
+		s = objName.STR_ANALYTICS_SITE_DASHBOARD_PERCENT_VIEWS_MOBILE_BROWSER;
+		s = objName.STR_ANALYTICS_SITE_TOTAL_CONTENT_VIEWS;
+		s = objName.STR_ANALYTICS_SITE_TOTAL_DASHBOARD_VIEWS;
+		s = objName.STR_ANALYTICS_SITE_FOR_SITE;
+		s = objName.STR_ANALYTICS_SITE_POPULARITY_SCORE;
+		s = objName.STR_ANALYTICS_SITE_NAME;
+		s = objName.STR_ANALYTICS_SITE_SITE_VIEWS;
+		s = objName.STR_ANALYTICS_SITE_VIEWS;
+		s = objName.STR_ANALYTICS_USERS_LOGGED_IN;
+		s = objName.STR_ANALYTICS_VIEWED_CONTENT;
+		s = objName.STR_CAMPAIGN_HISTORY_FULL_NAME;
+		s = objName.STR_CAMPAIGN_HISTORY_RESHARES;
+		s = objName.STR_CAMPAIGN_HISTORY_SOCIAL_NTWRK_SHARES;
+		s = objName.STR_CAMPAIGN_HISTORY_TIME_SHARED;
+		s = objName.STR_EVENT;
+		s = objName.STR_EVENT_RSVP;
+		s = objName.STR_EVENT_RSVP_NOTE;
+		s = objName.STR_CONTENT_TYPE_BLOG_POST;
+		s = objName.STR_CONTENT_TYPE_EVENT;
+		s = objName.STR_CONTENT_TYPE_PAGE;
+		s = objName.STR_CONTENT_TYPE_ALBUM;
+		s = objName.STR_ANALYTICS_LAST_VALIDATED;
+		s = objName.STR_ANALYTICS_VALIDATION_EXPIRED;
+		s = objName.STR_ANALYTICS_VALIDATION_REQUIRED;
+		s = objName.STR_CONTENT_VIEWS;
+		s = objName.STR_UNIQUE_CONTENT_VIEWS;
+		s = objName.STR_CONTENT_LIKES;
+		s = objName.STR_CONTENT_COMMENTS;
+		s = objName.STR_CONTENT_REPLIES;
+		s = objName.STR_CONTENT_SHARES;
+		s = objName.STR_CONTENT_FAVOURITES;
+		s = objName.STR_FILE_NAME_ADOPTION_DATA;
+		s = objName.STR_FILE_NAME_ADOPTION_LOGINS;
+		s = objName.STR_FILE_NAME_ADOPTION_OVERVIEW;
+		s = objName.STR_FILE_NAME_ADOPTION_PAGE_VIEWS;
+		s = objName.STR_FILE_NAME_ADOPTION_TREND;
+		s = objName.STR_FILE_NAME_APP_NAME_MUST_READS;
+		s = objName.STR_FILE_NAME_CONTENT_PUBLSHD;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS_BY_TOP_DEPT;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS_BY_TOP_LOCATIONS;
+		s = objName.STR_FILE_NAME_ENGAGEMENT;
+		s = objName.STR_FILE_NAME_ENGAGEMENT_CONTENT_FVRT;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_LIKES;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_POSTS;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_PBLSHD;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_REPLIES;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_SHARES;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_TYPES;
+		s = objName.STR_FILE_NAME_ENGMNT_CONTENT_VIEWS;
+		s = objName.STR_FILE_NAME_ENGMNT_FEED_LIKES;
+		s = objName.STR_FILE_NAME_ENGMNT_FEED_POSTS;
+		s = objName.STR_FILE_NAME_ENGMNT_FEED_REPLIES;
+		s = objName.STR_FILE_NAME_ENGMNT_FEED_SHARES;
+		s = objName.STR_FILE_NAME_FVRT_RCVD;
+		s = objName.STR_FILE_NAME_FEED_POSTS;
+		s = objName.STR_FILE_NAME_LEAST_SEARCHES_PRFRMD;
+		s = objName.STR_FILE_NAME_LEAST_VIEWED_CONTENT;
+		s = objName.STR_FILE_NAME_LIKES_MADE;
+		s = objName.STR_FILE_NAME_LIKES_RCVD;
+		s = objName.STR_FILE_NAME_MONTHLY_REPORT;
+		s = objName.STR_FILE_NAME_MOST_SEARCHES_PRFRMD;
+		s = objName.STR_FILE_NAME_MOST_VIEWED;
+		s = objName.STR_FILE_NAME_ORDER_CONTENT_PBLSHD;
+		s = objName.STR_FILE_NAME_ORDER_CONTENT_VIEWS_BY;
+		s = objName.STR_FILE_NAME_ORDER_CURRENTLY_PBLSHD;
+		s = objName.STR_FILE_NAME_ORDER_ENGAGED_BY;
+		s = objName.STR_FILE_NAME_ORDER_LOGINS;
+		s = objName.STR_FILE_NAME_ORDER_PAGE_VIEWS;
+		s = objName.STR_FILE_NAME_ORDER_POPULAR_CONTENT;
+		s = objName.STR_FILE_NAME_ORDER_POPULAR_CONTENTS;
+		s = objName.STR_FILE_NAME_ORDER_POPULAR_VIDEOS;
+		s = objName.STR_FILE_NAME_VIDEOS;
+		s = objName.STR_FILE_NAME_ORDER_GOVERNANCE_LIST;
+		s = objName.STR_FILE_NAME_ORDER_POPULAR_SITES;
+		s = objName.STR_FILE_NAME_ORDER_VIEWED_CONTENT;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_FVRTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_POSTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_REPLIES;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_SHARES;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_UNUSEFUL;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_USEFUL;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_VIEWS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CONTENT_FAV;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_CONTENT_PUBLISHED;
+		s = objName.STR_FILE_NAME_PERFORMANCE_FAV_MADE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_FAV_RECIEVED;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_FOLLOWERS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_FOLLOWING;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_LIKES_MADE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_LIKES_RECEIVED;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_MENTIONS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_POSTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_PROFILE_VIEW;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_REPLIES_MADE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_REPLIES_RCVD;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_SHARES_MADE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_PPL_SHARES_RECIEVED;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SEARCH_NO_RESULTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SEARCH_TERMS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_CONTENT_PUBLISHED;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_LIKES;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_MEMBERS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_POSTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_REPLIES;
+		s = objName.STR_FILE_NAME_PERFORMANCE_SITES_VIEWS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_TOPICS_ENDORSEMENTS;
+		s = objName.STR_FILE_NAME_PERFORMANCE_TOPICS_EXPERTISE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_TOPICS_VIEWS;
+		s = objName.STR_FILE_NAME_PROFILE_VIEWS;
+		s = objName.STR_FILE_NAME_REPLIES;
+		s = objName.STR_FILE_NAME_REPLIES_FROM_OTHER_USERS;
+		s = objName.STR_FILE_NAME_ATTENDEES_RSVP_YES;
+		s = objName.STR_FILE_NAME_PEOPLE_EXPERTISE;
+		s = objName.STR_FILE_NAME_SEARCHES;
+		s = objName.STR_FILE_NAME_SGMNT_MEMBERS;
+		s = objName.STR_FILE_NAME_SHARES_RCVD;
+		s = objName.STR_FILE_NAME_SOCIAL_CMPGN_HSTRY;
+		s = objName.STR_FILE_NAME_SUBSCRIPTION_MEMBERS;
+		s = objName.STR_FILE_NAME_AUDIENCE_MEMBERS;
+		s = objName.STR_FILE_NAME_TOP_CLICK_THROUGH_TERMS;
+		s = objName.STR_FILE_NAME_TOP_CLCK_THROUGH_TYPES;
+		s = objName.STR_FILE_NAME_TOP_SEARCH_TERMS;
+		s = objName.STR_FILE_NAME_TOP_SEARCH_TERMS_NO_RESULTS;
+		s = objName.STR_FILE_NAME_UNASSIGNED_SGMNT_USERS;
+		s = objName.STR_FILE_NAME_UNASSIGNED_USERS;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS_BY_TYPE;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS_OVER_TIME;
+		s = objName.STR_FILE_NAME_KNOWLEDGE_PAGE;
+		s = objName.STR_FILE_NAME_CONTENT_REFERRAL_SOURCE;
+		s = objName.STR_RPRT_HDR_ATTENDEES_RSVP_YES;
+		s = objName.STR_RPRT_HDR_CONTENT_REFERRAL_SOURCE;
+		s = objName.STR_RPRT_HDR_KNOWLEDGE_PAGE;
+		s = objName.STR_RPRT_HDR_CONTENT_VIEWS_OVER_TIME;
+		s = objName.STR_RPRT_HDR_ADOPTION_DATA;
+		s = objName.STR_RPRT_HDR_ADOPTION_LOGINS;
+		s = objName.STR_RPRT_HDR_ADOPTION_OVERVIEW;
+		s = objName.STR_RPRT_HDR_ADOPTION_PAGE_VIEWS;
+		s = objName.STR_RPRT_HDR_ADOPTION_TREND;
+		s = objName.STR_RPRT_HDR_CONTENT_PUBLISHED;
+		s = objName.STR_RPRT_HDR_CONTENT_VIEWS;
+		s = objName.STR_RPRT_HDR_CONTENT_VIEWS_BY_TOP_DEPT;
+		s = objName.STR_RPRT_HDR_CONTENT_VIEWS_BY_TOP_LOCATION;
+		s = objName.STR_RPRT_HDR_ENGAGEMENT;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_FVRTS;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_LIKES;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_POSTS;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_PBLSHD;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_REPLIES;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_SHARES;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_TYPES;
+		s = objName.STR_RPRT_HDR_ENGMNT_CONTENT_VIEWS;
+		s = objName.STR_RPRT_HDR_ENGMNT_FEED_LIKES;
+		s = objName.STR_RPRT_HDR_ENGMNT_FEED_POSTS;
+		s = objName.STR_RPRT_HDR_ENGMNT_FEED_REPLIES;
+		s = objName.STR_RPRT_HDR_ENGMNT_FEED_SHARES;
+		s = objName.STR_RPRT_HDR_FVRTS_RCVD;
+		s = objName.STR_RPRT_HDR_FEED_POSTS;
+		s = objName.STR_RPRT_HDR_LEAST_SEARCHES_PRFRMD;
+		s = objName.STR_RPRT_HDR_LEAST_VIEWED_CONTENT;
+		s = objName.STR_RPRT_HDR_LIKES_MADE;
+		s = objName.STR_RPRT_HDR_LIKES_RCVD;
+		s = objName.STR_RPRT_HDR_MONTHLY_RPRT;
+		s = objName.STR_RPRT_HDR_MOST_SEARCHES_PRFRMD;
+		s = objName.STR_RPRT_HDR_MOST_VIEWED_CONTENT;
+		s = objName.STR_RPRT_HDR_MUST_READS;
+		s = objName.STR_RPRT_HDR_ORDER_CONTENT_PUBLISHED;
+		s = objName.STR_RPRT_HDR_MOST_CONTENT_VIEWS_BY;
+		s = objName.STR_RPRT_HDR_LEAST_CONTENT_VIEWS_BY;
+		s = objName.STR_RPRT_HDR_MOST_ENGAGED_BY;
+		s = objName.STR_RPRT_HDR_LEAST_ENGAGED_BY;
+		s = objName.STR_RPRT_HDR_MOST_LOGINS;
+		s = objName.STR_RPRT_HDR_LEAST_LOGINS;
+		s = objName.STR_RPRT_HDR_MOST_PAGE_VIEWS;
+		s = objName.STR_RPRT_HDR_LEAST_PAGE_VIEWS;
+		s = objName.STR_RPRT_HDR_MOST_POPULAR_CONTENT;
+		s = objName.STR_RPRT_HDR_LEAST_POPULAR_CONTENT;
+		s = objName.STR_RPRT_HDR_MOST_POPULAR_CONTENTS;
+		s = objName.STR_RPRT_HDR_LEAST_POPULAR_CONTENTS;
+		s = objName.STR_RPRT_HDR_ORDER_GOVERNANCE_LIST;
+		s = objName.STR_RPRT_HDR_MOST_POPULAR_SITES;
+		s = objName.STR_RPRT_HDR_LEAST_POPULAR_SITES;
+		s = objName.STR_RPRT_HDR_MOST_VIEWED_CNTNT;
+		s = objName.STR_RPRT_HDR_LEAST_VIEWED_CNTNT;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_FVRT;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_POSTS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_REPLIES;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_SHARES;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_UNUSEFUL;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_USEFUL;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_VIEWS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_CONTENT_PBLSHD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_FVRT_MADE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_FVRT_RCVD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_FOLLOWERS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_FOLLOWING;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_LIKES_MADE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPPL_LIKES_RCVD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_MENTIONS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_POSTS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_PRFL_VIEWS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_REPLIES_MADE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_REPLIES_RCVD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_SHARES_MADE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_PPL_SHARES_RCVD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SEARCH_NO_RESULT;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SEARCH;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_CNTNT_PBLSHD;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_LIKES;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_MEMBERS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_POSTS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_REPLIES;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_SITES_VIEWS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_TOPICS_ENDRSMNT;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_TOPICS_EXPERTISE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_TOPIC_FOLLOWERS;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_TOPIC_VIEWS;
+		s = objName.STR_RPRT_HDR_PROFILE_VIEWS;
+		s = objName.STR_RPRT_HDR_REPLIES;
+		s = objName.STR_RPRT_HDR_REPLIES_FRM_OTHER_USERS;
+		s = objName.STR_RPRT_HDR_SEARCHES;
+		s = objName.STR_RPRT_HDR_SGMNT_MEMBERS;
+		s = objName.STR_RPRT_HDR_SHARES_RCVD;
+		s = objName.STR_RPRT_HDR_SOCIAL_CAMPAIGN_HSTRY;
+		s = objName.STR_RPRT_HDR_SUBSCRIPTION_MEMBERS;
+		s = objName.STR_RPRT_HDR_AUDIENCE_MEMBERS;
+		s = objName.STR_RPRT_HDR_TOP_CLICK_THROUGH_TERMS;
+		s = objName.STR_RPRT_HDR_TOP_CLICK_THROUGH_TYPES;
+		s = objName.STR_RPRT_HDR_TOP_SEARCH_TERMS;
+		s = objName.STR_RPRT_HDR_TOP_SEARCH_TERMS_NO_RESULTS;
+		s = objName.STR_RPRT_HDR_UNASSIGNED_SGMNT_USERS;
+		s = objName.STR_RPRT_HDR_UNASSIGNED_USERS;
+		s = objName.STR_RPRT_HDR_PEOPLE_COMPLETENESS;
+		s = objName.STR_RPRT_HDR_CONTENT_VIEWS_BY_TYPE;
+		s = objName.STR_RPRT_HDR_PEOPLE_EXPERTISE;
+		s = objName.STR_MOST;
+		s = objName.STR_LEAST;
+		s = objName.STR_ROLE;
+		s = objName.STR_TOPIC_NAME;
+		s = objName.STR_RPRT_HDR_CURRENTLY_PBLSHD;
+		s = objName.STR_RPRT_HDR_SEARCH_LIST;
+		s = objName.STR_RPRT_HDR_SITE_VIEWS_FOR_SITE;
+		s = objName.STR_RPRT_HDR_APP_PAGE_VIEWS_FOR_TYPE;
+		s = objName.STR_RPRT_HDR_PERFORMANCE_CNTNT_LIKES;
+		s = objName.STR_RPRT_HDR_USERS_PBLSHD_MOST_CNTNT;
+		s = objName.STR_RPRT_HDR_USERS_MOST_FVRT;
+		s = objName.STR_RPRT_HDR_SITE_MOST_CNTNT_PBLSHD;
+		s = objName.STR_RPRT_HDR_SITE_LEAST_CNTNT_PBLSHD;
+		s = objName.STR_RPRT_HDR_MOST_SEARCHES_BY_RESULT_TYPE;
+		s = objName.STR_RPRT_HDR_LEAST_SEARCHES_BY_RESULT_TYPE;
+		s = objName.STR_FILE_NAME_CURRENTLY_PBLSHD;
+		s = objName.STR_FILE_NAME_SEARCH_LIST;
+		s = objName.STR_FILE_NAME_SITE_VIEWS_FOR_SITE;
+		s = objName.STR_FILE_NAME_APP_PAGE_VIEWS_FOR_TYPE;
+		s = objName.STR_FILE_NAME_PERFORMANCE_CNTNT_LIKES;
+		s = objName.STR_FILE_NAME_PERFORMANCE_TOPICS_FOLLOWERS;
+		s = objName.STR_FILE_NAME_CNTNT_VIEWS_FIELD_NAME;
+		s = objName.STR_FILE_NAME_PAGE_VIEWS;
+		s = objName.STR_FILE_NAME_LOGINS;
+		s = objName.STR_FILE_NAME_ENGAGED_BY;
+		s = objName.STR_FILE_NAME_PEOPLE_COMPLETENESS;
+		s = objName.STR_DASHBOARD;
+		s = objName.STR_CONTENT;
+		s = objName.STR_RPRT_HDR_PPL_MADE_MOST_POSTS;
+		s = objName.STR_RPRT_HDR_PPL_LIKED_MOST_CNTNT_POSTS_REPLIES;
+		s = objName.STR_RPRT_HDR_PPL_RCVD_MOST_LIKES_CNTNT_POSTS_REPLIES;
+		s = objName.STR_RPRT_HDR_PPL_MOST_VIEWED_PROFILES;
+		s = objName.STR_RPRT_HDR_PPL_REPLIED_MOST_FEEDS;
+		s = objName.STR_RPRT_HDR_PPL_MOST_REPLIES_ON_POSTS;
+		s = objName.STR_RPRT_HDR_PPL_CNTNT_POSTS_MOST_SHARED;
+		s = objName.STR_FILE_NAME_ADOPTION_ORDER_LOGINS_FIELDNAME;
+		s = objName.STR_FILE_NAME_CONTENT_VIEWS_ENGAGEMENT;
+		s = objName.STR_UNLISTED_SITE_NAME;
+		s = objName.STR_PRIVATE_SITE_CONTENT;
+		s = objName.STR_UNLISTED_SITE_CONTENT;
+		s = objName.STR_PROFILE_COMPLETENESS_PROFILE_IMAGE;
+		s = objName.STR_PROFILE_COMPLETENESS_PHONE_NUMBER;
+		s = objName.STR_PROFILE_COMPLETENESS_ABOUT_TEXT;
+		s = objName.STR_PROFILE_COMPLETENESS_BIRTHDAY;
+		s = objName.STR_CONTENT_VIEW_PAGE_VIEWS;
+		s = objName.STR_CONTENT_VIEW_EVENT_VIEWS;
+		s = objName.STR_CONTENT_VIEW_ALBUM_VIEWS;
+		s = objName.STR_CONTENT_VIEW_BLOG_VIEWS;
+		s = objName.STR_ANALYTICS_REFERRAL_REFERRAL_SOURCE;
+		s = objName.STR_ANALYTICS_REFERRAL_CONTENT_ITEMS;
+		s = objName.STR_ANALYTICS_REFERRAL_REFERRALS;
+		s = objName.STR_ANALYTICS_REFERRAL_REFERRALS_PER_ITEM;
+		s = objName.STR_ANALYTICS_VIDEO_VIDEO_TITLE;
+		s = objName.STR_ANALYTICS_VIDEO_UPLOADER;
+		s = objName.STR_ANALYTICS_VIDEO_UPLOADED_DATE;
+		s = objName.STR_ANALYTICS_VIDEO_VIEWS;
+		s = objName.STR_ANALYTICS_VIDEO_VIEWERS;
+		s = objName.STR_ANALYTICS_WATCH_TIME;
+		s = objName.STR_ANALYTICS_TOTAL_VIDEOS_PLAYED;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_SettingDataServer() {
+
+		Test.startTest();
+		SettingDataServer objName = new SettingDataServer();
+		s = objName.STR_FIELD_USED_WARN_SEGMENT;
+		s = objName.STR_FIELD_USED_WARN_AUDIENCE;
+		s = objName.STR_DIVISION;
+		s = objName.STR_DEPARTMENT;
+		s = objName.STR_COMPANY;
+		s = objName.STR_COUNTRY;
+		s = objName.STR_CITY;
+		s = objName.STR_STATE;
+		s = objName.STR_PEOPLE_CATEGORY;
+		s = objName.STR_PEOPLE_HIRE_DATE;
+		s = objName.STR_TITLE;
+		s = objName.STR_ERROR_UKGPRO;
+		s = objName.STR_UKGPRO_USERNAME;
+		s = objName.STR_UKGPRO_PASSWORD;
+		s = objName.STR_UKGPRO_APIKEY;
+		s = objName.STR_UKGPRO_BASE_URL;
+		s = objName.STR_PRIV_PS_LABEL;
+		s = objName.STR_PRIV_SS_PLACEHOLDER;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_ConnectExternalAppCtrl() {
+
+		Test.startTest();
+		PageReference pageRef = Page.ConnectExternalApp;
+		Test.setCurrentpage(pageRef);
+		ConnectExternalAppCtrl objName = new ConnectExternalAppCtrl();
+		s = objName.STR_SLACK_INSTALL_SUCCESS_FLASH;
+		s = objName.STR_SLACK_INSTALL_ERROR_FLASH;
+		s = objName.STR_SLACK_UNINSTALL_SUCCESS_FLASH;
+		s = objName.STR_SLACK_UNINSTALL_ERROR_FLASH;
+		s = objName.STR_CONNECTION_SUCCESS;
+		s = objName.STR_CONNECTION_ERROR_FLASH;
+		s = objName.STR_GOOGLE_CALENDAR;
+		s = objName.STR_GOOGLE_USER_SYNC;
+		s = objName.STR_BROWSER_NOTIFICATIONS_SUCCESS_FLASH;
+		s = objName.STR_BROWSER_NOTIFICATIONS_ERROR_FLASH;
+		s = objName.STR_ATLASSIAN;
+		s = objName.STR_LINKEDIN;
+		s = objName.STR_TWITTER;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+	@isTest static void test_NewsletterDataServer() {
+
+		Test.startTest();
+		NewsletterDataServer objName = new NewsletterDataServer();
+		s = objName.STR_ERROR_DATE_TIME_FUTURE_FLASH;
+		s = objName.STR_ERROR_REVIEW_NEWSLETTER_CONTENTS;
+		System.assert(true,'Running as expected');
+		Test.stopTest();
+
+	}
+
+}

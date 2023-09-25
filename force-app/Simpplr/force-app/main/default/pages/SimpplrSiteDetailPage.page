@@ -1,0 +1,5 @@
+<apex:page standardController="Simpplr_Site__c">
+	<script>
+		window.location.href = '{!$Page.PageRedirector}?siteId={!$CurrentPage.parameters.id}&pageToRedirect=siteLandingPage'
+	</script>
+</apex:page>

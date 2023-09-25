@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "อินสแตนซ์ของ SharePoint ไม่ได้เปิดใช้ โปรดติดต่อผู้จัดการแอปของคุณ",
+    "apps.connection.google.not_a_gsuite_account": "เชื่อมต่อไม่สำเร็จ - โปรดใช้บัญชี GSuite",
+    "apps.connection.google.setup_domain_mismatch": "เชื่อมต่อไม่สำเร็จ - บัญชีผู้ใช้ไม่ตรงกับโดเมนที่ผู้จัดการแอปได้ตั้งค่าไว้",
+    "apps.connection.google.user_account_mismatch": "เชื่อมต่อไม่สำเร็จ - โปรดใช้บัญชีเดียวกันสำหรับการรวมระบบทั้งหมดของ Google",
+    "apps.connection.google.invalid_integration_type": "เชื่อมต่อไม่สำเร็จ - ประเภทการรวมระบบไม่ถูกต้องที่ผ่าน",
+    "apps.connection.success": "เชื่อมต่อกับ {{appName}} เรียบร้อยแล้ว",
+    "apps.connection.google.domain_or_account_mismatch": "เชื่อมต่อไม่สำเร็จ - ชื่อโดเมนต้องตรงกับการรวมระบบของ Google ที่มีอยู่",
+    "apps.connection.google.domain_mismatch": "เชื่อมต่อไม่สำเร็จ - การรวมระบบของ Google กำหนดให้คุณต้องเชื่อมต่อบัญชี {{domainName}} ที่ใช้งาน",
+    "apps.connection.error_flash": "เชื่อมต่อกับ {{appName}} ไม่ได้",
+    "apps.connection.batch_processing_try_later": "ไม่สามารถดำเนินการได้ โปรดลองอีกครั้งหลังจากนี้อีกสักครู่",
+    "apps.connection.google.OAuthError": "รวมระบบไม่สำเร็จ โปรดลองอีกครั้ง"
+}

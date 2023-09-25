@@ -1,0 +1,5 @@
+<apex:page readonly="true" applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/calendar#{!fileName}.ics" 
+		   showChat="false" showHeader="false" sidebar="false" standardStylesheets="false" 
+		   controller="DownloadCalendarCtrl" action="{!handleRequest}">
+	<apex:outputText value="{!outputText}"></apex:outputText>
+</apex:page>

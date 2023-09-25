@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "Փոխանցումն արդեն ավարտված է, կրկին գործարկելը անհնար է",
+    "post_install.analytics_already_exists_error_flash": "Վերլուծական տվյալներն արդեն գոյություն ունեն նշված ամսաթվին"
+}

@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Your SharePoint instance is not enabled. Please contact your app manager",
+    "apps.connection.google.not_a_gsuite_account": "Connection failed - Please use a GSuite account",
+    "apps.connection.google.setup_domain_mismatch": "Connection failed - User account does not belong to the domain that has been setup by the app manager",
+    "apps.connection.google.user_account_mismatch": "Connection failed - Please use same account for all Google integrations",
+    "apps.connection.google.invalid_integration_type": "Connection failed - Invalid integration type passed",
+    "apps.connection.success": "Connected to {{appName}} successfully",
+    "apps.connection.google.domain_or_account_mismatch": "Connection failed - Domain name must match existing Google integrations",
+    "apps.connection.google.domain_mismatch": "Connection failed - The Google integration requires you to connect your {{domainName}} account",
+    "apps.connection.error_flash": "Unable to connect to {{appName}}",
+    "apps.connection.batch_processing_try_later": "Unable to perform action. Please try again after some time.",
+    "apps.connection.google.OAuthError": "Integration failed. Please try again."
+}

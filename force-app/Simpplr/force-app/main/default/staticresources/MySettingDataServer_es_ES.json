@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" no está asignado a ningún segmento - Este usuario tendrá el acceso bloqueado hasta que se asigne a un segmento",
+    "my_settings.profile.birthday_partial_error_flash": "Debes seleccionar tanto el mes como el día del cumpleaños",
+    "my_settings.profile.inactive_manager_error_flash": "No es posible establecer a un usuario inactivo como administrador",
+    "my_settings.profile.manager_recursion_error_flash": "No es posible establecer a tu subordinado directo como tu administrador",
+    "my_settings.profile.language_disabled_error_flash": "No ha sido posible establecer el idioma ya que está desactivado en Salesforce. Contacta con un administrador"
+}

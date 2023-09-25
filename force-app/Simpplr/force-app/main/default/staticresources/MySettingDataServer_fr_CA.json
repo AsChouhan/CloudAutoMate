@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} « {{fieldValue}} » n'est affecté à aucun segment - cet utilisateur sera verrouillé jusqu'à ce qu'il soit affecté à un segment",
+    "my_settings.profile.birthday_partial_error_flash": "Vous devez sélectionner à la fois le mois et le jour de l'anniversaire",
+    "my_settings.profile.inactive_manager_error_flash": "Il est impossible de définir un utilisateur inactif en tant que gestionnaire",
+    "my_settings.profile.manager_recursion_error_flash": "Il est impossible de définir votre subordonné direct en tant que votre gestionnaire",
+    "my_settings.profile.language_disabled_error_flash": "Impossible de définir la langue car elle est désactivée dans Salesforce - veuillez contacter un administrateur"
+}

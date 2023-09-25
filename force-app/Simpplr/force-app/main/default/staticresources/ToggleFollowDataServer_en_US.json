@@ -1,0 +1,5 @@
+{
+"common.follow_limit_reached_error_flash": "It's not possible to follow more topics as you've reached your limit",
+"feed.create.tracking_disabled_error_flash": "Its not possible to perform this action - feed tracking is disabled",
+"manage_sites.site_limit_reached_error_flash": "It's not possible to manage or follow more sites as you've reached your site limit"
+}

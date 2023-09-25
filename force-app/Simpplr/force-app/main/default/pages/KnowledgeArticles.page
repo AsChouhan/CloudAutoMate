@@ -1,0 +1,57 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html"
+    docType="html-5.0" showChat="false" showHeader="false" sidebar="false" standardStylesheets="false"
+    setup="false" controller="KnowledgeArticlesCtrl" action="{!handleRequest}">
+	 <apex:composition template="BaseTemplate"> 
+		<apex:define name="PageTitle">
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>		
+		
+		<apex:define name="MainContent">
+			<div class="row">
+				<div class="column">
+					<div class="Page">
+						<header class="Page-header Page-header--noBorder">
+							<div class="Page-header-inner">
+								<h1 class="Page-heading type--h4 type--brand">
+									<a href="{!knowledgeHomeURL}">Knowledge</a>
+								</h1>
+							</div>
+						</header>				
+						<div class="container">
+							<div data-listing="Knowledge" data-listing-view-params="{!viewParamString}" data-listing-default-params="{!defaultParamString}">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+		
+		<apex:define name="PageControlButtons">
+			<div class="controls controls-buttons" data-mobile-controls=" ">
+				<div class="trail">
+					<a href="javascript:window.history.back();" class="backwards" title="Back" data-history-back=" ">
+						<span class="ss-standard">navigateleft</span>
+					</a>
+					<a href="javascript:window.location.reload(true);" class="reload" title="Reload">
+						<span class="ss-standard">refresh</span>
+					</a>
+					<a href="javascript:window.history.forward();" class="forwards" title="Forward">
+						<span class="ss-standard">navigateright</span>
+					</a>
+				</div>
+				<div class="context">
+					<div class="context-feed">
+						<a href="#feed-post-body" class="button add" data-modal-close=" ">
+							<span class="ss-standard">
+								<span>plus</span>
+							</span>
+							Post
+						</a>
+					</div>
+				</div>
+			</div>
+		</apex:define>
+	</apex:composition>
+	<script type="text/javascript" src="{!resourcePath}Knowledge?v=8" ></script>
+</apex:page>

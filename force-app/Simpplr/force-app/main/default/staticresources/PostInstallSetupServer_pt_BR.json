@@ -1,0 +1,4 @@
+{
+    "post_install.migration_already_completed_error_flash": "A migração já foi concluída. Ela não pode ser iniciada novamente.",
+    "post_install.analytics_already_exists_error_flash": "Os dados analíticos já existem para a data especificada"
+}

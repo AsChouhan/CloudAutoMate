@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Instanța SharePoint nu este activată. Contactați managerul de aplicații",
+    "apps.connection.google.not_a_gsuite_account": "Conexiunea nu a reușit - Folosiți un cont GSuite",
+    "apps.connection.google.setup_domain_mismatch": "Conexiunea nu a reușit - Contul de utilizator nu aparține domeniului care a fost configurat de managerul de aplicații",
+    "apps.connection.google.user_account_mismatch": "Conexiunea nu a reușit - Folosiți același cont pentru toate integrările Google",
+    "apps.connection.google.invalid_integration_type": "Conexiunea nu a reușit - S-a transmis un tip de integrare incorect",
+    "apps.connection.success": "Conectare reușită la {{appName}}",
+    "apps.connection.google.domain_or_account_mismatch": "Conexiunea nu a reușit - Numele de domeniu trebuie să corespundă integrărilor Google existente",
+    "apps.connection.google.domain_mismatch": "Conexiunea nu a reușit - Integrarea Google necesită conectarea contului dvs. {{domainName}}",
+    "apps.connection.error_flash": "Imposibil de conectat la {{appName}}",
+    "apps.connection.batch_processing_try_later": "Imposibil de efectuat acțiunea, încercați din nou după ceva timp",
+    "apps.connection.google.OAuthError": "Integrarea nu a reușit. Încercați din nou."
+}

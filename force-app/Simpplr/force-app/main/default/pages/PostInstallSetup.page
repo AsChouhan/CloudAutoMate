@@ -1,0 +1,564 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html" docType="html-5.0" showChat="false" showHeader="false"
+	sidebar="false" readOnly="true" standardStylesheets="false" setup="false" controller="PostInstallSetupCtrl" action="{!init}">
+	<style>
+		.ConnectedServices-item{
+			background-color: white;
+			border: 1px solid #e6e6e6; 
+			border-radius: 5px; 
+			margin-bottom: 16px; 
+			padding: 16px;
+		}
+					
+		 .ConnectedServices-inner{
+			 display: flex; 
+			align-items: center;
+		  }             
+		.ConnectedServices-thumbnailContainer{
+			 width: 64px;
+			 flex-shrink: 0;
+		 }              
+		.ConnectedServices-main{
+			flex-grow: 1;
+			display: flex; 
+			align-items: center; 
+			margin-left: 20px;
+		 }
+		 .ConnectedServices-text{
+			 flex-grow: 1;
+		 }
+
+		 .Modal-inner .Strip {
+    			padding: 16px;
+		 }
+
+		.Modal-inner .Strip--modal .Strip-cancel {
+   		 	margin: 8px 0 0;
+		 }
+
+		.Modal-inner .Strip--modal .Button--brand.button[disabled] {
+    			color: #767676 !important;
+		 }
+      </style>
+	<apex:composition template="BaseTemplate">
+		
+		<apex:define name="PageTitle">
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>
+
+		<apex:define name="MainContent">
+		
+			<div class="row">
+				<header class="view">
+					<h1>Post Install Setup</h1>
+				</header>
+				<div class="column">
+					<div class="container">
+						<apex:outputPanel rendered="{!isPermissionSetsMissing}" layout="none">
+							<div class="set group" id="permission-set-error">
+								<div class="" >
+									<h3>Permission Sets Missing</h3>
+								</div>							
+								<label>Please add 'Simpplr_Unlisted_Site_Managers' and 'Simpplr_App_Managers' permission sets as per the release notes.</label>
+							</div>
+						</apex:outputPanel>	
+
+						<div class="set group" id="inital-setup">
+							<div class="" >
+								<h3>Initial Setup</h3>
+							</div>							
+							<apex:outputPanel rendered="{!canSetupStartedAgain}" layout="none">				
+								<form data-action="Simpplr.Salesforce.PostInstall.startInitialSetup" method="post" data-validate=" " >							
+				                    <label>
+				                        Number of people records to be created: {!numberOfPeopleRecordsTobeCreated} 
+				                    </label>
+				                    <label>
+				                        Number of site records to be created: {!numberOfSiteRecordsTobeCreated} 
+				                    </label>
+									<div class="strip">
+										<apex:outputPanel rendered="{!NOT(isPermissionSetsMissing)}" layout="none">
+											<button class="button check" type="submit">
+						                        <span class="ss-standard"><span>check</span></span>Start
+											</button>
+										</apex:outputPanel>											
+					                    <apex:outputPanel rendered="{!isPermissionSetsMissing}" layout="none">
+											<button class="button check" type="submit" disabled="disabled">
+						                        <span class="ss-standard"><span>check</span></span>Start
+						                    </button>
+					                    </apex:outputPanel>
+				                	</div>
+				                </form>
+		                    </apex:outputPanel>
+		                    <apex:outputPanel rendered="{!Not(canSetupStartedAgain)}" layout="none">
+                    			<label>Initial setup completed successfully</label>
+		                    </apex:outputPanel>
+						</div>
+
+						<div class="set group" id="service-account-setup">
+							<div class="" >
+								<h3>Service account setup</h3>
+								<apex:outputPanel rendered="{!canSetupStartedAgain}" layout="none">,
+									<label>Please wait for initial setup to complete</label>
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!AND(serviceAccountUserName == null, Not(isServiceAccount), Not(canSetupStartedAgain))}" layout="none">
+									<p>Please login via service account to connect account</p><br/>
+								</apex:outputPanel>
+								<div class="ConnectedServices">
+									<ul class="ConnectedServices-list">
+										<li class="ConnectedServices-item ">
+											<div class="ConnectedServices-inner">
+												<div class="ConnectedServices-thumbnailContainer Image">
+													<img src="https://static.simpplr.com/sf-apps-assets/simpplr/simpplr-circle-inner-fill-only-1024.png" alt=""/>
+												</div>
+												<div class="ConnectedServices-main">
+													<div class="ConnectedServices-text">
+														<h2 class="type--h5">Connect Simpplr service account</h2>
+														<apex:outputPanel rendered="{!serviceAccountUserName != null}" layout="none">														
+															<p>Connected as {!serviceAccountUserName} </p>															
+														</apex:outputPanel>
+													</div>														
+													<div class="ConnectedServices-buttonContainer">
+														<apex:outputPanel rendered="{!serviceAccountUserName == null}" layout="none">
+															<apex:outputPanel rendered="{!AND(isServiceAccount, Not(canSetupStartedAgain))}" layout="none">
+																<a href="{!serviceAccountConnectUrl}" class="Button" data-open-in-same-window="true">
+																	<span class="Button-text">
+																		Connect account
+																	</span>
+																</a>
+															</apex:outputPanel>
+															<apex:outputPanel rendered="{!OR(Not(isServiceAccount), canSetupStartedAgain)}" layout="none">
+																<a href="{!serviceAccountConnectUrl}" disabled="disable" class="Button" data-open-in-same-window="true">
+																	<span class="Button-text">
+																		Connect account
+																	</span>
+																</a>
+															</apex:outputPanel>
+														</apex:outputPanel>
+													</div>													
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<apex:outputPanel rendered="{!AND(isSandbox, serviceAccountUserName == null, isPhoneNoAndMobileTokenRemovableFeatureEnabled)}" layout="none">
+									<label>After connecting both phone numbers, the device token will be removed and syncing will be stopped. Users won’t be able to receive SMS or push notifications.</label><br></br>
+									<label>If testing is required, please log in to the sandbox from the mobile app to start receiving push notifications and update phone numbers.</label><br></br>
+								</apex:outputPanel>
+							</div>
+						</div>
+
+						<div class="set group">
+							<div class="" >
+								<h3>Migration</h3>
+							</div>
+							<apex:outputPanel rendered="{!Not(isMaintenanceInProgress)}" layout="none">
+								<label>Migration completed successfully</label>	
+							</apex:outputPanel>
+		                    <apex:outputPanel rendered="{!isMaintenanceInProgress}" layout="none">	
+								 <label>
+			                        Total number of batches to run: {!totalMigrationBatches} 
+			                    </label>
+			                    <label>
+			                        Pending number of batches: {!pendingMigrationBatches} 
+								</label>
+								<apex:outputPanel rendered="{!And(canMaintenanceStarted, serviceAccountUserName == null)}" layout="none">
+									<label>
+										Please setup service account first.
+									</label>
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!And(canMaintenanceStarted, serviceAccountUserName != null)}" layout="none">
+									<div class="strip">
+										<button class="button check setupwide" type="button" disabled="disabled">
+		                                	<span class="ss-standard"><span>check</span></span>Start Migration
+		                            	</button>
+					                    <apex:outputPanel rendered="{!isPermissionSetsMissing}" layout="none">
+											<button disabled="disabled" class="button check setupwide" type="button" data-config-reset-params='{"action": "startMigration"}' data-config-user-message='This action will start migration. Please type "Confirm" in the textbox below to confirm the action'>
+						                        <span class="ss-standard"><span>check</span></span>Start Migration
+						                    </button>
+					                    </apex:outputPanel>
+		                           	</div>
+	                           	</apex:outputPanel>
+	                           	<apex:outputPanel rendered="{!OR(Not(canMaintenanceStarted), serviceAccountUserName == null)}" layout="none">
+									<div class="strip">
+										<button class="button check setupwide" type="button" disabled="disabled">
+		                                	<span class="ss-standard"><span>check</span></span>Start Migration
+		                            	</button>
+		                           	</div>
+	                           	</apex:outputPanel>
+	                        </apex:outputPanel>
+                           	<p>&nbsp;</p>
+						</div>
+						
+                        <div class="set group">		
+							<div class="" >
+								<h3>Import Site title images</h3>
+							</div>	
+							<apex:outputPanel rendered="{!canSetupStartedAgain}" layout="none">,
+								<label>Please wait for initial setup to complete</label>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!isMaintenanceInProgress}" layout="none">
+								<label>Please wait for migration to complete</label>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!Not(canSetupStartedAgain || isMaintenanceInProgress)}" layout="none">
+								<apex:outputPanel rendered="{!numberOfSitesToImportTitleImage > 0}" layout="none">	
+									<label>Number of site title images to be imported: {!numberOfSitesToImportTitleImage}</label>
+									<div class="strip">
+										<apex:outputPanel rendered="{!NOT(isPermissionSetsMissing)}" layout="none">											
+											<div class="u-floatRight" data-mount-component="ResetButton" data-mount-component-props='{"action": "startSiteTitleImpageImport","label": "Start Import","confirmMessage": "This action will start Site title image import, Please type \"Confirm\" in the textbox below to confirm the action"}'></div>
+					                    </apex:outputPanel>
+					                    <apex:outputPanel rendered="{!isPermissionSetsMissing}" layout="none">
+											<button disabled="disabled" class="button check setupwide" type="button" data-config-reset-params='{"action": "startSiteTitleImpageImport"}' data-config-user-message='This action will start Site title image import, Please type "Confirm" in the textbox below to confirm the action'>
+		                                		<span class="ss-standard"><span>check</span></span>Start Import
+		                            		</button>
+					                    </apex:outputPanel>
+		                           	</div>	
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!numberOfSitesToImportTitleImage == 0}" layout="none">
+									<label>Site title image import completed successfully</label>
+								</apex:outputPanel>	
+							</apex:outputPanel>
+							<p>&nbsp;</p>
+						</div>
+
+						<div class="set group">		
+							<div class="" >
+								<h3>Remove unused topics</h3>
+								<apex:outputPanel rendered="{!numberOfTopicsToBeCleanedUp > 0}" layout="none">
+									<label>Remove topics which are not associated with any content items (published or unpublished) or feed posts or comments.</label>
+								</apex:outputPanel>
+							</div>	
+							<apex:outputPanel rendered="{!canSetupStartedAgain}" layout="none">,
+								<label>Please wait for initial setup to complete</label>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!isMaintenanceInProgress}" layout="none">
+								<label>Please wait for migration to complete</label>
+							</apex:outputPanel>
+							<apex:outputPanel rendered="{!Not(canSetupStartedAgain || isMaintenanceInProgress)}" layout="none">
+								<apex:outputPanel rendered="{!numberOfTopicsToBeCleanedUp > 0}" layout="none">	
+									<label>Total number of unused topics: {!numberOfTopicsToBeCleanedUp}</label>
+									<div class="strip">
+										<apex:outputPanel rendered="{!NOT(isPermissionSetsMissing)}" layout="none">											
+											<div class="u-floatRight" data-mount-component="ResetButton" data-mount-component-props='{"action": "topicsCleanUp","label": "Remove","confirmMessage": "Please type “CONFIRM” below to remove unused topics. This cannot be undone."}'></div>
+					                    </apex:outputPanel>
+					                    <apex:outputPanel rendered="{!isPermissionSetsMissing}" layout="none">
+											<button disabled="disabled" class="button check setupwide" type="button" data-config-reset-params='{"action": "topicsCleanUp"}' data-config-user-message='Please type “CONFIRM” below to remove unused topics. This cannot be undone.'>
+		                                		<span class="ss-standard"><span>check</span></span>Remove
+		                            		</button>
+					                    </apex:outputPanel>
+		                           	</div>	
+								</apex:outputPanel>
+								<apex:outputPanel rendered="{!numberOfTopicsToBeCleanedUp == 0}" layout="none">
+									<label>Unused topics removed successfully</label>
+								</apex:outputPanel>	
+							</apex:outputPanel>
+							<p>&nbsp;</p>
+						</div>						
+						
+						<div class="set group">
+							<div class="" >
+								<h3>Additional Instructions</h3>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Salesforce REST API</h3>
+								</div>	
+								
+								<div class="">
+									1. <a target="_blank" href="/0rp/e?SiteName=REST_API_URL&EndpointUrl={!salesforceHost}&IsActive=true&ProtocolMismatch=false&DescriptionField=This is used for endorsing people for topics and fetching the same on their profile.">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - REST_API_URL<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - {!salesforceHost}<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - This is used for endorsing people for topics and fetching the same on their profile.<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>									 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Simpplr Push Notifications</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Simpplr_Push_API&EndpointUrl=https://services.simpplr.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to process push notifications to mobile devices">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Simpplr_Push_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://services.simpplr.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to process push notifications to mobile devices<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+								<div>
+									2. <a target="_blank" href="/0rp/e?SiteName=Simpplr_API&EndpointUrl=https://api.simpplr.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Simpplr APIs">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Simpplr_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.simpplr.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Simpplr APIs<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Box</h3>
+								</div>	
+								
+								<div class="">
+									1. <a target="_blank" href="/0rp/e?SiteName=Box_Oauth&EndpointUrl=https://www.box.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to initiate Box OAuth and Token workflow">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Box_Oauth<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://www.box.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to initiate Box OAuth and Token workflow<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>									 
+								</div>
+								<div class="">
+									2. <a target="_blank" href="/0rp/e?SiteName=Box_Content_API&EndpointUrl=https://api.box.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to get Box file / content information">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Box_Content_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.box.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to get Box file / content information<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>			 
+								</div>
+								<div>
+									3. <a target="_blank" href="/0rp/e?SiteName=Box_Upload_API&EndpointUrl=https://upload.box.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to upload new files/ versions to Box">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Box_Upload_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://upload.box.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to upload new files/ versions to Box<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>			 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Dropbox</h3>
+								</div>	
+								
+								<div class="">
+									1. <a target="_blank" href="/0rp/e?SiteName=Dropbox_Account&EndpointUrl=https://www.dropbox.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to initiate Dropbox OAuth and Token workflow">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Dropbox_Account<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://www.dropbox.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to initiate Dropbox OAuth and Token workflow<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>									 
+								</div>
+								<div class="">
+									2. <a target="_blank" href="/0rp/e?SiteName=Dropbox_API&EndpointUrl=https://api.dropboxapi.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to get Dropbox file and folder information">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Dropbox_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.dropboxapi.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to get Dropbox file and folder information<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>			 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Google</h3>
+								</div>	
+								
+								<div class="">
+									1. <a target="_blank" href="/0rp/e?SiteName=Google_Account&EndpointUrl=https://accounts.google.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to initiate Google OAuth and Token workflow">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Google_Account<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://accounts.google.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to initiate Google OAuth and Token workflow<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>									 
+								</div>
+								<div class="">
+									2. <a target="_blank" href="/0rp/e?SiteName=Google_API&EndpointUrl=https://www.googleapis.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to get Google Drive file information">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Google_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://www.googleapis.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to get Google Drive file information<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>			 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Premier Newsletter</h3>
+								</div>	
+								
+								<div class="">
+									1. <a target="_blank" href="/0rp/e?SiteName=Premier_Newsletter&EndpointUrl=https://newsletter.api.simpplr.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used for Premier Newsletter">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Premier_Newsletter<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://newsletter.api.simpplr.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used for Premier Newsletter<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>									 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Smart Search</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=SMART_SEARCH&EndpointUrl=https://api.simpplr.com/smartsearch&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to send data to AWS to enable smart search">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - SMART_SEARCH<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.simpplr.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to send data to AWS to enable smart search<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+								<div>
+									2. <a target="_blank" href="/0rp/e?SiteName=SMART_SEARCH_DATA&EndpointUrl=https://connectedsearch.simpplr.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to send search analytics data to enable smart search">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - SMART_SEARCH_DATA<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://connectedsearch.simpplr.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to send search analytics data to enable smart search<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Slack</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Slack_API&EndpointUrl=https://slack.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to push site/content Feeds to mapped Slack channels">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Slack_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://slack.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to push site/content Feeds to mapped Slack channels<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Microsoft Integration (Active Directory / SharePoint / OneDrive)</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=MICROSOFT_LOGIN&EndpointUrl=https://login.microsoftonline.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to Authenticate Microsoft APIs">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - MICROSOFT_LOGIN<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://login.microsoftonline.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to Authenticate Microsoft APIs<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+								
+								<div>
+									2. <a target="_blank" href="/0rp/e?SiteName=MICROSOFT_GRAPH&EndpointUrl=https://graph.microsoft.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used for Microsoft Integration">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - MICROSOFT_GRAPH<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://graph.microsoft.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used for Microsoft Integration<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>	
+							
+							<div class="set group">	
+								<div>
+									<h3>Listener Suite</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Listener_Suite_API&EndpointUrl=https://api.listenersuite-production.simpplr.xyz&IsActive=true&ProtocolMismatch=false&DescriptionField=Used for Listener Suite">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Listener_Suite<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.listenersuite-production.simpplr.xyz<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used for Listener Suite<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+
+							<div class="set group">	
+								<div>
+									<h3>File Service</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Zeus_File_Service&EndpointUrl={!zeusMSUrl}&IsActive=true&ProtocolMismatch=false&DescriptionField=Used for File Service">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Zeus File Service<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - {!zeusMSUrl}<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used for File Service<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							<div class=" u-hide set group">	
+								<div>
+									<h3>Facebook</h3>
+								</div>	
+								
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Facebook_Oauth&EndpointUrl=https://graph.facebook.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to initiate Facebook OAuth and Token workflow">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Facebook_OAuth <br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://www.facebook.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to initiate Facebook OAuth and Token workflow<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+								
+								<div>
+									2. <a target="_blank" href="/0rp/e?SiteName=Facebook_Graph&EndpointUrl=https://graph.facebook.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to connect app to enable Facebook for social campaign">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Facebook_Graph <br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://graph.facebook.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to connect app to enable Facebook for social campaign<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							
+							<div class="set group">	
+								<div>
+									<h3>LinkedIn</h3>
+								</div>	
+								
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=LinkedIn_Oauth&EndpointUrl=https://www.linkedin.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to initiate LinkedIn OAuth and Token workflow">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - LinkedIn_Oauth<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://www.linkedin.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to initiate LinkedIn OAuth and Token workflow<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+								
+								<div>
+									2. <a target="_blank" href="/0rp/e?SiteName=LinkedIn_API&EndpointUrl=https://api.linkedin.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to connect app to enable Linkedin APIs for social campaign">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - LinkedIn_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.linkedin.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to connect app to enable LinkedIn APIs for social campaign<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+							<div class="set group">	
+								<div>
+									<h3>Twitter</h3>
+								</div>	
+								
+								<div>
+									1. <a target="_blank" href="/0rp/e?SiteName=Twitter_API&EndpointUrl=https://api.twitter.com&IsActive=true&ProtocolMismatch=false&DescriptionField=Used to connect app to enable Twitter APIs for social campaign">Click here</a>&nbsp;to add following URL to Remote Site Settings, if it is not done already.<br/>
+										<span style="font-weight:bold;">Remote Site Name</span> - Twitter_API<br/>
+										<span style="font-weight:bold;">Remote Site URL</span> - https://api.twitter.com<br/>
+										<span style="font-weight:bold;">Disable Protocol Security</span> - Unchecked<br/>
+										<span style="font-weight:bold;">Description</span> - Used to connect app to enable Twitter APIs for social campaign<br/>
+										<span style="font-weight:bold;">Active</span> - Checked<br/><br/>																 
+								</div>
+							</div>
+							
+										
+						</div>
+					</div>	
+				</div>
+			</div>
+		</apex:define>
+
+		<apex:define name="BeforeTemplateScriptContent">
+
+		</apex:define>
+
+		<apex:define name="AfterTemplateScriptContent">
+		</apex:define>
+
+	</apex:composition>
+</apex:page>

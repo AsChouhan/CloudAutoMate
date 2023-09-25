@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Webhook URL を追加することはできません - URLは \"https://outlook.office.com/…\" で始まる必要があります",
+    "manage_app.setup.privileges.site_owner": "サイトの追加権限を持つユーザーのみが、サイト所有者になることができます",
+    "manage_site.mandatory_subscription_remove": "サイトから {{name}} を削除できませんでした。このユーザーは、必須サブスクリプションに含まれています",
+    "manage_sites.duplicate_site_name_error_message": "この名前のアクティブなグループまたはアーカイブされたグループは、すでに存在するか、削除されています。 別の名前を選択するか、数分後にもう一度お試しください。",
+    "manage_site.apps.reconnect_account": "'マイ設定' で Slack に再接続する必要があります",
+    "manage_site.duplicate_error_flash": "この名前のサイトはすでに存在します - 名前を変更してもう一度お試しください",
+    "manage_site.unable_to_lock_row_error_message": "アクションを実行できません。しばらくしてからもう一度お試しください",
+    "manage_site.slack.blank_slack_channel": "サイトフィードアクティビティを投稿するには、この Slack チャンネルのメンバーである必要があります。"
+}

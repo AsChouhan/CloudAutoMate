@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\"-ը չի հղվում որևէ սեգմենտ, այս օգտատերը կարող է արգելափակվել մինչև այն կնշանակվի որևէ սեգմենտի",
+    "my_settings.profile.birthday_partial_error_flash": "Դուք պետք է ընտրեք ծննդյան և՛ ամիսը, և՛ օրը",
+    "my_settings.profile.inactive_manager_error_flash": "Հնարավոր չէ պասիվ օգտատիրոջը նշանակել որպես վարիչ",
+    "my_settings.profile.manager_recursion_error_flash": "Հնարավոր չէ ձեր անմիջական ենթակային նշանակել որպես կառավարիչ",
+    "my_settings.profile.language_disabled_error_flash": "Չհաջողվեց կարգավորել լեզուն, քանի որ այն անջատված է Salesforce-ում։ Խնդրում ենք դիմել ադմինիստրատորին"
+}

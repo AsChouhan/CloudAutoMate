@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} ‘{{fieldValue}}’ is niet aan een segment toegewezen - deze gebruiker zal worden uitgesloten totdat hij/zij aan een segment wordt toegewezen",
+    "my_settings.profile.birthday_partial_error_flash": "U moet zowel de geboortemaand als geboortedag selecteren",
+    "my_settings.profile.inactive_manager_error_flash": "U kunt een inactieve gebruiker niet instellen als beheerder",
+    "my_settings.profile.manager_recursion_error_flash": "U kunt uw direct ondergeschikte niet instellen als uw beheerder",
+    "my_settings.profile.language_disabled_error_flash": "De taal kan niet worden ingesteld; deze is uitgeschakeld in Salesforce. Neem contact op met een beheerder"
+}

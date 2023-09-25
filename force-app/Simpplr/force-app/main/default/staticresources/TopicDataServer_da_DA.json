@@ -1,0 +1,4 @@
+{
+    "manage_topics.duplicate_error_flash": "Det er ikke muligt at tilføje dublerede emner",
+    "manage_topics.spacing_and_capitilization_error_flash": "Emnet kunne ikke redigeres - Kun tegnafstand og store bogstaver er tilladt"
+}

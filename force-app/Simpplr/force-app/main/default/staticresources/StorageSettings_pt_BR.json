@@ -1,0 +1,13 @@
+{
+    "apps.connection.sharepoint.admin_not_connected": "Sua instância do SharePoint não está ativada. Entre em contato com o gerente do seu aplicativo.",
+    "apps.connection.google.not_a_gsuite_account": "Falha na conexão. Use uma conta do G Suite.",
+    "apps.connection.google.setup_domain_mismatch": "Falha na conexão. A conta do usuário não pertence ao domínio que foi configurado pelo gerente do aplicativo",
+    "apps.connection.google.user_account_mismatch": "Falha na conexão - Use a mesma conta para todas as integrações do Google",
+    "apps.connection.google.invalid_integration_type": "Falha de conexão. Tipo de integração inválido aprovado",
+    "apps.connection.success": "Conectado ao {{appName}} com sucesso",
+    "apps.connection.google.domain_or_account_mismatch": "Falha na conexão. O nome do domínio deve corresponder às integrações existentes do Google.",
+    "apps.connection.google.domain_mismatch": "Falha na conexão - A integração com o Google exige que você conecte sua conta {{domainName}}",
+    "apps.connection.error_flash": "Não foi possível conectar ao {{appName}}",
+    "apps.connection.batch_processing_try_later": "Não foi possível realizar a ação. Tente novamente após algum tempo.",
+    "apps.connection.google.OAuthError": "A integração falhou. Por favor, tente de novo."
+}

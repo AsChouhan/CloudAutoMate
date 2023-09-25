@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "En aktiv eller arkiveret gruppe med dette navn findes allerede eller er ved at blive slettet. Vælg et andet navn, eller prøv igen om nogle minutter.",
+    "common.storage_full_error_flash": "Handlingen kunne ikke udføres – lageret er fuldt",
+    "manage_sites.site_limit_reached_error_flash": "Det er ikke muligt at administrere eller følge flere websteder, da du har nået din webstedsgrænse",
+    "manage_sites.duplicate_error_flash": "Der findes allerede et websted med dette navn – skift navnet, og prøv igen",
+    "manage_sites.unable_to_lock_row_error_message": "Handlingen kan ikke udføres. Vent lidt, og forsøg igen"
+}

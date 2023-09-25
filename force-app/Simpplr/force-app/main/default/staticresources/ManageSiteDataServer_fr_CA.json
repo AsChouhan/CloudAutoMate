@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Il est impossible d'ajouter l'URL d'un lien de rappel HTTP - L'URL doit commencer par « https://outlook.office.com/… »",
+    "manage_app.setup.privileges.site_owner": "Seuls les utilisateurs avec les privilèges d'ajout de site peuvent être propriétaire de site",
+    "manage_site.mandatory_subscription_remove": "Échec de la suppression de {{name}} du site. Cette personne est inscrite à un abonnement obligatoire",
+    "manage_sites.duplicate_site_name_error_message": "Un groupe actif ou archivé portant ce nom existe déjà ou est en cours de suppression. Choisissez un autre nom ou réessayez dans quelques minutes.",
+    "manage_site.apps.reconnect_account": "Vous devez vous reconnecter à Slack dans « Mes paramètres »",
+    "manage_site.duplicate_error_flash": "Un site existe déjà avec ce nom - veuillez changer le nom et réessayer",
+    "manage_site.unable_to_lock_row_error_message": "Impossible d’effectuer l’action, veuillez réessayer après un certain temps",
+    "manage_site.slack.blank_slack_channel": "Vous devez être membre de ce canal Slack pour publier l’activité de fil du site"
+}

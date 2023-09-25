@@ -1,0 +1,7 @@
+{
+    "manage_sites.duplicate_site_name_error_message": "Já existe um grupo ativo ou arquivado com este nome, ou ele está sendo excluído. Escolha um nome diferente ou tente novamente daqui alguns minutos.",
+    "common.storage_full_error_flash": "Não foi possível executar a ação. Armazenamento cheio.",
+    "manage_sites.site_limit_reached_error_flash": "Não é possível gerenciar ou seguir mais sites, pois você atingiu o limite de sites",
+    "manage_sites.duplicate_error_flash": "Já existe um site com esse nome. Altere o nome e tente novamente.",
+    "manage_sites.unable_to_lock_row_error_message": "Não foi possível realizar a ação. Tente novamente após algum tempo."
+}

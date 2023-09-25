@@ -1,0 +1,176 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html" docType="html-5.0" showChat="false" showHeader="false" sidebar="false"
+	standardStylesheets="false" setup="false" id="BaseTemplateId" controller="BaseTemplateCtrl" action="{!init}" >
+	<apex:outputText escape="false" value='{!"<!DOCTYPE html>"}' />
+	<html class="no-js page-loading touch-none {!dashboardHasFeedCSSClasses} {!CSSClasses}" data-branding-classes="{!CSSClasses}"  lang="{!languageLocale}">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+	<title><apex:insert name="PageTitle"></apex:insert></title>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="{!fontCSSURL}" type="text/css" data-font-css=" "  />
+	<link rel="stylesheet" href="{!appCSSURL}" type="text/css" />
+	<script type="text/javascript">
+		if (!window.CSS || !CSS.supports('color', 'var(--fake-var)')) { document.write('<script src="{!minifiedJsPath}cssVarsPolyfill.min.js?v={!packageVersion}"><\/script>'); }
+		</script>
+	<style>
+		{!brandingCSS}
+	</style>
+	
+	<link rel="preconnect" href="//static.simpplr.com" crossorigin=""/>
+	<link rel="dns-prefetch" href="//static.simpplr.com" />
+
+	<link rel="preconnect" href="{!salesForceContentUrl}" crossorigin=""/>
+	<link rel="dns-prefetch" href="{!salesForceContentUrl}" />
+
+	<link rel="preconnect" href="//api.simpplr.com" crossorigin=""/>
+	<link rel="dns-prefetch" href="//api.simpplr.com" />
+
+	<link rel="preload" as="script" href="{!resourcePath}connection"  />
+	<link rel="preload" as="script" href="{!minifiedJsPath}legacy.min.js?v={!packageVersion}"/>
+	<link rel="preload" as="script" href="{!resourcePath}sfdc_min_js?v={!packageVersion}"/>
+	<link rel="preload" as="script" href="{!minifiedJsPath}app.min.js?v={!packageVersion}"/>
+	<link rel="preload" as="style" href="{!appCSSURL}"/>
+
+
+	<link rel="apple-touch-icon" sizes="180x180" href="{!faviconsPath}/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="{!faviconsPath}/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="{!faviconsPath}/favicon-16x16.png" />
+	<link rel="manifest" href="{!faviconsPath}/site.webmanifest" />
+	<link rel="mask-icon" href="{!faviconsPath}/safari-pinned-tab.svg" color="#5bbad5" />
+	<link rel="shortcut icon" href="{!faviconsPath}/favicon.ico" />
+	<meta name="msapplication-TileColor" content="#2d89ef" />
+	<meta name="msapplication-config" content="{!faviconsPath}/browserconfig.xml" />
+	<meta name="theme-color" content="#ffffff" />
+
+	<script>
+		var simpplrUA = navigator.userAgent.toLowerCase();
+        var __sfdcSessionId = '{!GETSESSIONID()}';
+		var __sfdcCsrfToken = '{!csrfToken}';
+		var __isApexRestEnabled = {!isApexRestEnabled};
+		var __isKitaPSARChangesEnabled = {!isKitaPSARChangesEnabled};
+		var __packageVersion = '{!packageVersion}';
+		var __baseurl = '{!salesForceBaseUrl}';
+		var __contentURL = '{!salesForceContentUrl}';
+		var __salesforceOrgDomainUrl = '{!salesforceOrgDomainUrl}';
+    </script>
+	
+    <script type="text/javascript" src="{!resourcePath}connection" ></script>
+</head>
+<body>
+
+	<apex:form rendered="{!isActionPollerNotificationEnabled}">
+		<apex:outputPanel id="alert">
+		<div id="alertsActionPoller" data-alerts='{!alert}'/>
+		<div id="notificationsActionPoller" data-notifications='{!notification}'/>
+		</apex:outputPanel>
+	<apex:actionPoller action="{!getNotificationsAndAlerts}" reRender="alert" interval="30"/>
+	</apex:form>
+
+	<div data-mount-component="PageFurniture"></div>
+	<apex:outputPanel layout="none" rendered="{!showMaintenanceInterstitialDiv}">
+		<div data-mount-component="MaintenanceInterstitial" data-mount-component-props='{"appName": "{!appName}", "logoUrl": "{!logoUrl}"}'></div>
+	</apex:outputPanel>
+		
+	<span style="display:none" id="simpplr-salesforce-userinfo">{"username" : "{!$User.username}","email" : "{!$User.email}","id" : "{!$User.Id}", "orgId" : "{!$Organization.Id}", "orgName" : "{!$Organization.Name}", "timeZoneOffset" : "{!timeZoneOffset}"}</span>
+	<div class="loading hidden">
+		<span class="loading-inner"> </span>
+	</div>
+	<apex:outputPanel layout="none" rendered="{!Not(showMaintenanceInterstitialDiv)}">
+		<div class="page">
+			<apex:outputPanel layout="none" rendered="{!NOT(showOnlyLogoInHeader)}">
+				<div class="Header-wrapper {!if(showLogoOnMobile == true,'Header-wrapper--hasMobileLogo', '')}" id="site-header"></div>
+			</apex:outputPanel>
+			<div class="main">
+				
+				<apex:insert name="MainContent"></apex:insert>
+			</div>
+			
+			<div id="site-footer"></div>
+		</div>
+	</apex:outputPanel>
+	
+	<apex:insert name="BeforeTemplateScriptContent"></apex:insert>
+	<script src="https://cdn.ravenjs.com/3.26.4/raven.min.js" crossorigin="anonymous"></script> 	
+	
+	
+	<script type="text/javascript" src="{!minifiedJsPath}chunks/lang-{!languageLocale}.chunk.min.js?v={!packageVersion}"></script> 
+    <script type="text/javascript" src="{!minifiedJsPath}legacy.min.js?v={!packageVersion}"></script>
+	
+	<apex:insert name="AfterTemplateScriptContent"></apex:insert> 
+	<apex:outputPanel rendered="{!Not(isJSDebugEnabled)}" layout="none">
+		<script type="text/javascript" src="{!resourcePath}sfdc_min_js?v={!packageVersion}"></script>
+	</apex:outputPanel>
+	  
+	<apex:outputPanel rendered="{!isJSDebugEnabled}" layout="none">
+		<script type="text/javascript" src="{!resourcePath}appdata?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}feed?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}user?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}alert?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Notification?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}ChatterGroup?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}pages?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}event?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}topic?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}expertise?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}content?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}carousel?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}category?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}file?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}site?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Global?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}ManageApp?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Scheduler?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Customization?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Utility?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}ActiveDirectory?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Feedback?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}UserCategory?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}MySettings?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}Album?v={!packageVersion}" ></script>
+	    <script type="text/javascript" src="{!resourcePath}SiteCategory?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}launchpad?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}appsAndLinks?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Dashboard?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Analytics?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}AnalyticsLegacy?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Newsletter?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}NewsletterV2?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Unsplash?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}NewsletterTemplate?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}box?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}GoogleDrive?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}atlassian?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Dropbox?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}flag?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Embedly?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}campaign?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}PostInstall?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}question?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}answer?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}segment?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}subscription?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}audience?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Sharepoint?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Onedrive?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}SlackIntegration?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}ServiceNow?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}Video?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}AI?v={!packageVersion}"></script>
+		<script type="text/javascript" src="{!resourcePath}ContentTemplate?v={!packageVersion}" ></script>
+		<script type="text/javascript" src="{!resourcePath}MicrosoftTeams?v={!packageVersion}" ></script>
+	</apex:outputPanel>
+	<script type="text/javascript" src="https://static.simpplr.com/simpplr/js/forcetk.js?v={!packageVersion}" ></script>
+	<script type="text/javascript" src="{!minifiedJsPath}app.min.js?v={!packageVersion}"></script>
+    
+	<script id="flashes-json" type="application/json">
+		<apex:outputText value="{!pageMessages}" escape="true" />
+	</script>
+	<div id="debugLogDiv" style="display: none;">
+	{!debugLogs}
+	</div>
+	
+</body>
+</html>
+</apex:page>

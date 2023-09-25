@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} \"{{fieldValue}}\" não está atribuído a nenhum segmento. Esse usuário ficará impedido de acessar até que seja atribuído a um segmento.",
+    "my_settings.profile.birthday_partial_error_flash": "Você deve selecionar o mês e o dia do aniversário",
+    "my_settings.profile.inactive_manager_error_flash": "Não é possível definir um usuário inativo como gerente",
+    "my_settings.profile.manager_recursion_error_flash": "Não é possível definir seu subordinado direto como gerente",
+    "my_settings.profile.language_disabled_error_flash": "Não foi possível definir o idioma, pois ele está desativado no Salesforce. Entre em contato com um administrador."
+}

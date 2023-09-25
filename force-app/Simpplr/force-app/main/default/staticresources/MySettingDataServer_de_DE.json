@@ -1,0 +1,7 @@
+{
+    "my_settings.profile.segment_field_blank_error_flash": "{{fieldName}} „{{fieldValue}}“ ist keinem Segment zugewiesen: Dieser Benutzer hat keinen Zugriff, bis er einem Segment zugewiesen wurde",
+    "my_settings.profile.birthday_partial_error_flash": "Sie müssen sowohl den Monat als auch den Tag des Geburtstags auswählen",
+    "my_settings.profile.inactive_manager_error_flash": "Es ist nicht möglich, einen inaktiven Benutzer als Manager festzulegen",
+    "my_settings.profile.manager_recursion_error_flash": "Es ist nicht möglich, Ihren direkt unterstellten Mitarbeiter als Ihren Manager festzulegen",
+    "my_settings.profile.language_disabled_error_flash": "Die Sprache konnte nicht festgelegt werden, da sie in Salesforce deaktiviert ist. Wenden Sie sich bitte an einen Administrator"
+}

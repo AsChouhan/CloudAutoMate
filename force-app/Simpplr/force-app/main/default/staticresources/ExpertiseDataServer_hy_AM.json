@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Չհաջողվեց ավելացնել որակավորման մասին տվյալները հիշողության մեջ: Այսպիսի փորձի մասին տվյալներն արդեն գոյություն ունեն '{{expertiseName}}'-ում",
+    "expertise.create.permission.access_error": "Նոր որակավորում ստեղծելու համար, դուք չունեք թույլտվություն",
+    "expertise.delete.permission.access_error": "Որակավորում ջնջելու համար, դուք չունեք թույլտվություն"
+}

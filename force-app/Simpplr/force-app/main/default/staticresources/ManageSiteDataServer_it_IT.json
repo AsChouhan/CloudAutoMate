@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "Non è possibile aggiungere l'URL di Webhook - l'URL deve iniziare con \"https://outlook.office.com/…\"",
+    "manage_app.setup.privileges.site_owner": "Solo gli utenti con privilegi di aggiunta al sito possono essere proprietari del sito",
+    "manage_site.mandatory_subscription_remove": "Impossibile rimuovere {{name}} dal sito. Questa persona è inclusa in un'iscrizione obbligatoria",
+    "manage_sites.duplicate_site_name_error_message": "Un gruppo attivo o archiviato con questo nome esiste già o è in fase di eliminazione. Scegli un nome diverso o riprova tra qualche minuto.",
+    "manage_site.apps.reconnect_account": "È necessario riconnettersi a Slack in \"Impostazioni personali\"",
+    "manage_site.duplicate_error_flash": "Esiste già un sito con questo nome - Modifica il nome e riprova",
+    "manage_site.unable_to_lock_row_error_message": "Impossibile eseguire l'azione, riprova più tardi",
+    "manage_site.slack.blank_slack_channel": "Devi essere un membro di questo canale Slack per pubblicare attività del feed del sito"
+}

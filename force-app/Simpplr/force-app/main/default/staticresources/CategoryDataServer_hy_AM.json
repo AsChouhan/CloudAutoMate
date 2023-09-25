@@ -1,0 +1,6 @@
+{
+    "manage_page_categories.delete.not_empty_error_flash": "Հնարավոր չէ ջնջել էջեր պարունակող էջի կարգախմբեր",
+    "manage_page_categories.add.duplicate_error_flash": "Հնարավոր չէ կրկնօրինակել էջի կարգախմբերը",
+    "manage_page_categories.delete.uncategorized_error_flash": "Հնարավոր չէ խմբագրել/ջնջել «չդասակարգված» կոչվող էջի կարգախումբ",
+    "manage_page_categories.edit.uncategorized_error_flash": "Հնարավոր չէ խմբագրել/ջնջել «չդասակարգված» կոչվող էջի կարգախումբ"
+}

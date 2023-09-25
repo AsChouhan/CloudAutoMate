@@ -1,0 +1,4 @@
+{
+    "newsletter_manage.deleted_unpublished_content_error_flash": "Inhalte, deren Veröffentlichung aufgehoben bzw. die gelöscht wurden, können nicht eingeschlossen werden",
+    "newsletter_manage.date_time_future_error_flash": "Es ist nicht möglich, ein Sendedatum/eine Sendezeit in der Vergangenheit auszuwählen"
+}

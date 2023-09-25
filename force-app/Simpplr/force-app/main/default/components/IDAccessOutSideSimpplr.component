@@ -1,0 +1,4 @@
+<apex:component >
+<h1>Record not accessible outside Simpplr app</h1>
+<a href="{!$Page.Home}">Go Home </a>
+</apex:component>

@@ -1,0 +1,587 @@
+<template>
+	<div class="slds-box slds-theme_default">
+			<div class="slds-page-header__title">
+			{contentLabel}
+			</div>
+		<lightning-tabset>
+		<!-- Pages View start-->
+			<template if:true={contentTypePage}>
+					<!--Latest tab Page-->
+					<lightning-tab label="Latest" >
+							<!-- latest tab standard view-->
+							<template if:true={tileLayoutStandard}>
+									<ul class="slds-has-dividers_bottom-space" if:true={latestContents}> 
+										<template for:each={latestContents} for:item="obj">
+													<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">In&nbsp;
+																										<a href={obj.site.url} title={obj.site.title}>
+																												{obj.site.title}
+																										</a>
+																										&nbsp;on&nbsp; <lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+													</template>
+									</ul>
+									<!-- Latest showcase view-->
+							</template>
+					</lightning-tab>
+					<!--Popular tab Pages-->
+					<lightning-tab label="Popular" title="Popular">
+							<!--Standard view pages-->
+							<template if:true={tileLayoutStandard}>
+								<ul class="slds-has-dividers_bottom-space" if:true={popularContents}>
+										<template for:each= {popularContents} for:item= obj>
+											<li class="slds-item" key={obj.contentId}>
+													<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">In&nbsp;
+																										<a href={obj.site.url} title={obj.site.title}>
+																												{obj.site.title}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												 </li>
+									</template>
+								</ul>
+									<!--Its show case popular view Pages-->
+									<template if:false={tileLayoutStandard}>
+									Its show case view.
+											</template>
+									</template>
+					</lightning-tab>
+					</template>
+		<!-- Pages View ends -->
+		<!-- Events view start-->
+		<template if:true={contentTypeEvent}>
+			 <lightning-tab label="Upcoming" title="Upcoming">
+				 <ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+									<template for:each={latestContents} for:item="obj">
+												<li class="slds-item" key={obj.contentId}>
+														<div class="slds-grid slds-grid_vertical-align-center">
+																	<div class="slds-media__figure square_box_container">
+																			<div class="square-box">
+																				<div  class="slds-box slds-box_xx-small theme-bg">
+																					<lightning-formatted-date-time value={obj.createdAt} month="short">
+																							</lightning-formatted-date-time>
+																				</div>
+																				<div class="slds-box slds-box_x-small CalendarDay-date">
+																					<lightning-formatted-date-time value={obj.createdAt} day="2-digit">
+																							</lightning-formatted-date-time>
+																				</div>
+									</div>
+																	</div>
+																	<div class="slds-media__body">
+																			<a href= {obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																			<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">
+																								<lightning-icon icon-name="utility:event" size="x-small">
+																									</lightning-icon>&nbsp;
+																								<lightning-formatted-date-time value={obj.createdAt} month="short" day="2-digit">
+																									</lightning-formatted-date-time>&nbsp;-&nbsp; 
+																									<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																							</li>                                                
+																					</ul>
+																			</div>
+																	</div>
+															</div>
+											</li>
+										</template>
+							 </ul>
+			 </lightning-tab>
+			 <lightning-tab label="Popular" title="Popular">
+				 <ul class="slds-has-dividers_bottom-space" if:true={popularContents}>
+					<template for:each= {popularContents} for:item= obj>
+											<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure square_box_container">
+																				<div class="square-box">
+																					<div  class="slds-box slds-box_xx-small theme-bg">
+																						<lightning-formatted-date-time value={obj.createdAt} month="short">
+																							</lightning-formatted-date-time>
+																					</div>
+																					<div class="slds-box slds-box_x-small CalendarDay-date">
+																						<lightning-formatted-date-time value={obj.createdAt} day="2-digit">
+																									</lightning-formatted-date-time>
+																					</div>
+										</div>
+																		</div>
+																		<div class="slds-media__body">
+																				<a href= {obj.url} title= {obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">
+																									<lightning-icon icon-name="utility:event" size="x-small">
+																											</lightning-icon>&nbsp;
+																									<lightning-formatted-date-time value={obj.createdAt} month="short" day="2-digit">
+																											</lightning-formatted-date-time>&nbsp;-&nbsp; 
+																											<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>    
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+									</template>
+								</ul>
+			 </lightning-tab>
+							</template>
+		<!-- Event view end -->
+		<!-- BlogPost view start -->
+		<template if:true={contentTypeBlogPost}>
+					<!--Latest tab blogpost-->
+					<lightning-tab label="Latest">
+						<ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+									<template for:each={latestContents} for:item="obj">
+												<li class="slds-item" key={obj.contentId}>
+														<div class="slds-grid slds-grid_vertical-align-center">
+																	<div class="slds-media__figure">
+																			<span class="slds-avatar content-title-image-icon">
+																					<a href= {obj.url} title= {obj.title}>
+																							<img alt= {obj.title} src= {obj.img} title= {obj.title} />
+																					</a>
+																			</span>
+																	</div>
+																	<div class="slds-media__body">
+																			<a href= {obj.url} title= {obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																			<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">By&nbsp;
+																									<a href={obj.authoredBy.url} title={obj.authoredBy.name}>
+																											{obj.authoredBy.name}
+																									</a>
+																									&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																							</li>                                                
+																					</ul>
+																			</div>
+																	</div>
+															</div>
+											</li>
+										</template>
+								</ul>
+					</lightning-tab>
+					<lightning-tab label="Popular">
+						<ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+									<template for:each={latestContents} for:item="obj">
+												<li class="slds-item" key={obj.contentId}>
+														<div class="slds-grid slds-grid_vertical-align-center">
+																	<div class="slds-media__figure">
+																			<span class="slds-avatar content-title-image-icon">
+																					<a href= {obj.url} title= {obj.title}>
+																							<img alt= {obj.title} src= {obj.img} title= {obj.title} />
+																					</a>
+																			</span>
+																	</div>
+																	<div class="slds-media__body">
+																			<a href= {obj.url} title= {obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																			<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">By&nbsp;
+																									<a href={obj.authoredBy.url} title={obj.authoredBy.name}>
+																											{obj.authoredBy.name}
+																									</a>
+																									&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																							</li>                                                
+																					</ul>
+																			</div>
+																	</div>
+															</div>
+											</li>
+										</template>
+								</ul>
+					</lightning-tab>
+					</template>
+			 <!-- Blogpost view ends here -->
+		<!-- All content view Start-->
+		<template if:true={contentTypeAll}>
+			 <lightning-tab label="Latest" title="Latest">
+				 <ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+									<template for:each={latestContents} for:item="obj">
+										 <!-- All content Latest events rendering starts-->
+										 <template if:true={obj.isObjTypeEvent}>
+											<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure square_box_container">
+																				<div class="square-box">
+																					<div  class="slds-box slds-box_xx-small theme-bg">
+																						<lightning-formatted-date-time value={obj.createdAt} month="short">
+																									</lightning-formatted-date-time>
+																					</div>
+																					<div class="slds-box slds-box_x-small CalendarDay-date">
+																						<lightning-formatted-date-time value={obj.createdAt} day="2-digit">
+																									</lightning-formatted-date-time>
+																					</div>
+										</div>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">EVENT</p>
+																				<a href= {obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																					<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">
+																								<lightning-icon icon-name="utility:event" size="x-small">
+																									</lightning-icon>&nbsp;
+																								<lightning-formatted-date-time value={obj.createdAt} month="short" day="2-digit">
+																									</lightning-formatted-date-time>&nbsp;-&nbsp; 
+																									<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template> 
+											 <!--All content Latest events rendering ends -->
+											 <!--All content Latest pages rendering starts -->
+											 <template if:true={obj.isObjTypePage}>
+												 <li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">PAGE</p>
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">In&nbsp;
+																										<a href={obj.site.url} title={obj.site.title}>
+																												{obj.site.title}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value= {obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!-- All content Latest pages rendering ends -->
+											 <!--All content  Latest blogs rendering starts -->
+											 <template if:true={obj.isObjTypeBlog}>
+												 <li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type"> BLOG POST</p>
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">By&nbsp;
+																										<a href={bj.authoredBy.url} title={obj.authoredBy.name}>
+																												{obj.authoredBy.name}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value= {obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!-- All content Latest blogs rendering ends -->
+											 <!-- All content Latest album rendering starts -->
+											 <template if:true={obj.isObjTypeAlbum}>
+												<li class="slds-item" key={obj.contentId}>
+														 <div class="slds-grid slds-grid_vertical-align-center">
+																	 <div class="slds-media__figure">
+																			 <span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+																					 <a href={obj.url} title={obj.title}>
+																							 <img alt={obj.title} src={obj.img} title={obj.title} />
+																					 </a>
+																			 </span>
+																	 </div>
+																	 <div class="slds-media__body">
+																		 <p class="slds-text-color_weak All-content-content-type">ALBUM</p>
+																			 <a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">
+																				 {obj.title}
+																			 </a>
+																			 <div class="slds-tile__detail slds-text-body_small">
+																					 <ul class="slds-list_horizontal slds-has-dividers_right">
+																							 <li class="slds-item slds-text-color_weak">By&nbsp;
+																									 <a href={obj.authoredBy.url} title={obj.authoredBy.name}>
+																											 {obj.authoredBy.name}
+																									 </a>
+																									 &nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																										 </lightning-formatted-date-time>
+																							 </li>                                                
+																					 </ul>
+																			 </div>
+																	 </div>
+															 </div>
+											 </li>
+											</template>
+											 <!-- All content Latest album rendering ends -->
+									</template>
+							</ul>
+			 </lightning-tab>
+			 <!-- All content popular view -->
+			 <lightning-tab label="Popular" title="Popular">
+				 <ul class="slds-has-dividers_bottom-space" if:true={popularContents}>
+									<template for:each={popularContents} for:item="obj">
+									<!-- All content Popular Events rendering starts-->
+										<template if:true={obj.isObjTypeEvent}>
+											<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure square_box_container">
+																				<div class="square-box">
+																					<div  class="slds-box slds-box_xx-small theme-bg">
+																						<lightning-formatted-date-time value={obj.createdAt} month="short">
+																									</lightning-formatted-date-time>
+																					</div>
+																					<div class="slds-box slds-box_x-small CalendarDay-date">
+																						<lightning-formatted-date-time value={obj.createdAt} day="2-digit">
+																									</lightning-formatted-date-time>
+																					</div>
+										</div>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">EVENT</p>
+																				<a href= {obj.url} title= {obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">
+																									<lightning-icon icon-name="utility:event" size="x-small">
+																											</lightning-icon>&nbsp;
+																									<lightning-formatted-date-time value={obj.createdAt} month="short" day="2-digit">
+																											</lightning-formatted-date-time>&nbsp;-&nbsp; 
+																											<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">In&nbsp;
+																										<a href={obj.site.url} title={obj.site.title}>
+																												{obj.site.title}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!--All content  Popular Events rendering ends -->
+											 <!-- All content Popular pages rendering starts -->
+											 <template if:true={obj.isObjTypePage}>
+												 <li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">PAGE</p>
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">In&nbsp;
+																										<a href={obj.site.url} title={obj.site.title}>
+																												{obj.site.title}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!-- All content Popular pages rendering ends -->
+											 <!-- All content Popular blogposts rendering starts -->
+											 <template  if:true={obj.isObjTypeBlog}>
+												 <li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">BLOG POST</p>
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">By&nbsp;
+																										<a href={obj.authoredBy.url} title={obj.authoredBy.name}>
+																												{obj.authoredBy.name}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!-- All content Popular blogposts rendering ends -->
+											 <!-- All content Popular album rendering starts -->
+											 <template if:true={obj.isObjTypeAlbum}>
+												 <li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																		<div class="slds-media__figure">
+																				<span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+																						<a href={obj.url} title={obj.title}>
+																								<img alt={obj.title} src={obj.img} title={obj.title} />
+																						</a>
+																				</span>
+																		</div>
+																		<div class="slds-media__body">
+																			<p class="slds-text-color_weak All-content-content-type">ALBUM</p>
+																				<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">
+																					{obj.title}
+																				</a>
+																				<div class="slds-tile__detail slds-text-body_small">
+																						<ul class="slds-list_horizontal slds-has-dividers_right">
+																								<li class="slds-item slds-text-color_weak">By&nbsp;
+																										<a href={obj.authoredBy.url} title={obj.authoredBy.name}>
+																												{obj.authoredBy.name}
+																										</a>
+																										&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																											</lightning-formatted-date-time>
+																								</li>                                                
+																						</ul>
+																				</div>
+																		</div>
+																</div>
+												</li>
+											 </template>
+											 <!-- All content Popular album rendering ends -->
+									</template>
+							</ul>
+			 </lightning-tab>
+		 </template> 
+		<!-- All Content view ends -->
+		<!-- Album view start -->
+					<template if:true={contentTypeAlbum}>
+							<!--Album Latest tab starts-->
+							<lightning-tab label="Latest">
+											<ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+											<template for:each={latestContents} for:item="obj">
+													<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																	<div class="slds-media__figure">
+																			<span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+																					<a href={obj.url} title={obj.title}>
+																							<img alt={obj.title} src={obj.img} title={obj.title} />
+																					</a>
+																			</span>
+																	</div>
+																	<div class="slds-media__body">
+																			<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																			<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">In&nbsp;
+																									<a href={obj.site.url} title={obj.site.title}>
+																											{obj.site.title}
+																									</a>
+																									&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																							</li>                                                
+																					</ul>
+																			</div>
+																	</div>
+															</div>
+													</li>
+											</template>
+									</ul>
+							</lightning-tab>
+							<!--Album Latest tab ends-->
+							<!--Album popular tab starts-->
+							<lightning-tab label="Popular">
+											<ul class="slds-has-dividers_bottom-space" if:true={latestContents}>
+											<template for:each={latestContents} for:item="obj">
+													<li class="slds-item" key={obj.contentId}>
+															<div class="slds-grid slds-grid_vertical-align-center">
+																	<div class="slds-media__figure">
+																			<span class="slds-avatar content-title-image-icon slds-image__crop slds-image__crop--1-by-1">
+																					<a href={obj.url} title={obj.title}>
+																							<img alt={obj.title} src={obj.img} title={obj.title} />
+																					</a>
+																			</span>
+																	</div>
+																	<div class="slds-media__body">
+																			<a href={obj.url} title={obj.title} class="slds-text-title_bold slds-text-color_default">{obj.title}</a>
+																			<div class="slds-tile__detail slds-text-body_small">
+																					<ul class="slds-list_horizontal slds-has-dividers_right">
+																							<li class="slds-item slds-text-color_weak">In&nbsp;
+																									<a href={obj.site.url} title={obj.site.title}>
+																											{obj.site.title}
+																									</a>
+																									&nbsp;on&nbsp;<lightning-formatted-date-time value={obj.createdAt}>
+																									</lightning-formatted-date-time>
+																							</li>                                                
+																					</ul>
+																			</div>
+																	</div>
+															</div>
+													</li>
+											</template>
+									</ul>
+							</lightning-tab>
+							<!--Album popular tab ends-->
+					</template>
+			<!-- Album view ends here -->
+		</lightning-tabset>
+</div>
+</template>

@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "No es posible seguir más temas porque has alcanzado tu límite",
+    "feed.create.tracking_disabled_error_flash": "No es posible realizar esta acción - El seguimiento del muro está desactivado",
+    "manage_sites.site_limit_reached_error_flash": "No es posible administrar o seguir más sitios porque has alcanzado tu límite de sitios"
+}

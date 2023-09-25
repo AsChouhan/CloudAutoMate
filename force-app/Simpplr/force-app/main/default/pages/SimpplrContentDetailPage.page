@@ -1,0 +1,5 @@
+<apex:page standardController="Simpplr_Content__c">
+	<script>
+		window.location.href = '{!$Page.PageRedirector}?contentId={!$CurrentPage.parameters.id}&pageToRedirect=ContentDetailPage'
+	</script>
+</apex:page>

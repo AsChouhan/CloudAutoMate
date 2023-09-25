@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Adăugarea competenței nu a reușit. Această competență există deja „{{expertiseName}}”",
+    "expertise.create.permission.access_error": "Nu aveți permisiunea să creați o nouă competență",
+    "expertise.delete.permission.access_error": "Nu aveți permisiunea să ștergeți o competență"
+}

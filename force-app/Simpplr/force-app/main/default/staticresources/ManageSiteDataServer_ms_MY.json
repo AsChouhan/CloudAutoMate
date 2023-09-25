@@ -1,0 +1,10 @@
+{
+    "manage_site.outlook_webhook_error_flash": "URL webhook tidak boleh ditambahkan - URL seharusnya bermula dengan \"https://outlook.office.com/…\"",
+    "manage_app.setup.privileges.site_owner": "Hanya pengguna yang mempunyai keistimewaan tambah tapak boleh menjadi pemilik tapak",
+    "manage_site.mandatory_subscription_remove": "Gagal mengalih keluar {{name}} daripada tapak. Orang ini termasuk dalam langganan mandatori",
+    "manage_sites.duplicate_site_name_error_message": "Kumpulan aktif atau diarkibkan dengan nama ini sudah wujud atau sedang dipadamkan. Pilih nama lain atau cuba lagi dalam beberapa minit.",
+    "manage_site.apps.reconnect_account": "Anda mesti menyambung semula ke Slack dalam 'Tetapan saya'",
+    "manage_site.duplicate_error_flash": "Tapak dengan nama ini sudah wujud - sial tukar nama dan cuba lagi",
+    "manage_site.unable_to_lock_row_error_message": "Tidak dapat melaksanakan tindakan, sila cuba sebentar lagi",
+    "manage_site.slack.blank_slack_channel": "Anda mestilah ahli saluran Slack ini untuk menyiarkan aktiviti suapan tapak"
+}

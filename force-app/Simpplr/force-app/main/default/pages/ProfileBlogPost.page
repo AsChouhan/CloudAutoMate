@@ -1,0 +1,13 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="false" contentType="text/html" docType="html-5.0" showChat="false" showHeader="false"
+	sidebar="false" standardStylesheets="false" setup="false" controller="ProfileBlogPostCtrl" action="{!init}">
+	<apex:composition template="BaseTemplate">
+		
+		<apex:define name="PageTitle">
+			<apex:outputText value="{!PageTitle}"></apex:outputText>
+		</apex:define>
+
+		<apex:define name="MainContent">
+			<div data-mount-app=" "></div>
+		</apex:define>
+	</apex:composition>
+</apex:page>

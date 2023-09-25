@@ -1,0 +1,4 @@
+<apex:page controller="UtilityDataServer" readonly="true" contentType="text/css" standardStylesheets="false" 
+	showHeader="false" sidebar="false" showChat="false" cache="false" action="{!handleRequest}">
+    <apex:outputText value="{!brandingCssString}"/>
+</apex:page>

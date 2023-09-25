@@ -1,0 +1,5 @@
+{
+    "expertise.add.duplicate.error_flash": "Gagal menambah kepakaran. Kepakaran ini sudah wujud '{{expertiseName}}'",
+    "expertise.create.permission.access_error": "Anda tiada kebenaran untuk membuat kepakaran baharu",
+    "expertise.delete.permission.access_error": "Anda tiada kebenaran untuk memadamkan kepakaran"
+}

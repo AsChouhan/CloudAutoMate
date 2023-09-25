@@ -1,0 +1,33 @@
+public with sharing class EmailConstants {  
+	public static final String checkIcon = 'https://static.simpplr.com/email-assets/img/ico--check-clear.png';
+	public static final String pollIcon = 'https://static.simpplr.com/email-assets/img/ico--poll.png';
+	public static final String fileIcon = 'https://static.simpplr.com/email-assets/img/ico--file.png';
+	public static final String pageDefaultIconSquareIcon = 'https://static.simpplr.com/email-assets/img/placeholder-square-page.jpg';
+	public static final String pageDefaultIconWidescreenIcon = 'https://static.simpplr.com/email-assets/img/placeholder-widescreen-page.jpg';
+	public static final String knowledgePageDefaultIconSquareIcon = 'https://static.simpplr.com/email-assets/img/placeholder-square-knowledge-page.png';
+	public static final String blogDefaultIconSquareIcon = 'https://static.simpplr.com/email-assets/img/placeholder-square-blog.jpg';
+	public static final String blogDefaultIconWidescreenIcon = 'https://static.simpplr.com/email-assets/img/placeholder-widescreen-blog.jpg';
+	public static final String linkIcon = 'https://static.simpplr.com/email-assets/img/ico--link.png';
+	public static final String pollOptionIcon = 'https://static.simpplr.com/email-assets/img/ico--radio.png';
+	public static final String simpplrDefaultLogoUrl = 'https://static.simpplr.com/email-assets/img/logo.png';
+	public static final String siteDefaultIconUrl = 'http://static.simpplr.com/email-assets/img/placeholder-site.png';
+	public static final String KEY_LABEL_PAGE = 'email.common.label.page';
+	public static final String KEY_LABEL_ALBUM = 'email.common.label.album';
+	public static final String KEY_LABEL_EVENT = 'email.common.label.event';
+	public static final String KEY_LABEL_BLOGPOST = 'email.common.blog_post';
+	public static final String KEY_LABEL_MUSTREAD = 'email.common.stamp.must_read';
+	public static final String KEY_LABEL_IN = 'email.common.newsletter.in';	
+	public static final String KEY_LABEL_BY = 'email.common.by';
+	public static final string KEY_LABEL_ON = 'email.common.on.digest';
+	public static final String KEY_LABEL_ALL_DAY = 'email.common.all_day.digest';
+	public static final String KEY_FOOTER_SETTINGS = 'email.common.footer.settings';
+	public static final String KEY_EMAIL_COMMON_SALUTATION = 'email.common.salutation';
+	public static final String KEY_COPYRIGHT = 'email.common.footer.copyright';
+	public static final String KEY_POWERED_BY = 'email.common.footer.powered_by';
+    public static final String peopleDefaultIcon = 'https://static.simpplr.com/email-assets/img/placeholder-user.jpg';
+	public static final String footerPromotionBadgeAndroid = 'https://static.simpplr.com/email-assets/img/google_{{locale}}.png';
+	public static final String footerPromotionBadgeIOS = 'https://static.simpplr.com/email-assets/img/apple_{{locale}}.png';
+	public static final String MOBILE_PROMOTION_LINK = 'https://api.simpplr.com/campaign/mobile-app-download/download?utm_campaign=mobile_promotion&utm_content=';    
+	public static final String MOBILE_PROMOTION_CENTER_LOGO = 'https://static.simpplr.com/email-assets/img/mobile_promotion_center_logo.jpg';
+	public static final String BRANDED_PROMOTION_CENTER_LOGO = 'https://static.simpplr.com/branded-app/{{logoNameOrId}}.png';
+}

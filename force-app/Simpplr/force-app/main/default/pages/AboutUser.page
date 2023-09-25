@@ -1,0 +1,3 @@
+<apex:page applyHtmlTag="false" applyBodyTag="false" cache="true" contentType="text/html" docType="html-5.0" showChat="false" 
+           showHeader="false" sidebar="false" standardStylesheets="false" setup="false" controller="V1ToV2PageRedirectorController" action="{!redirectToV2}">
+</apex:page>

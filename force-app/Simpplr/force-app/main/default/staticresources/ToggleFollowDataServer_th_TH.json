@@ -1,0 +1,5 @@
+{
+    "common.follow_limit_reached_error_flash": "ติดตามหัวข้อเพิ่มไม่ได้เนื่องจากเกินขีดจำกัดแล้ว",
+    "feed.create.tracking_disabled_error_flash": "ดำเนินการสิ่งนี้ไม่ได้ - การติดตามฟีดถูกปิดใช้งาน",
+    "manage_sites.site_limit_reached_error_flash": "จัดการหรือติดตามไซต์เพิ่มไม่ได้เนื่องจากถึงขีดจำกัดของไซต์แล้ว"
+}

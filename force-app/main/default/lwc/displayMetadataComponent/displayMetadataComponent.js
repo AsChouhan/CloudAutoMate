@@ -28,6 +28,7 @@ export default class DisplayMetadataComponent extends LightningElement {
     handleSelect(event) {  
         var id = event.detail.name;
         this.showSpinnerBool = true; 
+        console.log(id);
 
 
         if(id.includes(" ")){

@@ -1,0 +1,6 @@
+{
+"manage_page_categories.delete.not_empty_error_flash": "It's not possible to delete page categories that contain pages",
+"manage_page_categories.add.duplicate_error_flash": "It's not possible to add duplicate page categories",
+"manage_page_categories.delete.uncategorized_error_flash": "It's not possible to edit/delete the page category \"Uncategorized\"",
+"manage_page_categories.edit.uncategorized_error_flash": "It's not possible to edit/delete the page category \"Uncategorized\""
+}
